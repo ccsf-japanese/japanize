@@ -6,15 +6,16 @@
 
 The following **required** functionality is completed:
 
-- [ ] User can see different levels
-- [ ] User can learn different Kanji characters
-- [ ] User can learn different Japanese words playing and recording
+- [ ] Select difficulty and see progressive levels
+- [ ] Touch based Kanji character learning. Learn through trace and keyword prompts. Focus on stroke order and legibility
+- [ ] Audio record word and phrase pronunciation and compare side-by-side to Japanese speaker samples
 
 The following **optional** features are implemented:
 
-- [ ] User can login to store their score
-- [ ] User can check ranking for other users
-- [ ] User can see an onboarding process after splash to know how to use the app
+- [ ] Create personal account to store profile and score data across devices. (Facebook, Google+, Parse?)
+- [ ] ranking and leaderboards
+- [ ] On first load a tutorial to show off features and how to use the app
+- [ ] Voice recognition to check pronunciation
 
 ## Mockups
 
