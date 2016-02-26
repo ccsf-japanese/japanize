@@ -9,6 +9,7 @@ The following **required** functionality is completed:
 - [ ] Select difficulty and see progressive levels
 - [ ] Touch based Kanji character learning. Learn through trace and keyword prompts. Focus on stroke order and legibility
 - [ ] Audio record word and phrase pronunciation and compare side-by-side to Japanese speaker samples
+- [ ] Widget - Reminders and word/phrase of the day
 
 The following **optional** features are implemented:
 
