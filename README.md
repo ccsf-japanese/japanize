@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [ ] Create personal account to store profile and score data across devices. (Facebook, Google+, Parse?)
-- [ ] ranking and leaderboards
+- [ ] Ranking and leaderboards
 - [ ] On first load a tutorial to show off features and how to use the app
 - [ ] Voice recognition to check pronunciation
 
