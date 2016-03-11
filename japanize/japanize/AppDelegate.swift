@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  CCSFJapanese
+//  japanize
 //
-//  Created by Tom H on 2/23/16.
-//  Copyright © 2016 Tom Horvath. All rights reserved.
+//  Created by eMobc SL on 10/03/16.
+//  Copyright © 2016 Codepath. All rights reserved.
 //
 
 import UIKit
