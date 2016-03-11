@@ -1,6 +1,6 @@
-# Group project - *Japaneseyou*
+# Group project - *Japanize*
 
-**Japaneseyou** is a learning Japanese app.
+**Japanize** is a learning Japanese app.
 
 ## User Stories
 
