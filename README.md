@@ -17,6 +17,7 @@ The following **optional** features are implemented:
 - [ ] Ranking and leaderboards
 - [ ] On first load a tutorial to show off features and how to use the app
 - [ ] Voice recognition to check pronunciation
+- [ ] Word practice with random generated romanji 
 
 ## Mockups
 
