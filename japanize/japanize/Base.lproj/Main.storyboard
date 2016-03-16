@@ -48,6 +48,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VxZ-6t-lkV" kind="show" id="TWd-fG-dzK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -60,6 +63,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="751" y="1062"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QBU-f4-vYT">
+            <objects>
+                <viewController id="VxZ-6t-lkV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KcP-oc-3BW"/>
+                        <viewControllerLayoutGuide type="bottom" id="DtJ-aU-JsT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lBs-9m-iKd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3N-ga-sXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="1062"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sTi-8R-DFR">
