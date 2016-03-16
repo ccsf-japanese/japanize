@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="751" y="1062"/>
         </scene>
-        <!--View Controller-->
+        <!--Level View Controller-->
         <scene sceneID="QBU-f4-vYT">
             <objects>
-                <viewController id="VxZ-6t-lkV" sceneMemberID="viewController">
+                <viewController id="VxZ-6t-lkV" customClass="LevelViewController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KcP-oc-3BW"/>
                         <viewControllerLayoutGuide type="bottom" id="DtJ-aU-JsT"/>
