@@ -1,5 +1,5 @@
 //
-//  LevelsViewController.swift
+//  MainViewController.swift
 //  japanize
 //
 //  Created by Tom H on 3/15/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LevelsViewController: UIViewController {
+class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
