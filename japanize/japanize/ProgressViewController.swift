@@ -33,6 +33,32 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
 //        NSLog(">>>tableView cellForRowAtIndexPath")
         let cell = tableView.dequeueReusableCellWithIdentifier("LevelCell", forIndexPath: indexPath) as! LevelCell
         let level = levels[indexPath.row]
+        
+        if indexPath.row == 0 { //levelComplete == true {
+            //set cell text colour green (background image checkmark circle)
+            cell.levelLabel.textColor = UIColor.greenColor()
+            cell.goal1Label.textColor = UIColor.greenColor()
+            cell.goal2Label.textColor = UIColor.greenColor()
+            cell.goal3Label.textColor = UIColor.greenColor()
+
+        }else if indexPath.row == 1 { //levelComplete == false {
+            //set cell text color black/system defualt (do anything?)
+//            cell.levelLabel.textColor = UIColor.blackColor()
+            cell.goal1Label.textColor = UIColor.darkGrayColor()
+            cell.goal2Label.textColor = UIColor.darkGrayColor()
+            cell.goal3Label.textColor = UIColor.darkGrayColor()
+            
+            cell.levelLabel.shadowColor = UIColor.grayColor()
+
+        }else{
+            // does level not touched fire this (as nil)
+            //set cell inactive and grey
+            cell.levelLabel.textColor = UIColor.grayColor()
+            cell.goal1Label.textColor = UIColor.grayColor()
+            cell.goal2Label.textColor = UIColor.grayColor()
+            cell.goal3Label.textColor = UIColor.grayColor()
+        }
+        
         cell.levelLabel.text = "Level"+String(level)
         return cell
     }
