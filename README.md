@@ -35,3 +35,68 @@ The following **optional** features are implemented:
 - https://ospalh.github.io/anki-addons/Kanji%20stroke%20color.html
 - https://github.com/jgorset/Recorder
 - http://tegaki.org/
+
+## Data schema
+
+The data schema is documented in the API in every end-point. Basically we have:
+
+ - Users: http://private-f1e8a-japanize.apiary-mock.com/users
+
+```
+[
+  {
+    "id": 1,
+    "name": "Alejandro",
+    "bio": "CCSF student",
+    "email": "asanc142@mail.ccsf.edu",
+    "score": 1000
+  }
+]
+```
+
+ - Kanji characters: http://private-f1e8a-japanize.apiary-mock.com/kanji
+
+```
+[
+  {
+    "id": 1,
+    "name": "Kanji 1",
+    "description": "Practice Kanji first character",
+    "character": "仮",
+    "score": 5
+  }
+]
+```
+
+ - Words: http://private-f1e8a-japanize.apiary-mock.com/words
+
+```
+[
+  {
+    "id": 1,
+    "name": "Word 1",
+    "description": "Practice Kanji first character",
+    "meaning_english": "Hello",
+    "meaning_hiragana": "仮",
+    "meaning_romanji": "仮",
+    "score": 5
+  }
+]
+```
+
+ - Levels: http://private-f1e8a-japanize.apiary-mock.com/levels
+
+```
+[
+  {
+    "level": 1,
+    "published_at": "2015-08-05T08:40:51.620Z",
+    "activities": [
+      {
+        "type": "Kanji",
+        "id": 1
+      }
+    ]
+  }
+]
+```
