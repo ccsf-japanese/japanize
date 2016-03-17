@@ -21,40 +21,61 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LevelCell" rowHeight="61" id="PFl-QP-Jic">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LevelCell" rowHeight="61" id="PFl-QP-Jic" customClass="LevelCell" customModule="japanize" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="320" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PFl-QP-Jic" id="8AX-Mj-Mjx">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="for-6e-QuB">
-                                                    <rect key="frame" x="17" y="3" width="68" height="28"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="23"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="for-6e-QuB">
+                                                    <rect key="frame" x="8" y="2" width="71" height="57"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j82-k3-IaX">
-                                                    <rect key="frame" x="261" y="3" width="51" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Kanji - trace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j82-k3-IaX">
+                                                    <rect key="frame" x="232" y="2" width="80" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 Hiragana characters" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EE5-cw-0Yt">
-                                                    <rect key="frame" x="186" y="18" width="126" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(audio On/Off optional) 3 words - say" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyU-37-uCk">
+                                                    <rect key="frame" x="101" y="37" width="211" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 grammar questions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyU-37-uCk">
-                                                    <rect key="frame" x="186" y="33" width="126" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Hiragana - draw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EE5-cw-0Yt">
+                                                    <rect key="frame" x="210" y="20" width="102" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dyU-37-uCk" firstAttribute="top" secondItem="EE5-cw-0Yt" secondAttribute="bottom" constant="2" id="A51-He-LLo"/>
+                                                <constraint firstAttribute="trailing" secondItem="j82-k3-IaX" secondAttribute="trailing" constant="8" id="CoP-AU-PKb"/>
+                                                <constraint firstAttribute="bottom" secondItem="dyU-37-uCk" secondAttribute="bottom" constant="8" id="I2R-B0-fCl"/>
+                                                <constraint firstItem="EE5-cw-0Yt" firstAttribute="centerY" secondItem="for-6e-QuB" secondAttribute="centerY" id="NRq-UV-Pxg"/>
+                                                <constraint firstItem="EE5-cw-0Yt" firstAttribute="top" secondItem="j82-k3-IaX" secondAttribute="bottom" constant="3" id="Ot5-Ky-OxP"/>
+                                                <constraint firstItem="for-6e-QuB" firstAttribute="centerY" secondItem="8AX-Mj-Mjx" secondAttribute="centerY" id="YEt-Ea-ryJ"/>
+                                                <constraint firstItem="j82-k3-IaX" firstAttribute="top" secondItem="for-6e-QuB" secondAttribute="top" id="bq5-Xl-dlg"/>
+                                                <constraint firstAttribute="trailing" secondItem="dyU-37-uCk" secondAttribute="trailing" constant="8" id="cWq-1H-UPO"/>
+                                                <constraint firstAttribute="trailing" secondItem="EE5-cw-0Yt" secondAttribute="trailing" constant="8" id="dQL-NK-KRs"/>
+                                                <constraint firstItem="for-6e-QuB" firstAttribute="leading" secondItem="8AX-Mj-Mjx" secondAttribute="leading" constant="8" id="f0v-95-DZC"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="NRq-UV-Pxg"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="goal1Label" destination="j82-k3-IaX" id="uzf-Cr-D4Z"/>
+                                            <outlet property="goal2Label" destination="EE5-cw-0Yt" id="Sqy-wt-za2"/>
+                                            <outlet property="goal3Label" destination="dyU-37-uCk" id="GfZ-IR-5ck"/>
+                                            <outlet property="levelLabel" destination="for-6e-QuB" id="NPu-6G-fWW"/>
                                             <segue destination="VxZ-6t-lkV" kind="show" id="TWd-fG-dzK"/>
                                         </connections>
                                     </tableViewCell>
@@ -65,6 +86,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Japanize" id="HvG-5f-kva"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="tableView" destination="bd4-3q-cTH" id="DeY-No-5Dp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,10 +250,10 @@
             </objects>
             <point key="canvasLocation" x="280.5" y="2125.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--ModeTabBar-->
         <scene sceneID="0Xd-cK-A1z">
             <objects>
-                <tabBarController id="yIR-Ki-MLj" sceneMemberID="viewController">
+                <tabBarController title="ModeTabBar" id="yIR-Ki-MLj" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="HL2-O6-cGQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

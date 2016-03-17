@@ -10,8 +10,15 @@ import UIKit
 
 class ProgressViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+//    var levels: [Level]?
+    
+    let levels = [1,2,3,4,5]
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -23,19 +30,20 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        NSLog(">>>tableView cellForRowAtIndexPath")
-        let cell = tableView.dequeueReusableCellWithIdentifier("CELLNAME", forIndexPath: indexPath) as! CELLNAME
-        cell.DATA = filteredDATA[indexPath.row]
+//        NSLog(">>>tableView cellForRowAtIndexPath")
+        let cell = tableView.dequeueReusableCellWithIdentifier("LevelCell", forIndexPath: indexPath) as! LevelCell
+        let level = levels[indexPath.row]
+        cell.levelLabel.text = "Level"+String(level)
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        NSLog(">>>tableView numberOfRowsInSection")
-        if filteredDATA != nil {
-            return filteredDATA.count
-        } else {
-            return 0
-        }
+//        NSLog(">>>tableView numberOfRowsInSection")
+//        if levels = self.levels {
+            return levels.count
+//        } else {
+//            return 0
+//        }
     }
 
     /*

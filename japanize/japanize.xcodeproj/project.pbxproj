@@ -17,6 +17,8 @@
 		6198FA9F1C990391004CA9AB /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198FA9E1C990391004CA9AB /* LevelViewController.swift */; };
 		68FEA4701C9AB4C800E76D83 /* PronunciationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */; };
 		68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */; };
+		68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4761C9ACA0E00E76D83 /* Level.swift */; };
+		68FEA4791C9ACC3500E76D83 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4781C9ACC3500E76D83 /* LevelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronunciationViewController.swift; sourceTree = "<group>"; };
 		68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		68FEA4731C9AC0AA00E76D83 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		68FEA4761C9ACA0E00E76D83 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		68FEA4781C9ACC3500E76D83 /* LevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +86,9 @@
 		68FEA46D1C9919FC00E76D83 /* Levels and Progress */ = {
 			isa = PBXGroup;
 			children = (
+				68FEA4781C9ACC3500E76D83 /* LevelCell.swift */,
 				68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */,
+				68FEA4761C9ACA0E00E76D83 /* Level.swift */,
 				6198FA9E1C990391004CA9AB /* LevelViewController.swift */,
 			);
 			name = "Levels and Progress";
@@ -186,6 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				68FEA4701C9AB4C800E76D83 /* PronunciationViewController.swift in Sources */,
+				68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */,
+				68FEA4791C9ACC3500E76D83 /* LevelCell.swift in Sources */,
 				37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */,
 				68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */,
 				1DAFC23F1C927BA700F45F3A /* AppDelegate.swift in Sources */,
