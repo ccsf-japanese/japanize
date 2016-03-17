@@ -67,10 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				1DAFC23E1C927BA700F45F3A /* AppDelegate.swift */,
-				68FEA46E1C9AB2CF00E76D83 /* SVG */,
-				68FEA46D1C9919FC00E76D83 /* Views */,
-				37FD73361C9A780F00079F14 /* KanjiView.swift */,
-				37FD73381C9A788800079F14 /* KanjiViewController.swift */,
+				68FEA46E1C9AB2CF00E76D83 /* SVG files */,
+				68FEA46D1C9919FC00E76D83 /* Levels and Progress */,
+				68FEA4741C9AC19900E76D83 /* Kanji */,
+				68FEA4751C9AC1E300E76D83 /* Audio */,
 				1DAFC2421C927BA700F45F3A /* Main.storyboard */,
 				1DAFC2451C927BA700F45F3A /* Assets.xcassets */,
 				1DAFC2471C927BA700F45F3A /* LaunchScreen.storyboard */,
@@ -79,22 +79,38 @@
 			path = japanize;
 			sourceTree = "<group>";
 		};
-		68FEA46D1C9919FC00E76D83 /* Views */ = {
+		68FEA46D1C9919FC00E76D83 /* Levels and Progress */ = {
 			isa = PBXGroup;
 			children = (
 				68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */,
-				68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */,
 				6198FA9E1C990391004CA9AB /* LevelViewController.swift */,
 			);
-			name = Views;
+			name = "Levels and Progress";
 			sourceTree = "<group>";
 		};
-		68FEA46E1C9AB2CF00E76D83 /* SVG */ = {
+		68FEA46E1C9AB2CF00E76D83 /* SVG files */ = {
 			isa = PBXGroup;
 			children = (
 				37FD733A1C9A78EB00079F14 /* 054a8.svg */,
 			);
-			name = SVG;
+			name = "SVG files";
+			sourceTree = "<group>";
+		};
+		68FEA4741C9AC19900E76D83 /* Kanji */ = {
+			isa = PBXGroup;
+			children = (
+				37FD73361C9A780F00079F14 /* KanjiView.swift */,
+				37FD73381C9A788800079F14 /* KanjiViewController.swift */,
+			);
+			name = Kanji;
+			sourceTree = "<group>";
+		};
+		68FEA4751C9AC1E300E76D83 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
