@@ -8,7 +8,7 @@
         <!--Japanize-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ProgressViewController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -68,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="1062"/>
+            <point key="canvasLocation" x="772" y="1378"/>
         </scene>
         <!--Level View Controller-->
         <scene sceneID="QBU-f4-vYT">
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3N-ga-sXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1223" y="1062"/>
+            <point key="canvasLocation" x="1268" y="1378"/>
         </scene>
         <!--Train-->
         <scene sceneID="sTi-8R-DFR">
@@ -120,7 +120,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqQ-xV-KUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="1062"/>
+            <point key="canvasLocation" x="280" y="1378"/>
         </scene>
         <!--Kanji View Controller-->
         <scene sceneID="dpv-CR-JAX">
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYq-dQ-JUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778.5" y="1821.5"/>
+            <point key="canvasLocation" x="786.5" y="2125.5"/>
         </scene>
         <!--Pronunciation View Controller-->
         <scene sceneID="AQm-xW-hIy">
@@ -203,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBW-zS-40a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830.5" y="2619.5"/>
+            <point key="canvasLocation" x="722.5" y="2971.5"/>
         </scene>
         <!--Kanji-->
         <scene sceneID="tZU-lG-zzK">
@@ -224,7 +224,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNe-sI-OFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="1822"/>
+            <point key="canvasLocation" x="280.5" y="2125.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0Xd-cK-A1z">
@@ -243,7 +243,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sqw-vE-gX4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-402" y="1850"/>
+            <point key="canvasLocation" x="-390" y="2342"/>
         </scene>
         <!--Practice-->
         <scene sceneID="9r2-6j-CSJ">
@@ -264,7 +264,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TsB-Ep-waM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="304.5" y="2619.5"/>
+            <point key="canvasLocation" x="233.5" y="2971.5"/>
         </scene>
     </scenes>
     <resources>
