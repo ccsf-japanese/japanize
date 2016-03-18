@@ -199,17 +199,11 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hear ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytx-R5-HgV">
-                                <rect key="frame" x="155" y="398" width="66" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-eT-H2I">
-                                <rect key="frame" x="0.0" y="64" width="375" height="334"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-eT-H2I" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="270"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1D-6W-8ad">
-                                        <rect key="frame" x="134" y="148" width="108" height="39"/>
+                                        <rect key="frame" x="134" y="116" width="108" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -221,18 +215,68 @@
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="centerY" secondItem="tgY-eT-H2I" secondAttribute="centerY" id="eCe-Ne-Bws"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbj-gN-MXo" userLabel="Bottom View">
+                                <rect key="frame" x="0.0" y="334" width="375" height="284"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ng-fn-zng" userLabel="Center of bottom">
+                                        <rect key="frame" x="188" y="142" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                                        <state key="normal" title="話す" image="mic">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
+                                        <rect key="frame" x="0.0" y="142" width="375" height="142"/>
+                                        <state key="normal" title="聴く" image="speaker">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="3wl-yh-vIg"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="87S-2V-YR7"/>
+                                    <constraint firstItem="3Ng-fn-zng" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="8oV-8b-Ird"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" id="9dv-8F-bH9"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="EfQ-z0-cPI"/>
+                                    <constraint firstAttribute="bottom" secondItem="bbE-dK-wYc" secondAttribute="bottom" id="IwZ-im-NfT"/>
+                                    <constraint firstAttribute="trailing" secondItem="bbE-dK-wYc" secondAttribute="trailing" id="Tnx-2d-80P"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="Z5G-Vk-TiJ"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="lW8-md-F1X"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="mti-QB-sjC"/>
+                                    <constraint firstItem="3Ng-fn-zng" firstAttribute="centerX" secondItem="nbj-gN-MXo" secondAttribute="centerX" id="xTg-XJ-F6G"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EfQ-z0-cPI"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tgY-eT-H2I" secondAttribute="trailing" id="7B8-CR-dbP"/>
-                            <constraint firstItem="ytx-R5-HgV" firstAttribute="top" secondItem="tgY-eT-H2I" secondAttribute="bottom" id="Q9u-NO-KZx"/>
-                            <constraint firstItem="ytx-R5-HgV" firstAttribute="centerX" secondItem="zRm-Gj-tHO" secondAttribute="centerX" id="aRW-xK-BIz"/>
+                            <constraint firstAttribute="trailing" secondItem="nbj-gN-MXo" secondAttribute="trailing" id="CoV-wm-bpw"/>
+                            <constraint firstItem="nks-1Q-4sW" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="bottom" id="GXW-mk-pAN"/>
+                            <constraint firstItem="nbj-gN-MXo" firstAttribute="top" secondItem="tgY-eT-H2I" secondAttribute="bottom" id="HJv-1n-fL7"/>
+                            <constraint firstItem="nbj-gN-MXo" firstAttribute="leading" secondItem="zRm-Gj-tHO" secondAttribute="leading" id="NR5-6F-rLn"/>
+                            <constraint firstItem="tgY-eT-H2I" firstAttribute="bottom" secondItem="U0B-fU-NxX" secondAttribute="bottom" id="Nfy-B1-gA0"/>
                             <constraint firstItem="tgY-eT-H2I" firstAttribute="leading" secondItem="zRm-Gj-tHO" secondAttribute="leading" id="evU-md-uYh"/>
+                            <constraint firstItem="nbj-gN-MXo" firstAttribute="top" secondItem="U0B-fU-NxX" secondAttribute="top" id="gj6-gu-MKt"/>
                             <constraint firstItem="U0B-fU-NxX" firstAttribute="centerY" secondItem="zRm-Gj-tHO" secondAttribute="centerY" id="kuc-gp-eDd"/>
                             <constraint firstItem="tgY-eT-H2I" firstAttribute="top" secondItem="Hu3-Ny-APm" secondAttribute="bottom" id="sQw-qn-MHZ"/>
-                            <constraint firstItem="ytx-R5-HgV" firstAttribute="centerY" secondItem="zRm-Gj-tHO" secondAttribute="centerY" constant="75" id="uBc-sB-euy"/>
                             <constraint firstItem="U0B-fU-NxX" firstAttribute="centerX" secondItem="zRm-Gj-tHO" secondAttribute="centerX" id="vEB-FT-QA8"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HJv-1n-fL7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="TK5-X8-bmK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -325,6 +369,8 @@
     <resources>
         <image name="brain" width="32" height="32"/>
         <image name="kanji64" width="32" height="32"/>
+        <image name="mic" width="64" height="64"/>
         <image name="sound" width="32" height="32"/>
+        <image name="speaker" width="64" height="64"/>
     </resources>
 </document>
