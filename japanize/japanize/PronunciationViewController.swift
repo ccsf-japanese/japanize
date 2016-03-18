@@ -11,7 +11,7 @@ import AVFoundation
 
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
 
-    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var wordLabel: UILabel! // make a button to grab new word
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
@@ -146,6 +146,12 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             sender.setTitle("聴く", forState: .Normal)
 
         }
+    }
+    
+    func loadWord(){
+//        get level apropriate word from Data
+//        set wordLable
+//        set pronunciation
     }
     
     /*
