@@ -15,7 +15,7 @@ class KanjiViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+            
         var strokes: [String] = []
         let path = NSBundle.mainBundle().pathForResource("054a8", ofType: "svg")!
         let content: NSString = try! String(contentsOfFile: path)

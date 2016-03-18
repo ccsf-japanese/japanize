@@ -254,10 +254,11 @@
         <scene sceneID="0Xd-cK-A1z">
             <objects>
                 <tabBarController storyboardIdentifier="tabbar" title="ModeTabBar" id="yIR-Ki-MLj" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="HL2-O6-cGQ">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="HL2-O6-cGQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="PUO-VF-2qD" kind="relationship" relationship="viewControllers" id="zqg-bn-amh"/>
