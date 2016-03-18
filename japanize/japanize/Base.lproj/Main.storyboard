@@ -230,7 +230,7 @@
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
+                                    <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
                                         <rect key="frame" x="0.0" y="142" width="375" height="142"/>
                                         <state key="normal" title="聴く" image="speaker">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -371,6 +371,6 @@
         <image name="kanji64" width="32" height="32"/>
         <image name="mic" width="64" height="64"/>
         <image name="sound" width="32" height="32"/>
-        <image name="speaker" width="64" height="64"/>
+        <image name="speaker" width="66" height="64"/>
     </resources>
 </document>
