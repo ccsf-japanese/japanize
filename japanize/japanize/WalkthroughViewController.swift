@@ -20,16 +20,16 @@ class WalkthroughViewController: UIViewController, BWWalkthroughViewControllerDe
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        if !userDefaults.boolForKey("walkthroughPresented") {
+        //if !userDefaults.boolForKey("walkthroughPresented") {
             showWalkthrough()
             
             userDefaults.setBool(true, forKey: "walkthroughPresented")
             userDefaults.synchronize()
-        } else {
+        /*} else {
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("tabbar") as! UITabBarController
             self.showViewController(vc, sender: self)
-        }
+        }*/
     }
     
     func showWalkthrough() {
@@ -54,12 +54,11 @@ class WalkthroughViewController: UIViewController, BWWalkthroughViewControllerDe
     }
     
     func walkthroughCloseButtonPressed() {
-    
         //self.dismissViewControllerAnimated(true, completion: nil)
-        print("Close")
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //print("Close")
+        /*let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("tabbar") as! UITabBarController
-        self.showViewController(vc, sender: self)
+        self.showViewController(vc, sender: self)*/
     }
 
     override func didReceiveMemoryWarning() {

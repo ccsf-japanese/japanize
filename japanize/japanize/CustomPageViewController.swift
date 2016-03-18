@@ -29,6 +29,14 @@ class CustomPageViewController: UIViewController, BWWalkthroughPage {
         if(tmpOffset > 1.0){
             tmpOffset = 1.0 + (1.0 - tmpOffset)
         }
+        
         imageView?.layer.transform = CATransform3DTranslate(tr, 0 , (1.0 - tmpOffset) * 200, 0)
+        
+        if (offset > 1.99688) {
+            sleep(1)
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("tabbar") as! UITabBarController
+            self.showViewController(vc, sender: self)
+        }
     }
 }
