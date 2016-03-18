@@ -110,6 +110,31 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         print("Error while recording audio \(error!.localizedDescription)")
     }
     
+    @IBAction func onRecord(sender: AnyObject) {
+//        print(sender.titleLabel!!.text)
+        if (sender.titleLabel!!.text == "話す"){
+            soundRecorder.record()
+            sender.setTitle("ストップ", forState: .Normal)
+            playButton.enabled = false
+        } else {
+            soundRecorder.stop()
+            sender.setTitle("話す", forState: .Normal)
+        }
+    }
+    
+    
+    @IBAction func onListen(sender: AnyObject) {
+        if (sender.titleLabel!!.text == "聴く"){
+            recordButton.enabled = false
+            sender.setTitle("ストップ", forState: .Normal)
+            preparePlayer()
+            soundPlayer.play() // recording + prerecorded pronunciation 
+        } else {
+            soundPlayer.stop()
+            sender.setTitle("聴く", forState: .Normal)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
