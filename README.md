@@ -36,6 +36,12 @@ The following **optional** features are implemented:
 - https://github.com/jgorset/Recorder
 - http://tegaki.org/
 
+## Video Walkthrough 
+
+Here's a walkthrough of implemented user stories:
+
+<img src='japanize.gif' title='Video Walkthrough'/>
+
 ## Data schema
 
 The data schema is documented in the API in every end-point. Basically we have:
