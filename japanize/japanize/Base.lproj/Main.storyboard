@@ -239,7 +239,7 @@
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="onListen:" destination="VMh-EN-7kr" eventType="touchUpInside" id="XA8-t1-63u"/>
+                                            <action selector="onPlay:" destination="VMh-EN-7kr" eventType="touchUpInside" id="rOM-ne-DMf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -385,6 +385,6 @@
         <image name="kanji64" width="32" height="32"/>
         <image name="mic" width="64" height="64"/>
         <image name="sound" width="32" height="32"/>
-        <image name="speaker" width="66" height="64"/>
+        <image name="speaker" width="44" height="42"/>
     </resources>
 </document>

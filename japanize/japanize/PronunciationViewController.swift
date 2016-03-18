@@ -92,7 +92,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
+        recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         playButton.setTitle("聴く", forState: .Normal)
+        playButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
@@ -104,6 +107,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         playButton.hidden = false
         playButton.enabled = true
         recordButton.setTitle("話す", forState: .Normal)
+        playButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+
     }
     
     func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
@@ -115,23 +120,31 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         if (sender.titleLabel!!.text == "話す"){
             soundRecorder.record()
             sender.setTitle("ストップ", forState: .Normal)
+            sender.setTitleColor(UIColor.redColor(), forState: .Normal)
             playButton.enabled = false
+            playButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
         } else {
             soundRecorder.stop()
             sender.setTitle("話す", forState: .Normal)
+            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
+
         }
     }
     
     
-    @IBAction func onListen(sender: AnyObject) {
+    @IBAction func onPlay(sender: AnyObject) {
         if (sender.titleLabel!!.text == "聴く"){
             recordButton.enabled = false
+            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             sender.setTitle("ストップ", forState: .Normal)
             preparePlayer()
             soundPlayer.play() // recording + prerecorded pronunciation 
         } else {
             soundPlayer.stop()
+            recordButton.enabled = true
+            recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             sender.setTitle("聴く", forState: .Normal)
+
         }
     }
     
