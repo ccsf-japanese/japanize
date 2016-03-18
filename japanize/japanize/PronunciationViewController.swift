@@ -70,6 +70,45 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         return filePath
     }
     
+    func preparePlayer() {
+        var error: NSError?
+        
+        do {
+            soundPlayer = try AVAudioPlayer(contentsOfURL: getFileURL())
+        } catch let error1 as NSError {
+            error = error1
+            soundPlayer = nil
+        }
+        
+        if let err = error {
+            print("AVAudioPlayer error: \(err.localizedDescription)")
+        } else {
+            soundPlayer.delegate = self
+            soundPlayer.prepareToPlay()
+            soundPlayer.volume = 1.0
+        }
+    }
+    
+    
+    func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        recordButton.enabled = true
+        playButton.setTitle("聴く", forState: .Normal)
+    }
+    
+    func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
+        print("Error while playing audio \(error!.localizedDescription)")
+    }
+    
+    
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+        playButton.hidden = false
+        playButton.enabled = true
+        recordButton.setTitle("話す", forState: .Normal)
+    }
+    
+    func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
+        print("Error while recording audio \(error!.localizedDescription)")
+    }
     
     /*
     // MARK: - Navigation
