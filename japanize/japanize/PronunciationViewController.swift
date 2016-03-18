@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PronunciationViewController: UIViewController {
 
+    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    
+    var soundRecorder: AVAudioRecorder!
+    var soundPlayer: AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +30,9 @@ class PronunciationViewController: UIViewController {
     }
     
 
+    
+    
+    
     /*
     // MARK: - Navigation
 

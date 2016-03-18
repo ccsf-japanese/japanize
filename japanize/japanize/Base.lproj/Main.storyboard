@@ -280,6 +280,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="TK5-X8-bmK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="playButton" destination="bbE-dK-wYc" id="Ft0-ZY-TOe"/>
+                        <outlet property="recordButton" destination="IzQ-im-BV8" id="i0f-T3-DbI"/>
+                        <outlet property="wordLabel" destination="E1D-6W-8ad" id="rVI-pF-K6K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBW-zS-40a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
