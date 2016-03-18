@@ -40,9 +40,9 @@
 		37FD733A1C9A78EB00079F14 /* 054a8.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 054a8.svg; sourceTree = "<group>"; };
 		6198FA9E1C990391004CA9AB /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		65C68BEDE944D35F3BE2462C /* Pods-japanize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-japanize.release.xcconfig"; path = "Pods/Target Support Files/Pods-japanize/Pods-japanize.release.xcconfig"; sourceTree = "<group>"; };
+		681444DA1C9C201A00050850 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronunciationViewController.swift; sourceTree = "<group>"; };
 		68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		68FEA4731C9AC0AA00E76D83 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		68FEA4761C9ACA0E00E76D83 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		68FEA4781C9ACC3500E76D83 /* LevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		7ACE12FC0FEFA66703628E9C /* Pods_japanize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_japanize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +73,7 @@
 		1DAFC2321C927BA700F45F3A = {
 			isa = PBXGroup;
 			children = (
-				68FEA4731C9AC0AA00E76D83 /* README.md */,
+				681444DA1C9C201A00050850 /* README.md */,
 				1DAFC23D1C927BA700F45F3A /* japanize */,
 				1DAFC23C1C927BA700F45F3A /* Products */,
 				0E8308D6A4E028DFA737E64F /* Pods */,
