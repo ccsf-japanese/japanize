@@ -146,7 +146,7 @@
             </objects>
             <point key="canvasLocation" x="280" y="1378"/>
         </scene>
-        <!--Kanji View Controller-->
+        <!--Japanize-->
         <scene sceneID="dpv-CR-JAX">
             <objects>
                 <viewController id="apX-eL-6OY" customClass="KanjiViewController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
@@ -158,8 +158,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcy-zY-sf0" customClass="KanjiView" customModule="japanize" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcy-zY-sf0" customClass="KanjiView" customModule="japanize" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -171,7 +171,7 @@
                             <constraint firstAttribute="trailing" secondItem="qcy-zY-sf0" secondAttribute="trailing" id="Puh-He-0Ak"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="BcB-yb-eHL"/>
+                    <navigationItem key="navigationItem" title="Japanize" id="BcB-yb-eHL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="kanjiView" destination="qcy-zY-sf0" id="XcK-nY-FA5"/>
@@ -181,7 +181,7 @@
             </objects>
             <point key="canvasLocation" x="786.5" y="2125.5"/>
         </scene>
-        <!--Pronunciation View Controller-->
+        <!--Japanize-->
         <scene sceneID="AQm-xW-hIy">
             <objects>
                 <viewController id="VMh-EN-7kr" customClass="PronunciationViewController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
@@ -284,7 +284,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="TK5-X8-bmK"/>
+                    <navigationItem key="navigationItem" title="Japanize" id="TK5-X8-bmK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="playButton" destination="bbE-dK-wYc" id="Ft0-ZY-TOe"/>
@@ -299,7 +299,7 @@
         <!--Kanji-->
         <scene sceneID="tZU-lG-zzK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="PUO-VF-2qD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PUO-VF-2qD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Kanji" image="kanji64" id="j6e-JU-ZAE"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

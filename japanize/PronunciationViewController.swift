@@ -23,6 +23,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = UIColor(red: 18/255, green: 165/255, blue: 244/255, alpha: 0)
+        nav?.tintColor = UIColor.whiteColor()
+        nav?.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.whiteColor()]
+
         setupRecorder()
 
         // Do any additional setup after loading the view.
