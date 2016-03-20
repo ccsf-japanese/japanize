@@ -19,10 +19,11 @@
 		37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73381C9A788800079F14 /* KanjiViewController.swift */; };
 		37FD733B1C9A78EB00079F14 /* 054a8.svg in Resources */ = {isa = PBXBuildFile; fileRef = 37FD733A1C9A78EB00079F14 /* 054a8.svg */; };
 		6198FA9F1C990391004CA9AB /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198FA9E1C990391004CA9AB /* LevelViewController.swift */; };
+		68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */; };
+		68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB91C9EA1D0006CDB06 /* LevelCell.swift */; };
 		68FEA4701C9AB4C800E76D83 /* PronunciationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */; };
 		68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */; };
 		68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4761C9ACA0E00E76D83 /* Level.swift */; };
-		68FEA4791C9ACC3500E76D83 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4781C9ACC3500E76D83 /* LevelCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,11 +41,12 @@
 		37FD733A1C9A78EB00079F14 /* 054a8.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 054a8.svg; sourceTree = "<group>"; };
 		6198FA9E1C990391004CA9AB /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		65C68BEDE944D35F3BE2462C /* Pods-japanize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-japanize.release.xcconfig"; path = "Pods/Target Support Files/Pods-japanize/Pods-japanize.release.xcconfig"; sourceTree = "<group>"; };
+		68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
+		68121CB91C9EA1D0006CDB06 /* LevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		681444DA1C9C201A00050850 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronunciationViewController.swift; sourceTree = "<group>"; };
 		68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		68FEA4761C9ACA0E00E76D83 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
-		68FEA4781C9ACC3500E76D83 /* LevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		7ACE12FC0FEFA66703628E9C /* Pods_japanize.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_japanize.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF6A60833A02A61007F93064 /* Pods-japanize.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-japanize.debug.xcconfig"; path = "Pods/Target Support Files/Pods-japanize/Pods-japanize.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +121,8 @@
 		68FEA46D1C9919FC00E76D83 /* Levels and Progress */ = {
 			isa = PBXGroup;
 			children = (
-				68FEA4781C9ACC3500E76D83 /* LevelCell.swift */,
+				68121CB91C9EA1D0006CDB06 /* LevelCell.swift */,
+				68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */,
 				68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */,
 				68FEA4761C9ACA0E00E76D83 /* Level.swift */,
 				6198FA9E1C990391004CA9AB /* LevelViewController.swift */,
@@ -286,10 +289,11 @@
 			files = (
 				68FEA4701C9AB4C800E76D83 /* PronunciationViewController.swift in Sources */,
 				68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */,
-				68FEA4791C9ACC3500E76D83 /* LevelCell.swift in Sources */,
 				1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */,
+				68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */,
 				37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */,
 				68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */,
+				68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */,
 				1DAFC23F1C927BA700F45F3A /* AppDelegate.swift in Sources */,
 				37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */,
 				1DCC750D1C9B7B7A009839CD /* CustomPageViewController.swift in Sources */,
