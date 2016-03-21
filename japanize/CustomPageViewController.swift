@@ -35,7 +35,7 @@ class CustomPageViewController: UIViewController, BWWalkthroughPage {
         if (offset > 1.99688) {
             sleep(1)
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("tabbar") as! UITabBarController
+            let vc = storyboard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
             self.showViewController(vc, sender: self)
         }
     }
