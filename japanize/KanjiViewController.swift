@@ -21,7 +21,7 @@ class KanjiViewController: UIViewController {
         nav?.tintColor = UIColor.whiteColor()
         nav?.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.whiteColor()]
-            
+        
         var strokes: [String] = []
         let path = NSBundle.mainBundle().pathForResource("054a8", ofType: "svg")!
         let content: NSString = try! String(contentsOfFile: path)

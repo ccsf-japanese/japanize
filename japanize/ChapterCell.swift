@@ -49,13 +49,7 @@ extension ChapterCell : UICollectionViewDataSource {
             cell.goal3Label.textColor = UIColor.greenColor()
             
         }else if indexPath.row == 1 { //levelComplete == false {
-            //set cell text color black or system defualt (do anything?)
-//                    cell.levelLabel.textColor = UIColor.blackColor()
-//                    cell.goal1Label.textColor = UIColor.darkGrayColor()
-//                    cell.goal2Label.textColor = UIColor.darkGrayColor()
-//                    cell.goal3Label.textColor = UIColor.darkGrayColor()
-
-//                    cell.levelLabel.shadowColor = UIColor.grayColor()
+            // Started, but not completed
             
         }else{
             // does level not touched fire this (as nil)
