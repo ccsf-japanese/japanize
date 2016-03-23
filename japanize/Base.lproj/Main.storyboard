@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
     </dependencies>
     <scenes>
         <!--Japanize-->
@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-0H-Djk" id="I8k-rr-e3C">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sce-Xw-9nz">
@@ -39,7 +39,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="zi8-fd-8IQ" customClass="LevelCell" customModule="japanize" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="7" width="122" height="156"/>
+                                                            <rect key="frame" x="5" y="6.5" width="122" height="156"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="122" height="156"/>
@@ -189,11 +189,11 @@
                         <viewControllerLayoutGuide type="bottom" id="nQ4-qX-POA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dmM-1U-wgl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qcy-zY-sf0" customClass="KanjiView" customModule="japanize" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -206,7 +206,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Japanize" id="BcB-yb-eHL"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="kanjiView" destination="qcy-zY-sf0" id="XcK-nY-FA5"/>
                     </connections>
@@ -224,20 +224,20 @@
                         <viewControllerLayoutGuide type="bottom" id="nks-1Q-4sW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zRm-Gj-tHO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0B-fU-NxX" userLabel="Center of it all">
-                                <rect key="frame" x="188" y="334" width="0.0" height="0.0"/>
+                                <rect key="frame" x="160" y="284" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-eT-H2I" userLabel="Top View">
-                                <rect key="frame" x="0.0" y="64" width="375" height="270"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="220.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1D-6W-8ad">
-                                        <rect key="frame" x="134" y="116" width="108" height="39"/>
+                                        <rect key="frame" x="106" y="91" width="108" height="39"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -250,16 +250,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nbj-gN-MXo" userLabel="Bottom View">
-                                <rect key="frame" x="0.0" y="334" width="375" height="284"/>
+                                <rect key="frame" x="0.0" y="284" width="320" height="234.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ng-fn-zng" userLabel="Center of bottom">
-                                        <rect key="frame" x="188" y="142" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="160" y="117" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="117.5"/>
                                         <state key="normal" title="話す" image="mic">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -268,7 +268,7 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
-                                        <rect key="frame" x="0.0" y="142" width="375" height="142"/>
+                                        <rect key="frame" x="0.0" y="117" width="320" height="117"/>
                                         <state key="normal" title="聴く" image="speaker">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -319,7 +319,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Japanize" id="TK5-X8-bmK"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="playButton" destination="bbE-dK-wYc" id="Ft0-ZY-TOe"/>
                         <outlet property="recordButton" destination="IzQ-im-BV8" id="i0f-T3-DbI"/>
@@ -337,7 +337,7 @@
                     <tabBarItem key="tabBarItem" title="Kanji" image="kanji64" id="j6e-JU-ZAE"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ygd-hh-H49">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -355,6 +355,7 @@
         <scene sceneID="0Xd-cK-A1z">
             <objects>
                 <tabBarController storyboardIdentifier="tabBar" title="ModeTabBar" id="yIR-Ki-MLj" customClass="TabBarController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="HL2-O6-cGQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -386,10 +387,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Qwg-mu-QOv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jfW-He-NPK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="yIR-Ki-MLj" kind="presentation" identifier="closeSegue" id="KuS-3o-E1C"/>
                     </connections>
@@ -405,7 +407,7 @@
                     <tabBarItem key="tabBarItem" title="Practice" image="sound" id="3Tn-wG-Gru"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iZX-ca-KOX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
