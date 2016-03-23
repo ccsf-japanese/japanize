@@ -48,6 +48,7 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChapterCell") as! ChapterCell
+        cell.selectionStyle = .None
         return cell
     }
     
