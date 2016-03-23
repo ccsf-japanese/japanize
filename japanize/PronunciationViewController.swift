@@ -10,16 +10,20 @@ import UIKit
 import AVFoundation
 
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
-
+    
     @IBOutlet weak var wordLabel: UILabel! // make a button to grab new word
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: UIView!
     
     var soundRecorder: AVAudioRecorder!
     var soundPlayer: AVAudioPlayer!
     
     let tempAudioFile = "japanize.caf"
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +33,12 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         nav?.tintColor = UIColor.whiteColor()
         nav?.titleTextAttributes =
             [NSForegroundColorAttributeName: UIColor.whiteColor()]
-
+        
         setupRecorder()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -102,7 +106,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         playButton.setTitle("聴く", forState: .Normal)
         playButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-
+        
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
@@ -111,11 +115,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        playButton.hidden = false
-        playButton.enabled = true
+        
+        self.topConstraint.active = false
+        self.playButton.hidden = false
+        self.playButton.enabled = true
+        self.playButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
         recordButton.setTitle("話す", forState: .Normal)
-        playButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
-
+        
     }
     
     func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
@@ -123,7 +129,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
     
     @IBAction func onRecord(sender: AnyObject) {
-//        print(sender.titleLabel!!.text)
+        //        print(sender.titleLabel!!.text)
         if (sender.titleLabel!!.text == "話す"){
             soundRecorder.record()
             sender.setTitle("ストップ", forState: .Normal)
@@ -134,7 +140,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             soundRecorder.stop()
             sender.setTitle("話す", forState: .Normal)
             sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
-
+            
         }
     }
     
@@ -145,30 +151,30 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             sender.setTitle("ストップ", forState: .Normal)
             preparePlayer()
-            soundPlayer.play() // recording + prerecorded pronunciation 
+            soundPlayer.play() // recording + prerecorded pronunciation
         } else {
             soundPlayer.stop()
             recordButton.enabled = true
             recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             sender.setTitle("聴く", forState: .Normal)
-
+            
         }
     }
     
     func loadWord(){
-//        get level apropriate word from Data
-//        set wordLable
-//        set pronunciation
+        //        get level apropriate word from Data
+        //        set wordLable
+        //        set pronunciation
     }
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

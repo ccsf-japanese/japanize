@@ -8,7 +8,6 @@
 
 import UIKit
 
-let Chapters = ["Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5"]
 let levels = [1,2,3,4,5]
 
 class ChapterCell: UITableViewCell {

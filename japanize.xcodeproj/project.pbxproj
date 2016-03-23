@@ -22,6 +22,7 @@
 		68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */; };
 		68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB91C9EA1D0006CDB06 /* LevelCell.swift */; };
 		68121CBE1CA0A008006CDB06 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CBD1CA0A008006CDB06 /* TabBarController.swift */; };
+		68CDFE761CA31B5E003AD265 /* Chapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CDFE751CA31B5E003AD265 /* Chapter.swift */; };
 		68FEA4701C9AB4C800E76D83 /* PronunciationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */; };
 		68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */; };
 		68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FEA4761C9ACA0E00E76D83 /* Level.swift */; };
@@ -46,6 +47,7 @@
 		68121CB91C9EA1D0006CDB06 /* LevelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		68121CBD1CA0A008006CDB06 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		681444DA1C9C201A00050850 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		68CDFE751CA31B5E003AD265 /* Chapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chapter.swift; sourceTree = "<group>"; };
 		68FEA46F1C9AB4C800E76D83 /* PronunciationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PronunciationViewController.swift; sourceTree = "<group>"; };
 		68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		68FEA4761C9ACA0E00E76D83 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */,
 				68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */,
 				68FEA4761C9ACA0E00E76D83 /* Level.swift */,
+				68CDFE751CA31B5E003AD265 /* Chapter.swift */,
 				6198FA9E1C990391004CA9AB /* LevelViewController.swift */,
 			);
 			name = "Levels and Progress";
@@ -297,6 +300,7 @@
 				37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */,
 				68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */,
 				68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */,
+				68CDFE761CA31B5E003AD265 /* Chapter.swift in Sources */,
 				1DAFC23F1C927BA700F45F3A /* AppDelegate.swift in Sources */,
 				37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */,
 				68121CBE1CA0A008006CDB06 /* TabBarController.swift in Sources */,

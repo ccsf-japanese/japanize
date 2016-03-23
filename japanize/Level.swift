@@ -11,5 +11,11 @@ import UIKit
 class Level: NSObject {
     
 //    var number: Int?
-
+    var chapter: Int!
+    var level: Int!
+    var kanjiCount
+    var wordMatchCount
+    var wordSayCount
+    var phraseCount
+    
 }
