@@ -13,9 +13,9 @@ class Level: NSObject {
 //    var number: Int?
     var chapter: Int!
     var level: Int!
-    var kanjiCount
-    var wordMatchCount
-    var wordSayCount
-    var phraseCount
+    var kanjiCount: Int?
+    var wordMatchCount: Int?
+    var wordSayCount: Int?
+    var phraseCount: Int?
     
 }

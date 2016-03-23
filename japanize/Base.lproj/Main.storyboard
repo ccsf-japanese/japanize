@@ -233,8 +233,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-eT-H2I" userLabel="Top View">
-                                <rect key="frame" x="0.0" y="64" width="320" height="221"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-eT-H2I" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1D-6W-8ad">
                                         <rect key="frame" x="106" y="91" width="108" height="39"/>
@@ -253,13 +253,13 @@
                                 <rect key="frame" x="0.0" y="284" width="320" height="235"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ng-fn-zng" userLabel="Center of bottom">
-                                        <rect key="frame" x="160" y="117" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="160" y="-1" width="0.0" height="236"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
                                         <state key="normal" title="話す" image="mic">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -267,8 +267,8 @@
                                             <action selector="onRecord:" destination="VMh-EN-7kr" eventType="touchUpInside" id="F0n-S0-k0Q"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
-                                        <rect key="frame" x="0.0" y="117" width="320" height="117"/>
+                                    <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
+                                        <rect key="frame" x="0.0" y="-1" width="320" height="236"/>
                                         <state key="normal" title="聴く" image="speaker">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -282,9 +282,10 @@
                                     <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="3wl-yh-vIg"/>
                                     <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="87S-2V-YR7"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="8oV-8b-Ird"/>
-                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" id="9dv-8F-bH9"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" priority="750" id="9dv-8F-bH9"/>
                                     <constraint firstItem="bbE-dK-wYc" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="EfQ-z0-cPI"/>
                                     <constraint firstAttribute="bottom" secondItem="bbE-dK-wYc" secondAttribute="bottom" id="IwZ-im-NfT"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="Lew-Vg-RDm"/>
                                     <constraint firstAttribute="trailing" secondItem="bbE-dK-wYc" secondAttribute="trailing" id="Tnx-2d-80P"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="Z5G-Vk-TiJ"/>
                                     <constraint firstItem="bbE-dK-wYc" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="lW8-md-F1X"/>
@@ -323,6 +324,7 @@
                     <connections>
                         <outlet property="playButton" destination="bbE-dK-wYc" id="Ft0-ZY-TOe"/>
                         <outlet property="recordButton" destination="IzQ-im-BV8" id="i0f-T3-DbI"/>
+                        <outlet property="recordButtonCenter" destination="Lew-Vg-RDm" id="V4s-sG-gjO"/>
                         <outlet property="wordLabel" destination="E1D-6W-8ad" id="rVI-pF-K6K"/>
                     </connections>
                 </viewController>
@@ -429,4 +431,5 @@
         <image name="sound" width="32" height="32"/>
         <image name="speaker" width="44" height="42"/>
     </resources>
+    <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

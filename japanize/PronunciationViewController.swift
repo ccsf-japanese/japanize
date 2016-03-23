@@ -15,8 +15,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
+    @IBOutlet weak var recordButtonCenter: NSLayoutConstraint!
     @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomView: UIView!
     
     var soundRecorder: AVAudioRecorder!
@@ -116,7 +116,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         
-        self.topConstraint.active = false
+        self.recordButtonCenter.active = false
         self.playButton.hidden = false
         self.playButton.enabled = true
         self.playButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
