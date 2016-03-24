@@ -28,7 +28,7 @@ class KanjiView: UIView {
         }
         let scale = min(rect.height, rect.width) / 109
         path.applyTransform(CGAffineTransformMakeScale(scale, scale))
-        path.lineWidth = 5.0
+        path.lineWidth = 15.0
         
         path.stroke()
         
