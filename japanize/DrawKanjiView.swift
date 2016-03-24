@@ -34,7 +34,7 @@ class DrawKanjiView: UIView {
     private func setupConstraints() {
         for v in [tempImageView, mainImageView] {
             addSubview(v)
-            //prevent unsatisfiable constraints
+            //use anchor to prevent unsatisfiable constraints
             v.translatesAutoresizingMaskIntoConstraints = false
             v.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
             v.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
@@ -59,25 +59,25 @@ class DrawKanjiView: UIView {
     
     private func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
         
-        // 1
+        // mainImageView holds the “drawing so far,and tempImageView holds the line currently drawing
         UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
         tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         
-        // 2
+        // get the current touch point and then draw a line with CGContextAddLineToPoint from lastPoint to currentPoint
         CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
         CGContextAddLineToPoint(context, toPoint.x, toPoint.y)
         
-        // 3
+        // brush size and opacity and brush stroke color
         CGContextSetLineCap(context, CGLineCap.Round)
         CGContextSetLineWidth(context, brushWidth)
         CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
         CGContextSetBlendMode(context, CGBlendMode.Normal)
         
-        // 4
+        
         CGContextStrokePath(context)
         
-        // 5
+        // wrap up the drawing context to render the new line into the temporary image view.
         tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
         tempImageView.alpha = opacity
         UIGraphicsEndImageContext()
@@ -85,13 +85,13 @@ class DrawKanjiView: UIView {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        // 6
+        // set swiped to true so you can keep track of whether there is a current swipe in progress
         swiped = true
         if let touch = touches.first {
             let currentPoint = touch.locationInView(self)
             drawLineFrom(lastPoint, toPoint: currentPoint)
             
-            // 7
+            // update the lastPoint
             lastPoint = currentPoint
         }
     }
