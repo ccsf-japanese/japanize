@@ -19,15 +19,18 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nav = self.navigationController?.navigationBar
-        nav?.barTintColor = UIColor(red: 18/255, green: 165/255, blue: 244/255, alpha: 0)
-        nav?.tintColor = UIColor.whiteColor()
-        nav?.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let themeColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+        let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = themeColor
+        nav?.tintColor = UIColor.whiteColor()
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        tabBarController?.tabBar.tintColor = themeColor
     }
     
     override func didReceiveMemoryWarning() {
