@@ -28,15 +28,20 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nav = self.navigationController?.navigationBar
-        nav?.barTintColor = UIColor(red: 18/255, green: 165/255, blue: 244/255, alpha: 0)
-        nav?.tintColor = UIColor.whiteColor()
-        nav?.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
         setupRecorder()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        //Theme Block rgb(231, 76, 60)
+        let themeColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
+        let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = themeColor
+        nav?.tintColor = UIColor.whiteColor()
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.tabBarController?.tabBar.tintColor = themeColor
     }
     
     override func didReceiveMemoryWarning() {

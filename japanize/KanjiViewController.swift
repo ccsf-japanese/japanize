@@ -16,12 +16,6 @@ class KanjiViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let nav = self.navigationController?.navigationBar
-        nav?.barTintColor = UIColor(red: 18/255, green: 165/255, blue: 244/255, alpha: 0)
-        nav?.tintColor = UIColor.whiteColor()
-        nav?.titleTextAttributes =
-            [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
         var strokes: [String] = []
         let path = NSBundle.mainBundle().pathForResource("054a8", ofType: "svg")!
         let content: NSString = try! String(contentsOfFile: path)
@@ -39,7 +33,15 @@ class KanjiViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+//    TODO: copy to KanjiViewController and uncomment to set theme rgb(142, 68, 173)
+    override func viewWillAppear(animated: Bool) {
+        let themeColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1)
+        let nav = self.navigationController?.navigationBar
+        nav?.barTintColor = themeColor
+        nav?.tintColor = UIColor.whiteColor()
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        tabBarController?.tabBar.tintColor = themeColor
+    }
     
 }
 
