@@ -32,6 +32,16 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         tabBarController?.tabBar.tintColor = themeColor
     }
+
+//      TODO: copy to KanjiViewController and uncomment to set theme rgb(142, 68, 173)
+//    override func viewWillAppear(animated: Bool) {
+//        let themeColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1)
+//        let nav = self.navigationController?.navigationBar
+//        nav?.barTintColor = themeColor
+//        nav?.tintColor = UIColor.whiteColor()
+//        nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+//        tabBarController?.tabBar.tintColor = themeColor
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

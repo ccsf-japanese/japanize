@@ -23,6 +23,12 @@
                                     <constraint firstAttribute="height" constant="600" id="79V-u7-Tt6"/>
                                     <constraint firstAttribute="width" constant="600" id="r2g-jS-L6P"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="79V-u7-Tt6"/>
+                                        <exclude reference="r2g-jS-L6P"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -30,8 +36,14 @@
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Q09-E9-qkt" secondAttribute="bottom" id="5mW-9P-OoI"/>
                             <constraint firstItem="Q09-E9-qkt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ARd-0I-Gcm"/>
                             <constraint firstItem="Q09-E9-qkt" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="EyR-C5-1jk"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Q09-E9-qkt" secondAttribute="bottom" id="LvX-RC-ziY"/>
                             <constraint firstAttribute="trailing" secondItem="Q09-E9-qkt" secondAttribute="trailing" id="MkI-VB-Hve"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5mW-9P-OoI"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
