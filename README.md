@@ -40,7 +40,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='japanize.gif' title='Video Walkthrough'/>
+<img src='japanize.gif' title='Video Walkthrough'/> 
+<img src='walkthroughJP.gif' title='Video Walkthrough 2'/>
 
 ## Data schema
 
