@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ITunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="Q09-E9-qkt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ccsfNihongoIcon-Flat" translatesAutoresizingMaskIntoConstraints="NO" id="Q09-E9-qkt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="600" id="79V-u7-Tt6"/>
@@ -52,6 +52,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ITunesArtwork" width="512" height="512"/>
+        <image name="ccsfNihongoIcon-Flat" width="512" height="512"/>
     </resources>
 </document>
