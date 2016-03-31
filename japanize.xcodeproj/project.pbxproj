@@ -100,9 +100,9 @@
 		1DAFC23D1C927BA700F45F3A /* japanize */ = {
 			isa = PBXGroup;
 			children = (
+				1DAFC23E1C927BA700F45F3A /* AppDelegate.swift */,
 				68121CBD1CA0A008006CDB06 /* TabBarController.swift */,
 				1DCC750B1C9B7AAC009839CD /* Walkthrough */,
-				1DAFC23E1C927BA700F45F3A /* AppDelegate.swift */,
 				68FEA46E1C9AB2CF00E76D83 /* SVG files */,
 				68FEA46D1C9919FC00E76D83 /* Levels and Progress */,
 				68FEA4741C9AC19900E76D83 /* Kanji */,

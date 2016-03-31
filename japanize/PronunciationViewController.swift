@@ -21,9 +21,15 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     var soundRecorder: AVAudioRecorder!
     var soundPlayer: AVAudioPlayer!
+    var assetAudioPlayer: AVAudioPlayer!
+
     
     let tempAudioFile = "japanize.caf"
     
+    // TODO: Get model from Tom and Alex
+    let wordFromModel = "なん"
+    let englishHint = "what"
+    let romagiHint = "na n"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +48,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         nav?.tintColor = UIColor.whiteColor()
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.tabBarController?.tabBar.tintColor = themeColor
+        
+        wordLabel.text = wordFromModel
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,10 +94,35 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         return filePath
     }
     
+    func playAudioAsset(audioAsset: String = "voc-what-なん") {
+        var error:NSError?
+        if let sound = NSDataAsset(name: audioAsset) {
+            do {
+                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try! AVAudioSession.sharedInstance().setActive(true)
+                try assetAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeMPEGLayer3)
+            } catch let error1 as NSError {
+                error = error1
+                soundPlayer = nil
+            }
+            if let err = error {
+                print("AVAudioPlayer error: \(err.localizedDescription)")
+            } else {
+                assetAudioPlayer.delegate = self
+                assetAudioPlayer.prepareToPlay()
+                assetAudioPlayer.volume = 1.0
+                assetAudioPlayer.play()
+
+            }
+        }
+    }
+    
     func preparePlayer() {
         var error: NSError?
         
         do {
+            try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try! AVAudioSession.sharedInstance().setActive(true)
             soundPlayer = try AVAudioPlayer(contentsOfURL: getFileURL())
         } catch let error1 as NSError {
             error = error1
@@ -155,8 +188,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             recordButton.enabled = false
             recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             sender.setTitle("ストップ", forState: .Normal)
+            playAudioAsset("voc-"+englishHint+"-"+wordFromModel)
             preparePlayer()
-            soundPlayer.play() // recording + prerecorded pronunciation
+            soundPlayer.play()
         } else {
             soundPlayer.stop()
             recordButton.enabled = true
