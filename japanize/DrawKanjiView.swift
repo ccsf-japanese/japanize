@@ -36,11 +36,17 @@ class DrawKanjiView: UIView {
             addSubview(v)
             //use anchor to prevent unsatisfiable constraints
             v.translatesAutoresizingMaskIntoConstraints = false
-            // TODO: replace with API calls that are compatible with iOS 8
-            v.leadingAnchor.constraintEqualToAnchor(self.leadingAnchor).active = true
-            v.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
-            v.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-            v.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
+            // TODO: replace with API calls that are compatible with iOS 8.(Done)
+            
+            NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: v, attribute: .Leading, multiplier: 1.0, constant: 0.0).active = true
+            NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: v, attribute: .Trailing, multiplier: 1.0, constant: 0.0).active = true
+            NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0.0).active = true
+            NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: 0.0).active = true
+            
+//            iOS 9 API
+//            v.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
+//            v.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
+//            v.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
         }
     }
 
