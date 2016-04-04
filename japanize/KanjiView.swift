@@ -10,90 +10,43 @@ import UIKit
 
 class KanjiView: UIView {
     
-    var strokes: [String] = [] {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
+    weak var dataSource: KanjiDrawingDataSource?
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
         contentMode = .Redraw
         
-        let path = UIBezierPath()
-        UIColor.blackColor().setStroke()
-        for stroke in strokes {
-            drawString(stroke, path: path)
+        guard let dataSource = dataSource,
+            let kanji = dataSource.kanji,
+            let kanjiTransform = dataSource.kanjiTransform else {
+                return
         }
-        let scale = min(rect.height, rect.width) / 109
-        path.applyTransform(CGAffineTransformMakeScale(scale, scale))
-        path.lineWidth = 15.0
+        let nextStrokeIndex = dataSource.nextStrokeIndex
         
-        path.stroke()
-        
+        for (i, stroke) in kanji.strokes.enumerate() {
+            let color = i >= nextStrokeIndex ? UIColor.grayColor() : UIColor.blackColor()
+            color.setStroke()
+            let path = stroke.path
+            path.applyTransform(kanjiTransform)
+            path.lineWidth = 15.0
+            path.stroke()
+            
+            //test
+            if i == nextStrokeIndex {
+                if let point = stroke.points.first {
+                    let radius: CGFloat = 5.0
+                    let origin = CGPoint(x: point.x - radius / 2.0, y: point.y - radius / 2.0)
+                    let outline = CGRect(origin: origin, size: CGSize(width: radius, height: radius))
+                    let circlePath = UIBezierPath(ovalInRect: outline)
+                    circlePath.applyTransform(kanjiTransform)
+                    UIColor.redColor().setStroke()
+                    circlePath.stroke()
+                }
+            }
+        }
     }
     
-    private func drawString(string: String, path: UIBezierPath) {
-        var tokens = [String]()
-        var token = ""
-        let letters = NSCharacterSet.letterCharacterSet()
-        let digits = NSCharacterSet.decimalDigitCharacterSet()
-        
-        for uni in string.unicodeScalars {
-            if letters.longCharacterIsMember(uni.value) {
-                if !token.isEmpty {
-                    tokens.append(token)
-                    token = ""
-                }
-                tokens.append(String(uni))
-            } else if digits.longCharacterIsMember(uni.value) || String(uni) == "." {
-                token.append(uni)
-            } else if String(uni) == "," {
-                if !token.isEmpty {
-                    tokens.append(token)
-                    token = ""
-                }
-            } else if String(uni) == "-" {
-                if !token.isEmpty {
-                    tokens.append(token)
-                    token = "-"
-                }
-            }
-        }
-        if !token.isEmpty {
-            tokens.append(token)
-        }
-        
-        tokens = tokens.reverse()
-        
-        while !tokens.isEmpty {
-            let last = tokens.removeLast()
-            if last == "M" {
-                let x = tokens.removeLast()
-                let y = tokens.removeLast()
-                let point = CGPoint(x: Double(x)!, y: Double(y)!)
-                path.moveToPoint(point)
-            } else if last == "c" || last == "C" {
-                let c1x = tokens.removeLast()
-                let c1y = tokens.removeLast()
-                let c2x = tokens.removeLast()
-                let c2y = tokens.removeLast()
-                let ex = tokens.removeLast()
-                let ey = tokens.removeLast()
-                
-                let c1Point = CGPoint(x: Double(c1x)!, y: Double(c1y)!)
-                let c2Point = CGPoint(x: Double(c2x)!, y: Double(c2y)!)
-                let endPoint = CGPoint(x: Double(ex)!, y: Double(ey)!)
-                
-                if last == "c" {
-                    path.addCurveToRelativePoint(endPoint, controlPoint1: c1Point, controlPoint2: c2Point)
-                } else {
-                    path.addCurveToPoint(endPoint, controlPoint1: c1Point, controlPoint2: c2Point)
-                }
-            }
-        }
-    }
 }
 
 extension UIBezierPath {

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol DrawKanjiViewDelegate: class {
+    func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int)
+}
 
 class DrawKanjiView: UIView {
     
@@ -20,6 +23,11 @@ class DrawKanjiView: UIView {
     var brushWidth: CGFloat = 8.0
     var opacity: CGFloat = 1.0
     var swiped = false
+    
+    weak var dataSource: KanjiDrawingDataSource?
+    weak var delegate: DrawKanjiViewDelegate?
+    
+    var touchedPoints = Set<String>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,25 +50,12 @@ class DrawKanjiView: UIView {
             NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: v, attribute: .Trailing, multiplier: 1.0, constant: 0.0).active = true
             NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0.0).active = true
             NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: 0.0).active = true
-            
-//            iOS 9 API
-//            v.trailingAnchor.constraintEqualToAnchor(self.trailingAnchor).active = true
-//            v.topAnchor.constraintEqualToAnchor(self.topAnchor).active = true
-//            v.bottomAnchor.constraintEqualToAnchor(self.bottomAnchor).active = true
         }
     }
 
     
     func reset() {
         mainImageView.image = nil
-    }
-    
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        swiped = false
-        if let touch = touches.first {
-            lastPoint = touch.locationInView(self)
-        }
     }
     
     
@@ -91,16 +86,40 @@ class DrawKanjiView: UIView {
         
     }
     
+    private func checkCurrentPoint(currentPoint: CGPoint) {
+        if let dataSource = dataSource, kanji = dataSource.kanji, kanjiTransform = dataSource.kanjiTransform {
+            for point in kanji.strokes[dataSource.nextStrokeIndex].points {
+                let transformedPoint = CGPointApplyAffineTransform(point, kanjiTransform)
+                //if the distance between current point and point on stroke is greater than 10, not update last point
+                if checkDistance(currentPoint, sPoint: transformedPoint) {
+                    touchedPoints.insert(NSStringFromCGPoint(point))
+                }
+            }
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        swiped = false
+        if let touch = touches.first {
+            let currentPoint = touch.locationInView(self)
+            checkCurrentPoint(currentPoint)
+            // update the lastPoint
+            lastPoint = currentPoint
+        }
+    }
+    
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         // set swiped to true so you can keep track of whether there is a current swipe in progress
         swiped = true
         if let touch = touches.first {
             let currentPoint = touch.locationInView(self)
             drawLineFrom(lastPoint, toPoint: currentPoint)
+            checkCurrentPoint(currentPoint)
             
             // update the lastPoint
             lastPoint = currentPoint
         }
+ 
     }
     
     
@@ -111,18 +130,42 @@ class DrawKanjiView: UIView {
             drawLineFrom(lastPoint, toPoint: lastPoint)
         }
         
+        if let dataSource = dataSource, kanji = dataSource.kanji {
+            var complete = true
+            for point in kanji.strokes[dataSource.nextStrokeIndex].points {
+                if !touchedPoints.contains(NSStringFromCGPoint(point)) {
+                    complete = false
+                    break
+                }
+            }
+            if complete {
+                delegate?.drawKanjiView(self, didCompleteStroke: dataSource.nextStrokeIndex)
+            }
+        }
+        
+        touchedPoints.removeAll()
+        
         // Merge tempImageView into mainImageView
-        UIGraphicsBeginImageContextWithOptions(mainImageView.frame.size, false, 0.0)
-        mainImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), blendMode: CGBlendMode.Normal, alpha: 1.0)
-        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), blendMode: CGBlendMode.Normal, alpha: opacity)
-        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+//        UIGraphicsBeginImageContextWithOptions(mainImageView.frame.size, false, 0.0)
+//        mainImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), blendMode: CGBlendMode.Normal, alpha: 1.0)
+//        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), blendMode: CGBlendMode.Normal, alpha: opacity)
+//        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
         
         tempImageView.image = nil
     }
     
     
 
+    private func checkDistance(cPoint: CGPoint, sPoint: CGPoint) -> Bool {
+        var isLess = false
+        
+        let distance = sqrt(pow((cPoint.x - sPoint.x), 2) + pow((cPoint.y - sPoint.y), 2))
+        if distance < 20.0 {
+            isLess = true
+        }
+        return isLess
+    }
 
     /*
     // Only override drawRect: if you perform custom drawing.

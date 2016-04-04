@@ -8,15 +8,38 @@
 
 import UIKit
 
-class KanjiViewController: UIViewController {
+protocol KanjiDrawingDataSource: class {
+    var nextStrokeIndex: Int { get }
+    var kanji: Kanji? { get }
+    var kanjiTransform: CGAffineTransform? { get }
+}
+
+class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiViewDelegate {
     
     @IBOutlet weak var kanjiView: KanjiView!
+    @IBOutlet weak var drawKanjiView: DrawKanjiView!
+    
+    var nextStrokeIndex = 0 {
+        didSet {
+            kanjiView.setNeedsDisplay()
+        }
+    }
+    var kanji: Kanji? {
+        didSet {
+            kanjiView.setNeedsDisplay()
+        }
+    }
+    var kanjiTransform: CGAffineTransform? {
+        didSet {
+            kanjiView.setNeedsDisplay()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var strokes: [String] = []
+        var pathStrings: [String] = []
         let path = NSBundle.mainBundle().pathForResource("054a8", ofType: "svg")!
         let content: NSString = try! String(contentsOfFile: path)
         let regex = try! NSRegularExpression(pattern: " d=\"(.*)\"", options: [])
@@ -24,10 +47,15 @@ class KanjiViewController: UIViewController {
         let matches = regex.matchesInString(content as String, options: [], range: NSRange(location: 0, length: content.length))
         for match in matches {
             let range = match.rangeAtIndex(1)
-            strokes.append(content.substringWithRange(range))
+            pathStrings.append(content.substringWithRange(range))
         }
-        kanjiView.strokes = strokes
+        kanji = Kanji(pathStrings: pathStrings)
+        kanjiView.dataSource = self
+        drawKanjiView.dataSource = self
+        drawKanjiView.delegate = self
+        
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,5 +71,18 @@ class KanjiViewController: UIViewController {
         tabBarController?.tabBar.tintColor = themeColor
     }
     
+    override func viewDidLayoutSubviews() {
+        let scale = min(kanjiView.frame.height, kanjiView.frame.width) / 109
+        let transform = CGAffineTransformMakeScale(scale, scale)
+        kanjiTransform = transform
+    }
+    
+    func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int) {
+        nextStrokeIndex += 1
+        // TODO: Change Kanji when out of strokes
+        if let kanji = kanji {
+            nextStrokeIndex %= kanji.strokes.count
+        }
+    }
 }
 
