@@ -11,8 +11,12 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
+    @IBOutlet weak var wordDay: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        wordDay.text = "Learn the word 牟而亨伽"
         // Do any additional setup after loading the view from its nib.
     }
     
