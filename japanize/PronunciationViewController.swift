@@ -85,12 +85,14 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     func getCacheDirectory() -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.CachesDirectory,.UserDomainMask, true) as [String]
+        print("getCache:", paths)
         return paths[0]
     }
     
     func getFileURL() -> NSURL {
-        let path = getCacheDirectory().stringByAppendingString(tempAudioFile)
+        let path = getCacheDirectory().stringByAppendingString("/"+tempAudioFile)
         let filePath = NSURL(fileURLWithPath: path)
+        print("getFileURL:", String(filePath))
         return filePath
     }
     
