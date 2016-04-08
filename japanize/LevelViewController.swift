@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class LevelViewController: UIViewController {
+    @IBOutlet weak var aLevelLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +18,23 @@ class LevelViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = UIColor.redColor()
+        let randoColor = UIColor.randomFlatColor()
+        view.backgroundColor = randoColor
+        aLevelLabel.textColor = ContrastColorOf(randoColor, returnFlat: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController!.navigationBar.setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController!.navigationBar.shadowImage = nil
+    }
 
     /*
     // MARK: - Navigation

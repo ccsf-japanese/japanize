@@ -1,12 +1,15 @@
 PODS:
   - BWWalkthrough (1.0.1)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
 
 DEPENDENCIES:
   - BWWalkthrough
+  - ChameleonFramework/Swift
 
 SPEC CHECKSUMS:
   BWWalkthrough: 760b70d2a1b3f970a520806b771aa3f787fdc4cf
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
 
-PODFILE CHECKSUM: 3e1aee40de271f8af1f10d15a4e2804cba569ce5
-
-COCOAPODS: 1.0.0.beta.2
+COCOAPODS: 0.39.0

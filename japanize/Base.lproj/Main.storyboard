@@ -167,6 +167,9 @@
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="aLevelLabel" destination="ERG-Sf-r8x" id="Y0x-Dh-GNJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3N-ga-sXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

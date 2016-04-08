@@ -5,5 +5,6 @@ use_frameworks!
 
 target 'japanize' do
     pod 'BWWalkthrough'
+    pod 'ChameleonFramework/Swift'
 end
 

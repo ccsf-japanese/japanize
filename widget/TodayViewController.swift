@@ -12,17 +12,39 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBOutlet weak var wordDay: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    var todaysWordInfo: [String]?
+    var tapCount: Int = 0
+    
+//    TODO: get word id (for info label)
+    let todaysWord = "日本語"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        wordDay.text = "Learn the word 牟而亨伽"
+        wordDay.text = "Learn the word \(todaysWord)"
+        infoLabel.hidden = true
+        todaysWordInfo = ["にほんご","Nihongo","Japanese (Language)",""]
+
+        
         // Do any additional setup after loading the view from its nib.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onTap(sender: AnyObject) {
+        if todaysWordInfo != nil {
+            infoLabel.hidden = false
+            infoLabel.text = todaysWordInfo![tapCount]
+            tapCount += 1
+            if tapCount == todaysWordInfo!.count{
+                tapCount = 0
+                infoLabel.hidden = true
+            }
+        }
     }
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
