@@ -6,16 +6,16 @@
 
 The following **required** functionality is completed:
 
-- [ ] Select difficulty and see progressive levels
-- [ ] Touch based Kanji character learning. Learn through trace and keyword prompts. Focus on stroke order and legibility
-- [ ] Audio record word and phrase pronunciation and compare side-by-side to Japanese speaker samples
-- [ ] Widget - Reminders and word/phrase of the day
+- [X] Select difficulty and see progressive levels
+- [X] Touch based Kanji character learning. Learn through trace and keyword prompts. Focus on stroke order and legibility
+- [X] Audio record word and phrase pronunciation and compare side-by-side to Japanese speaker samples
+- [X] Widget - Reminders and word/phrase of the day
 
 The following **optional** features are implemented:
 
 - [ ] Create personal account to store profile and score data across devices. (Facebook, Google+, Parse?)
 - [ ] Ranking and leaderboards
-- [ ] On first load a tutorial to show off features and how to use the app
+- [X] On first load a tutorial to show off features and how to use the app
 - [ ] Voice recognition to check pronunciation
 - [ ] Word practice with random generated romanji 
 
@@ -40,8 +40,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='japanize.gif' title='Video Walkthrough'/> 
-<img src='walkthroughJP.gif' title='Video Walkthrough 2'/>
+<img width="320px" src='japanize.gif' title='Video Walkthrough'/> 
+<img width="320px" src='walkthroughJP.gif' title='Video Walkthrough 2'/>
 
 ## Data schema
 
