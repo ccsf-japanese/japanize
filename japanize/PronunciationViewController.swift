@@ -12,6 +12,7 @@ import AVFoundation
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var wordLabel: UILabel! // make a button to grab new word
+    @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
@@ -23,17 +24,20 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     var soundPlayer: AVAudioPlayer!
     var assetAudioPlayer: AVAudioPlayer!
 
-    
+    var hintTaps: Int! = 0
     let tempAudioFile = "japanize.caf"
     
+    
     // TODO: Get model from Tom and Alex
-    let wordFromModel = "なん"
-    let englishHint = "what"
-    let romagiHint = "na n"
+    var word: String?
+    var englishHint: String?
+    var romagiHint: String?
+    var audioAsset: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hintLabel.hidden = true
         setupRecorder()
         
         // Do any additional setup after loading the view.
@@ -49,74 +53,48 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.tabBarController?.tabBar.tintColor = themeColor
         
-        wordLabel.text = wordFromModel
+        loadWord()
+        wordLabel.text = word
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
+
     func setupRecorder() {
         let recordSettings = [
             AVSampleRateKey : NSNumber(float: Float(44100.0)),
             AVFormatIDKey : NSNumber(int: Int32(kAudioFormatAppleLossless)),
-            AVNumberOfChannelsKey : NSNumber(int: 2),
-            AVEncoderAudioQualityKey : NSNumber(int: Int32(AVAudioQuality.Max.rawValue))]
+            AVNumberOfChannelsKey : NSNumber(int: 1),
+            AVEncoderAudioQualityKey : AVAudioQuality.Max.rawValue]
         
         var error: NSError?
+        let audioSession = AVAudioSession.sharedInstance()
         
         do {
-            soundRecorder =  try AVAudioRecorder(URL: getFileURL(), settings: recordSettings)
-        } catch let error1 as NSError {
-            error = error1
-            soundRecorder = nil
-        }
-        
-        if let err = error {
-            print("AVAudioRecorder error: \(err.localizedDescription)")
-        } else {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try soundRecorder = AVAudioRecorder(URL: self.getFileURL(), settings: recordSettings)
             soundRecorder.delegate = self
             soundRecorder.prepareToRecord()
+        } catch let error1 as NSError {
+            error = error1
+            print("ERROR: setupRecorder")
+            soundRecorder = nil
         }
-    }
-    
-    
-    func getCacheDirectory() -> String {
-        let paths = NSSearchPathForDirectoriesInDomains(.CachesDirectory,.UserDomainMask, true) as [String]
-        print("getCache:", paths)
-        return paths[0]
+        if let err = error {
+            print("ERROR: setupRecorder AVAudioRecorder: \(err.localizedDescription)")
+        } else {
+            print(">>> setupRecord ran without errors")
+        }
     }
     
     func getFileURL() -> NSURL {
-        let path = getCacheDirectory().stringByAppendingString("/"+tempAudioFile)
-        let filePath = NSURL(fileURLWithPath: path)
-        print("getFileURL:", String(filePath))
-        return filePath
-    }
-    
-    func playAudioAsset(audioAsset: String = "voc-what-なん") {
-        var error:NSError?
-        if let sound = NSDataAsset(name: audioAsset) {
-            do {
-                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-                try! AVAudioSession.sharedInstance().setActive(true)
-                try assetAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeMPEGLayer3)
-            } catch let error1 as NSError {
-                error = error1
-                soundPlayer = nil
-            }
-            if let err = error {
-                print("AVAudioPlayer error: \(err.localizedDescription)")
-            } else {
-                assetAudioPlayer.delegate = self
-                assetAudioPlayer.prepareToPlay()
-                assetAudioPlayer.volume = 1.0
-                assetAudioPlayer.play()
-
-            }
-        }
+        let cachePath = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0])
+        let path = cachePath.URLByAppendingPathComponent(tempAudioFile)
+        let filePath = path.path!
+        let fileURL = NSURL(string: filePath)!
+        return fileURL
     }
     
     func preparePlayer() {
@@ -125,14 +103,14 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         do {
             try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try! AVAudioSession.sharedInstance().setActive(true)
-            soundPlayer = try AVAudioPlayer(contentsOfURL: getFileURL())
+            soundPlayer = try AVAudioPlayer(contentsOfURL: soundRecorder.url, fileTypeHint: AVFileTypeCoreAudioFormat)
         } catch let error1 as NSError {
             error = error1
+            print("ERROR: preparePlayer")
             soundPlayer = nil
         }
-        
         if let err = error {
-            print("AVAudioPlayer error: \(err.localizedDescription)")
+            print("ERROR: preparePlayer AVAudioPlayer: \(err.localizedDescription)")
         } else {
             soundPlayer.delegate = self
             soundPlayer.prepareToPlay()
@@ -140,13 +118,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     
-    
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
         recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         playButton.setTitle("聴く", forState: .Normal)
         playButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
@@ -155,13 +131,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
-        
         self.recordButtonCenter.active = false
         self.playButton.hidden = false
         self.playButton.enabled = true
         self.playButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
         recordButton.setTitle("話す", forState: .Normal)
-        
     }
     
     func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
@@ -169,28 +143,50 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
     
     @IBAction func onRecord(sender: AnyObject) {
-        //        print(sender.titleLabel!!.text)
+        var error: NSError?
+        let audioSession = AVAudioSession.sharedInstance()
+//        if !soundRecorder.recording{
         if (sender.titleLabel!!.text == "話す"){
-            soundRecorder.record()
+            do{
+                try audioSession.setActive(true)
+                setupRecorder()
+                print(">>> Start recording")
+                soundRecorder.record()
+            } catch let error1 as NSError {
+                error = error1
+                print("ERROR: onRecord")
+                soundRecorder = nil
+            }
+            if let err = error {
+                print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
+            } else {
             sender.setTitle("ストップ", forState: .Normal)
             sender.setTitleColor(UIColor.redColor(), forState: .Normal)
-            playButton.enabled = false
-            playButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+            self.playButton.enabled = false
+            self.playButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+            }
         } else {
-            soundRecorder.stop()
+                soundRecorder.stop()
+            do{
+                try audioSession.setActive(false)
+                print(">>> audioSession.setActivity(false)")
+            }catch{
+                print("ERROR: onRecord setActive(false)")
+            }
             sender.setTitle("話す", forState: .Normal)
             sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
             
         }
     }
     
-    
     @IBAction func onPlay(sender: AnyObject) {
         if (sender.titleLabel!!.text == "聴く"){
             recordButton.enabled = false
             recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             sender.setTitle("ストップ", forState: .Normal)
-            playAudioAsset("voc-"+englishHint+"-"+wordFromModel)
+            if audioAsset != nil{
+             playAudioAsset(audioAsset!)
+            }
             preparePlayer()
             soundPlayer.play()
         } else {
@@ -202,11 +198,82 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     
+    
+    @IBAction func onHint(sender: AnyObject) {
+        if hintTaps == 0 {
+            hintLabel.hidden = false
+            hintLabel.text = "Tap again For English"
+            hintTaps = 1
+        } else if hintTaps == 1 {
+            hintLabel.text = englishHint
+            hintTaps = 2
+        } else if hintTaps == 2 {
+            hintLabel.text = "Tap again For Romagi"
+            hintTaps = 3
+        } else if hintTaps == 3 {
+            hintLabel.text = romagiHint
+            hintTaps = 4
+        } else if hintTaps == 4 {
+            hintLabel.text = "Tap again to Hear word"
+            hintTaps = 5
+        } else if hintTaps == 5 {
+            hintLabel.hidden = true
+            if audioAsset != nil{
+                playAudioAsset(audioAsset!)
+            }
+            hintTaps = 0
+        }
+        
+        
+    }
+    
+    @IBAction func onWord(sender: AnyObject) {
+        hintLabel.hidden = true
+        hintTaps = 0
+        loadWord()
+        
+    }
+    
     func loadWord(){
+        var randomAudioAsset: String!
+        let audioAssetNames = ["Business-Bijinesu-ビジネス", "America(USA)-Amerika-アメリカ", "Japanese-Nihongo-日本語", "What-Nan-なん"]
+        randomAudioAsset = audioAssetNames.sample()
+        print(randomAudioAsset)
+        let splitAssetName = randomAudioAsset.characters.split("-").map(String.init)
+        word = splitAssetName[2]
+        englishHint = splitAssetName[0]
+        romagiHint = splitAssetName[1]
+        audioAsset = randomAudioAsset
+        wordLabel.text = word
+        
         //        get level apropriate word from Data
         //        set wordLable
         //        set pronunciation
     }
+    
+    func playAudioAsset(audioAsset: String) {
+        var error:NSError?
+        if let sound = NSDataAsset(name: audioAsset) {
+            do {
+                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try! AVAudioSession.sharedInstance().setActive(true)
+                try assetAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeMPEGLayer3)
+            } catch let error1 as NSError {
+                error = error1
+                soundPlayer = nil
+            }
+            if let err = error {
+                print("ERROR: playAudioAsset AVAudioPlayer: \(err.localizedDescription)")
+            } else {
+                assetAudioPlayer.delegate = self
+                assetAudioPlayer.prepareToPlay()
+                assetAudioPlayer.volume = 1.0
+                assetAudioPlayer.play()
+                
+            }
+        }
+    }
+
     
     /*
     // MARK: - Navigation
