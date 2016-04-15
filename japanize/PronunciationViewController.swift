@@ -253,6 +253,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     func playAudioAsset(audioAsset: String) {
         var error:NSError?
+        // TODO: Consider not using NSDataAsset to make project compile for iOS 8
         if let sound = NSDataAsset(name: audioAsset) {
             do {
                 try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
