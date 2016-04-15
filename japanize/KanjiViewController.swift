@@ -38,18 +38,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        var pathStrings: [String] = []
-        let path = NSBundle.mainBundle().pathForResource("054a8", ofType: "svg")!
-        let content: NSString = try! String(contentsOfFile: path)
-        let regex = try! NSRegularExpression(pattern: " d=\"(.*)\"", options: [])
-        
-        let matches = regex.matchesInString(content as String, options: [], range: NSRange(location: 0, length: content.length))
-        for match in matches {
-            let range = match.rangeAtIndex(1)
-            pathStrings.append(content.substringWithRange(range))
-        }
-        kanji = Kanji(pathStrings: pathStrings)
+      
+        kanji = Kanji()
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
