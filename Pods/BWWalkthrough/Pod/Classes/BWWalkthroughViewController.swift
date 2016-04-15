@@ -171,7 +171,10 @@ At the moment it's only used to perform custom animations on didScroll.
     // TODO: If you want to implement a "skip" button
     // connect the button to this IBAction and implement the delegate with the skipWalkthrough
     @IBAction public func close(sender: AnyObject){
-        delegate?.walkthroughCloseButtonPressed?()
+        //delegate?.walkthroughCloseButtonPressed?()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+        self.showViewController(vc, sender: self)
     }
     
     func pageControlDidTouch(){

@@ -55,7 +55,7 @@ class WalkthroughViewController: UIViewController, BWWalkthroughViewControllerDe
     
     func walkthroughCloseButtonPressed() {
         //self.dismissViewControllerAnimated(true, completion: nil)
-        //print("Close")
+        print("Close")
         /*let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
         self.showViewController(vc, sender: self)*/
