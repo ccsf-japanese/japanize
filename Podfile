@@ -4,6 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'japanize' do
+    pod 'AFNetworking'
     pod 'BWWalkthrough'
     pod 'ChameleonFramework/Swift'
 end
