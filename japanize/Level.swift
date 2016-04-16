@@ -9,13 +9,24 @@
 import UIKit
 
 class Level: NSObject {
-    
-//    var number: Int?
-    var chapter: Int!
-    var level: Int!
-    var kanjiCount: Int?
-    var wordMatchCount: Int?
-    var wordSayCount: Int?
-    var phraseCount: Int?
-    
+  
+  var id: String?
+  var name: String?
+  var chapter: String?
+  var characters: [Character]?
+  
+  init(dictionary: NSDictionary) {
+    id = dictionary["id"] as? String
+    name = dictionary["name"] as? String
+    chapter = dictionary["chapter"] as? String
+    characters = dictionary["characters"] as? [Character]
+  }
+  
 }
+
+/* var number: Int?
+ var level: Int!
+ var kanjiCount: Int?
+ var wordMatchCount: Int?
+ var wordSayCount: Int?
+ var phraseCount: Int? */
