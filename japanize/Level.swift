@@ -14,6 +14,7 @@ class Level: NSObject {
   var name: String?
   var chapter: String?
   var characters: [Character]?
+  var words: [Word]?
   
   init(dictionary: NSDictionary) {
     id = dictionary["id"] as? String
