@@ -9,10 +9,7 @@
 import UIKit
 
 class ProgressViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    //    var levels: [Level]?
-    let chapters = ["Chapter 1","Chapter 2","Chapter 3","Chapter 4","Chapter 5"]
-    //    let levels = [1,2,3,4,5]
+    var book: Book?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,8 +19,13 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+      
+      JapanizeClient.sharedInstance.book( { (book, error) -> () in
+        self.book = book
+        self.tableView.reloadData()
+      })
     }
-    
+  
     override func viewWillAppear(animated: Bool) {
         let themeColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
         let nav = self.navigationController?.navigationBar
@@ -49,11 +51,15 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return chapters.count
+      if let book = self.book {
+        return book.chapters.count
+      } else {
+        return 0
+      }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return chapters[section]
+        return book!.chapters[section].name
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -61,6 +67,7 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChapterCell") as! ChapterCell
+        cell.chapter = book!.chapters[indexPath.row];
         cell.selectionStyle = .None
         return cell
     }
