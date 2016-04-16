@@ -88,10 +88,19 @@ class DrawKanjiView: UIView {
     
     private func checkCurrentPoint(currentPoint: CGPoint) {
         if let dataSource = dataSource, kanji = dataSource.kanji, kanjiTransform = dataSource.kanjiTransform {
-            for point in kanji.strokes[dataSource.nextStrokeIndex].points {
+            let points = kanji.strokes[dataSource.nextStrokeIndex].points
+            for (i, point) in points.enumerate() {
                 let transformedPoint = CGPointApplyAffineTransform(point, kanjiTransform)
+            
                 //if the distance between current point and point on stroke is greater than 10, not update last point
                 if checkDistance(currentPoint, sPoint: transformedPoint) {
+                    if i+1 != points.count {
+                        for j in i+1..<points.count {
+                            if touchedPoints.contains(NSStringFromCGPoint(points[j])) {
+                                return
+                            }
+                        }
+                    }
                     touchedPoints.insert(NSStringFromCGPoint(point))
                 }
             }
