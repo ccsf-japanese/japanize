@@ -35,6 +35,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onPractice(sender: AnyObject) {
+        let url =  NSURL(string:"japanize://")
+        self.extensionContext?.openURL(url!, completionHandler: nil)
+    }
+    
     @IBAction func onTap(sender: AnyObject) {
         if todaysWordInfo != nil {
             infoLabel.hidden = false

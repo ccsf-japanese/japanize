@@ -18,26 +18,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Learn the word 日本語 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="68" y="3" width="185" height="22"/>
+                                <rect key="frame" x="36" y="8" width="185" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toggle romaji or definition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="bkU-72-F5H">
-                                <rect key="frame" x="77" y="29" width="166" height="17"/>
+                                <rect key="frame" x="38" y="31" width="166" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5q-yx-bay">
+                                <rect key="frame" x="243" y="10" width="57" height="30"/>
+                                <state key="normal" title="Practice"/>
+                                <connections>
+                                    <action selector="onPractice:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="SeO-Si-QWh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bkU-72-F5H" secondAttribute="bottom" constant="4" id="6FI-1Q-ixc"/>
-                            <constraint firstItem="bkU-72-F5H" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="JyC-eP-zOo"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" priority="750" id="MHi-C1-bgL"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="Ryu-dU-Cxe"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" priority="750" constant="4" id="adw-IC-iWQ"/>
-                            <constraint firstItem="bkU-72-F5H" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="4" id="ten-Hx-MqM"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bkU-72-F5H" secondAttribute="bottom" id="6FI-1Q-ixc"/>
+                            <constraint firstItem="bkU-72-F5H" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" constant="-39" id="JyC-eP-zOo"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" priority="750" constant="-6" id="MHi-C1-bgL"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" constant="-31.5" id="Ryu-dU-Cxe"/>
+                            <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" priority="750" constant="8" id="adw-IC-iWQ"/>
+                            <constraint firstAttribute="trailing" secondItem="G5q-yx-bay" secondAttribute="trailing" constant="20" id="kiC-4V-rMg"/>
+                            <constraint firstItem="bkU-72-F5H" firstAttribute="top" secondItem="GcN-lo-r42" secondAttribute="bottom" constant="1" id="ten-Hx-MqM"/>
+                            <constraint firstItem="G5q-yx-bay" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="xxR-PL-rv9"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="cwu-pO-UBv" appends="YES" id="yAF-zy-Ue8"/>
