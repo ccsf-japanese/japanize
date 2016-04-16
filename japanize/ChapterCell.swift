@@ -8,9 +8,9 @@
 
 import UIKit
 
-let levels = [1,2,3,4,5]
-
 class ChapterCell: UITableViewCell {
+  var chapter: Chapter?
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,18 +27,17 @@ class ChapterCell: UITableViewCell {
 extension ChapterCell : UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //        SLog(">>>tableView numberOfRowsInSection")
-        //        if levels = self.levels {
-        return levels.count
-        //        } else {
-        //            return 0
-        //        }
+      if let chapter = chapter {
+        return chapter.levels.count
+      } else {
+        return 0
+      }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LevelCell", forIndexPath: indexPath) as! LevelCell
-        let level = levels[indexPath.row]
+        let level = chapter?.levels[indexPath.row]
         
         if indexPath.row == 0 { //levelComplete == true {
             //set cell text colour green
@@ -65,7 +64,7 @@ extension ChapterCell : UICollectionViewDataSource {
             cell.goal3Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
         }
         
-        cell.levelLabel.text = "Level"+String(level)
+        cell.levelLabel.text = level!.name
         return cell
     }
     

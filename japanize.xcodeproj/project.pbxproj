@@ -25,6 +25,8 @@
 		37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73361C9A780F00079F14 /* KanjiView.swift */; };
 		37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73381C9A788800079F14 /* KanjiViewController.swift */; };
 		37FD733B1C9A78EB00079F14 /* 054a8.svg in Resources */ = {isa = PBXBuildFile; fileRef = 37FD733A1C9A78EB00079F14 /* 054a8.svg */; };
+		61362E1F1CC1BAE200E1BE3E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61362E1E1CC1BAE200E1BE3E /* Book.swift */; };
+		61362E211CC1C3A000E1BE3E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61362E201CC1C3A000E1BE3E /* Character.swift */; };
 		6198FA9F1C990391004CA9AB /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198FA9E1C990391004CA9AB /* LevelViewController.swift */; };
 		61F7083D1CC163F9002873CC /* JapanizeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7083C1CC163F9002873CC /* JapanizeClient.swift */; };
 		68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */; };
@@ -82,6 +84,8 @@
 		37FD73361C9A780F00079F14 /* KanjiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiView.swift; sourceTree = "<group>"; };
 		37FD73381C9A788800079F14 /* KanjiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiViewController.swift; sourceTree = "<group>"; };
 		37FD733A1C9A78EB00079F14 /* 054a8.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 054a8.svg; sourceTree = "<group>"; };
+		61362E1E1CC1BAE200E1BE3E /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		61362E201CC1C3A000E1BE3E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		6198FA9E1C990391004CA9AB /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		61F7083C1CC163F9002873CC /* JapanizeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapanizeClient.swift; sourceTree = "<group>"; };
 		65C68BEDE944D35F3BE2462C /* Pods-japanize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-japanize.release.xcconfig"; path = "Pods/Target Support Files/Pods-japanize/Pods-japanize.release.xcconfig"; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 		1DAFC23D1C927BA700F45F3A /* japanize */ = {
 			isa = PBXGroup;
 			children = (
+				61362E1D1CC1BAD100E1BE3E /* Models */,
 				1DAFC23E1C927BA700F45F3A /* AppDelegate.swift */,
 				68121CBD1CA0A008006CDB06 /* TabBarController.swift */,
 				1DCC750B1C9B7AAC009839CD /* Walkthrough */,
@@ -188,6 +193,17 @@
 			name = Walkthrough;
 			sourceTree = "<group>";
 		};
+		61362E1D1CC1BAD100E1BE3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				61362E1E1CC1BAE200E1BE3E /* Book.swift */,
+				68CDFE751CA31B5E003AD265 /* Chapter.swift */,
+				68FEA4761C9ACA0E00E76D83 /* Level.swift */,
+				61362E201CC1C3A000E1BE3E /* Character.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		68216A281CBC8391006D8203 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,8 +218,6 @@
 				68121CB91C9EA1D0006CDB06 /* LevelCell.swift */,
 				68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */,
 				68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */,
-				68FEA4761C9ACA0E00E76D83 /* Level.swift */,
-				68CDFE751CA31B5E003AD265 /* Chapter.swift */,
 				6198FA9E1C990391004CA9AB /* LevelViewController.swift */,
 			);
 			name = "Levels and Progress";
@@ -417,10 +431,12 @@
 				68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */,
 				376B5C261CB1CC88002B53F5 /* Kanji.swift in Sources */,
 				37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */,
+				61362E211CC1C3A000E1BE3E /* Character.swift in Sources */,
 				68FEA4721C9ABF9C00E76D83 /* ProgressViewController.swift in Sources */,
 				68216A271CBC830F006D8203 /* ArrayExtentions.swift in Sources */,
 				68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */,
 				68CDFE761CA31B5E003AD265 /* Chapter.swift in Sources */,
+				61362E1F1CC1BAE200E1BE3E /* Book.swift in Sources */,
 				1DAFC23F1C927BA700F45F3A /* AppDelegate.swift in Sources */,
 				37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */,
 				68121CBE1CA0A008006CDB06 /* TabBarController.swift in Sources */,
