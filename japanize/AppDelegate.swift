@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -40,7 +39,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
+func getScore() -> Int {
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    if let score = userDefaults.valueForKey("score") {
+        return score as! Int
+    } else {
+        return 0
+    }
+}
+
+func incrementScore(increment: Int) {
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let score = getScore();
+    let inc = score + increment
+    userDefaults.setValue(inc, forKey: "score")
+    userDefaults.synchronize()
+}
