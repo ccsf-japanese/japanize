@@ -36,10 +36,10 @@ class KanjiView: UIView {
             
             if i == nextStrokeIndex {
                 if let point = stroke.points.first {
-                    drawCircleAtPoint(point, color: UIColor.redColor(), transform: kanjiTransform)
+                    drawCircleAtPoint(point, color: UIColor.greenColor(), transform: kanjiTransform)
                 }
                 if let point = stroke.points.last {
-                    drawCircleAtPoint(point, color: UIColor.blueColor(), transform: kanjiTransform)
+                    drawCircleAtPoint(point, color: UIColor.redColor(), transform: kanjiTransform)
                 }
                 
                 

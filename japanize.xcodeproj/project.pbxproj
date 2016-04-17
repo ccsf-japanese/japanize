@@ -17,16 +17,18 @@
 		1DAFC2491C927BA700F45F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DAFC2471C927BA700F45F3A /* LaunchScreen.storyboard */; };
 		1DBC1C4D1CC3110D000FF6CC /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C4C1CC3110D000FF6CC /* Scores.swift */; };
 		1DBC1C511CC31887000FF6CC /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */; };
+		1DBC1C531CC33DDC000FF6CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */; };
 		1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCC75091C9B7A99009839CD /* WalkthroughViewController.swift */; };
 		1DCC750D1C9B7B7A009839CD /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCC750C1C9B7B7A009839CD /* CustomPageViewController.swift */; };
 		1DCC750F1C9B81DA009839CD /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC750E1C9B81DA009839CD /* Walkthrough.storyboard */; };
 		1F87D4403C285B5CB717B46F /* Pods_japanize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACE12FC0FEFA66703628E9C /* Pods_japanize.framework */; };
 		37540A711CA3B3B400A27833 /* DrawKanjiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37540A701CA3B3B400A27833 /* DrawKanjiView.swift */; };
+		376ADF971CC32FD000A01DA2 /* KanjiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E117F31CC311E4005C8ED3 /* KanjiSelector.swift */; };
+		376AE0B91CC33B3900A01DA2 /* 054a8.svg in Resources */ = {isa = PBXBuildFile; fileRef = 376AE0B81CC33B3900A01DA2 /* 054a8.svg */; };
 		376B5C261CB1CC88002B53F5 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5C251CB1CC88002B53F5 /* Kanji.swift */; };
 		376B5C281CB1CE5D002B53F5 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5C271CB1CE5D002B53F5 /* Stroke.swift */; };
 		37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73361C9A780F00079F14 /* KanjiView.swift */; };
 		37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73381C9A788800079F14 /* KanjiViewController.swift */; };
-		37FD733B1C9A78EB00079F14 /* 054a8.svg in Resources */ = {isa = PBXBuildFile; fileRef = 37FD733A1C9A78EB00079F14 /* 054a8.svg */; };
 		61362E1F1CC1BAE200E1BE3E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61362E1E1CC1BAE200E1BE3E /* Book.swift */; };
 		61362E211CC1C3A000E1BE3E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61362E201CC1C3A000E1BE3E /* Character.swift */; };
 		61567B861CC3056600CD58B7 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61567B851CC3056600CD58B7 /* Word.swift */; };
@@ -80,15 +82,17 @@
 		1DAFC24A1C927BA700F45F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DBC1C4C1CC3110D000FF6CC /* Scores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scores.swift; path = ../Scores.swift; sourceTree = "<group>"; };
 		1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
+		1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1DCC75091C9B7A99009839CD /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		1DCC750C1C9B7B7A009839CD /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
 		1DCC750E1C9B81DA009839CD /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
 		37540A701CA3B3B400A27833 /* DrawKanjiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawKanjiView.swift; sourceTree = "<group>"; };
+		376AE0B81CC33B3900A01DA2 /* 054a8.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 054a8.svg; sourceTree = "<group>"; };
 		376B5C251CB1CC88002B53F5 /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
 		376B5C271CB1CE5D002B53F5 /* Stroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		37E117F31CC311E4005C8ED3 /* KanjiSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiSelector.swift; sourceTree = "<group>"; };
 		37FD73361C9A780F00079F14 /* KanjiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiView.swift; sourceTree = "<group>"; };
 		37FD73381C9A788800079F14 /* KanjiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiViewController.swift; sourceTree = "<group>"; };
-		37FD733A1C9A78EB00079F14 /* 054a8.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 054a8.svg; sourceTree = "<group>"; };
 		61362E1E1CC1BAE200E1BE3E /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		61362E201CC1C3A000E1BE3E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		61567B851CC3056600CD58B7 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 		1DAFC23D1C927BA700F45F3A /* japanize */ = {
 			isa = PBXGroup;
 			children = (
+				1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */,
 				1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */,
 				1DBC1C4C1CC3110D000FF6CC /* Scores.swift */,
 				61F7083C1CC163F9002873CC /* JapanizeClient.swift */,
@@ -235,7 +240,7 @@
 		68FEA46E1C9AB2CF00E76D83 /* SVG files */ = {
 			isa = PBXGroup;
 			children = (
-				37FD733A1C9A78EB00079F14 /* 054a8.svg */,
+				376AE0B81CC33B3900A01DA2 /* 054a8.svg */,
 			);
 			name = "SVG files";
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				376B5C251CB1CC88002B53F5 /* Kanji.swift */,
 				37FD73361C9A780F00079F14 /* KanjiView.swift */,
 				37FD73381C9A788800079F14 /* KanjiViewController.swift */,
+				37E117F31CC311E4005C8ED3 /* KanjiSelector.swift */,
 			);
 			name = Kanji;
 			sourceTree = "<group>";
@@ -363,9 +369,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DAFC2491C927BA700F45F3A /* LaunchScreen.storyboard in Resources */,
-				37FD733B1C9A78EB00079F14 /* 054a8.svg in Resources */,
 				1DCC750F1C9B81DA009839CD /* Walkthrough.storyboard in Resources */,
 				1DAFC2461C927BA700F45F3A /* Assets.xcassets in Resources */,
+				376AE0B91CC33B3900A01DA2 /* 054a8.svg in Resources */,
 				1DAFC2441C927BA700F45F3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,8 +443,10 @@
 				68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */,
 				37540A711CA3B3B400A27833 /* DrawKanjiView.swift in Sources */,
 				1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */,
+				376ADF971CC32FD000A01DA2 /* KanjiSelector.swift in Sources */,
 				68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */,
 				376B5C261CB1CC88002B53F5 /* Kanji.swift in Sources */,
+				1DBC1C531CC33DDC000FF6CC /* ProfileViewController.swift in Sources */,
 				37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */,
 				1DBC1C511CC31887000FF6CC /* CongratulationsViewController.swift in Sources */,
 				61362E211CC1C3A000E1BE3E /* Character.swift in Sources */,

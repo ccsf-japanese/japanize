@@ -9,6 +9,7 @@
 import UIKit
 protocol DrawKanjiViewDelegate: class {
     func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int)
+    func drawKanjiViewDidComplete(view: DrawKanjiView)
 }
 
 class DrawKanjiView: UIView {
@@ -153,14 +154,6 @@ class DrawKanjiView: UIView {
         }
         
         touchedPoints.removeAll()
-        
-        // Merge tempImageView into mainImageView
-//        UIGraphicsBeginImageContextWithOptions(mainImageView.frame.size, false, 0.0)
-//        mainImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), blendMode: CGBlendMode.Normal, alpha: 1.0)
-//        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height), blendMode: CGBlendMode.Normal, alpha: opacity)
-//        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-        
         tempImageView.image = nil
     }
     
