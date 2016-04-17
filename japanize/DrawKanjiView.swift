@@ -153,7 +153,7 @@ class DrawKanjiView: UIView {
             }
         }
         
-//        touchedPoints.removeAll()
+        touchedPoints.removeAll()
         tempImageView.image = nil
     }
     
