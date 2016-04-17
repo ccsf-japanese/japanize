@@ -206,7 +206,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 playAudioAsset(audioAsset!)
             }
         } else {
-            soundPlayer.stop()
+            assetAudioPlayer.stop()
             recordButton.enabled = true
             recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             sender.setTitle("聴く", forState: .Normal)
