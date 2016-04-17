@@ -24,7 +24,6 @@ class JapanizeFileClient : AFHTTPSessionManager {
     super.init(baseURL: baseURL, sessionConfiguration: nil)
     
     self.responseSerializer = AFHTTPResponseSerializer()
-    self.responseSerializer.acceptableContentTypes?.insert("image/svg+xml")
   }
   
   required init?(coder aDecoder: NSCoder) {
