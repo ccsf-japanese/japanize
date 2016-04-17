@@ -19,7 +19,13 @@ class LevelViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
+      JapanizeClient.sharedInstance.characterWithID(level!.characters[0], completion: { (character, error) in
+        print("received character")
+        JapanizeFileClient.sharedInstance.stringForFilePath(character!.svgURL!, completion: { (character, error) in
+          print("received svg")
+        })
+      })
+  }
 
     override func viewWillAppear(animated: Bool) {
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)

@@ -49,5 +49,5 @@ class JapanizeClient : AFHTTPSessionManager {
         completion(character: nil, error: error)
     })
   }
-  
+
 }
