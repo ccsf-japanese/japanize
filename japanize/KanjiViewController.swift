@@ -43,9 +43,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
-        
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
