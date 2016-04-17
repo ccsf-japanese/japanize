@@ -50,10 +50,10 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
         
         undoButton.translatesAutoresizingMaskIntoConstraints = false
-        undoButton.addTarget(self, action: "undoButtonTapped", forControlEvents: .TouchUpInside)
+      undoButton.addTarget(self, action: #selector(undoButtonTapped), forControlEvents: .TouchUpInside)
         
         clearButton.translatesAutoresizingMaskIntoConstraints = false
-        clearButton.addTarget(self, action: "clearButtonTapped", forControlEvents: .TouchUpInside)
+      clearButton.addTarget(self, action: #selector(clearButtonTapped), forControlEvents: .TouchUpInside)
         
         NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: undoButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
