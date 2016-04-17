@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MZFormSheetPresentationController
 
 class CongratulationsViewController: UIViewController {
 
@@ -14,6 +15,10 @@ class CongratulationsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    static func show() {
+        
     }
 
     override func didReceiveMemoryWarning() {
