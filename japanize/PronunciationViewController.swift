@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import ChameleonFramework
 
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
@@ -122,6 +123,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
         recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        playRecButton.setTitle("聴く", forState: .Normal)
         playAssetButton.setTitle("聴く", forState: .Normal)
         playAssetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
     }
@@ -185,9 +187,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             recordButton.enabled = false
             recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             sender.setTitle("ストップ", forState: .Normal)
-            if audioAsset != nil{
-                playAudioAsset(audioAsset!)
-            }
             preparePlayer()
             soundPlayer.play()
         } else {
@@ -206,8 +205,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             if audioAsset != nil{
                 playAudioAsset(audioAsset!)
             }
-            preparePlayer()
-            soundPlayer.play()
         } else {
             soundPlayer.stop()
             recordButton.enabled = true
