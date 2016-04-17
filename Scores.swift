@@ -29,9 +29,10 @@ func incrementScore(increment: Int) {
 
 func showScore(controller: UIViewController) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let navigationController = storyboard.instantiateViewControllerWithIdentifier("congratulationsController")
+    let navigationController = storyboard.instantiateViewControllerWithIdentifier("congratulationsViewController")
     let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
-    formSheetController.presentationController?.contentViewSize = CGSizeMake(250, 250)
+
+    formSheetController.presentationController?.contentViewSize = CGSizeMake(320, 480)
     
     controller.presentViewController(formSheetController, animated: true, completion: nil)
 }
