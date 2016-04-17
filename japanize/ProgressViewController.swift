@@ -16,6 +16,8 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showScore(self)
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
@@ -69,20 +71,14 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier("ChapterCell") as! ChapterCell
         cell.chapter = book!.chapters[indexPath.section];
         cell.selectionStyle = .None
+        cell.collectionView.reloadData()
         return cell
     }
     
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        let cell = sender as! UITableViewCell
-    //        let indexpath = tableView.indexPathForCell(cell)
-    //        let chapter = chapters[indexpath!.row]
-    //
-    //        tableView.deselectRowAtIndexPath(indexpath!, animated: true)
-    //
-    //        let detailViewController = segue. as! ChapterCell
-    //        detailViewController.chapter = chapter
-    //    
-    //        print("Segue")
-    //    }
-    
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let cell = sender as? LevelCell {
+      let vc = segue.destinationViewController as! LevelViewController
+      vc.level = cell.level
+    }
+  }
 }

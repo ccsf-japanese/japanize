@@ -10,6 +10,9 @@ import UIKit
 import ChameleonFramework
 
 class LevelViewController: UIViewController {
+  
+  var level: Level?
+  
     @IBOutlet weak var aLevelLabel: UILabel!
 
     override func viewDidLoad() {
@@ -25,6 +28,7 @@ class LevelViewController: UIViewController {
         let randoColor = UIColor.randomFlatColor()
         view.backgroundColor = randoColor
         aLevelLabel.textColor = ContrastColorOf(randoColor, returnFlat: true)
+        aLevelLabel.text = "CH\(level!.chapter!) \(level!.name!)"
     }
     
     override func didReceiveMemoryWarning() {
