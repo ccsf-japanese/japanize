@@ -13,22 +13,12 @@ class LevelViewController: UIViewController {
   
   var level: Level?
   
-    @IBOutlet weak var aLevelLabel: UILabel!
+  @IBOutlet weak var aLevelLabel: UILabel!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-      JapanizeClient.sharedInstance.characterWithID(level!.characters[0], completion: { (character, error) in
-        print("received character")
-        JapanizeFileClient.sharedInstance.dataForFilePath(character!.svgURL!, completion: { (data, error) in
-          print("received svg")
-        })
-        JapanizeFileClient.sharedInstance.dataForFilePath("static/voice/bing/5b070f57a61762d2b344855987081939c7892ace.mp3", completion: { (data, error) in
-          print("received mp3")
-        })
-        
-      })
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
   }
 
     override func viewWillAppear(animated: Bool) {

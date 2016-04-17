@@ -139,23 +139,21 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         }
         
         let chosenCharacter = characters.sample()
-        JapanizeClient.sharedInstance.characterWithID(chosenCharacter,
-          completion: { (character, error) in
-            if let character = character {
-              if let svgURL = character.svgURL {
-                JapanizeFileClient.sharedInstance.dataForFilePath(svgURL,
-                  completion: { (data, error) in
-                    if let svgData = data {
-                      character.setStrokesWithSVG(svgData)
-                      print("Random character ready!")
-                      self.character = character
-                    }
-                })
-              }
+        JapanizeClient.sharedInstance.characterWithID(chosenCharacter, completion: { (character, error) in
+          if let character = character {
+            if let svgURL = character.svgURL {
+              JapanizeFileClient.sharedInstance.dataForFilePath(svgURL, completion: { (data, error) in
+                if let svgData = data {
+                  character.setStrokesWithSVG(svgData)
+                  print("Random character ready!")
+                  self.character = character
+                }
+              })
             }
+          }
         })
       }
     })
   }
+  
 }
-
