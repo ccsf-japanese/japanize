@@ -17,6 +17,7 @@
 		1DAFC2491C927BA700F45F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DAFC2471C927BA700F45F3A /* LaunchScreen.storyboard */; };
 		1DBC1C4D1CC3110D000FF6CC /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C4C1CC3110D000FF6CC /* Scores.swift */; };
 		1DBC1C511CC31887000FF6CC /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */; };
+		1DBC1C531CC33DDC000FF6CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */; };
 		1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCC75091C9B7A99009839CD /* WalkthroughViewController.swift */; };
 		1DCC750D1C9B7B7A009839CD /* CustomPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCC750C1C9B7B7A009839CD /* CustomPageViewController.swift */; };
 		1DCC750F1C9B81DA009839CD /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DCC750E1C9B81DA009839CD /* Walkthrough.storyboard */; };
@@ -80,6 +81,7 @@
 		1DAFC24A1C927BA700F45F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DBC1C4C1CC3110D000FF6CC /* Scores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scores.swift; path = ../Scores.swift; sourceTree = "<group>"; };
 		1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
+		1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1DCC75091C9B7A99009839CD /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		1DCC750C1C9B7B7A009839CD /* CustomPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPageViewController.swift; sourceTree = "<group>"; };
 		1DCC750E1C9B81DA009839CD /* Walkthrough.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Walkthrough.storyboard; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		1DAFC23D1C927BA700F45F3A /* japanize */ = {
 			isa = PBXGroup;
 			children = (
+				1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */,
 				1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */,
 				1DBC1C4C1CC3110D000FF6CC /* Scores.swift */,
 				61F7083C1CC163F9002873CC /* JapanizeClient.swift */,
@@ -439,6 +442,7 @@
 				1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */,
 				68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */,
 				376B5C261CB1CC88002B53F5 /* Kanji.swift in Sources */,
+				1DBC1C531CC33DDC000FF6CC /* ProfileViewController.swift in Sources */,
 				37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */,
 				1DBC1C511CC31887000FF6CC /* CongratulationsViewController.swift in Sources */,
 				61362E211CC1C3A000E1BE3E /* Character.swift in Sources */,
