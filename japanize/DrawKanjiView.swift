@@ -88,8 +88,8 @@ class DrawKanjiView: UIView {
     }
     
     private func checkCurrentPoint(currentPoint: CGPoint) {
-        if let dataSource = dataSource, kanji = dataSource.kanji, kanjiTransform = dataSource.kanjiTransform {
-            let points = kanji.strokes[dataSource.nextStrokeIndex].points
+        if let dataSource = dataSource, strokes = dataSource.character!.strokes, kanjiTransform = dataSource.kanjiTransform {
+            let points = strokes[dataSource.nextStrokeIndex].points
             for (i, point) in points.enumerate() {
                 let transformedPoint = CGPointApplyAffineTransform(point, kanjiTransform)
             
@@ -140,9 +140,9 @@ class DrawKanjiView: UIView {
             drawLineFrom(lastPoint, toPoint: lastPoint)
         }
         
-        if let dataSource = dataSource, kanji = dataSource.kanji {
+        if let dataSource = dataSource, strokes = dataSource.character!.strokes {
             var complete = true
-            for point in kanji.strokes[dataSource.nextStrokeIndex].points {
+            for point in strokes[dataSource.nextStrokeIndex].points {
                 if !touchedPoints.contains(NSStringFromCGPoint(point)) {
                     complete = false
                     break
