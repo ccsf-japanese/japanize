@@ -10,7 +10,6 @@ import UIKit
 
 class Stroke {
     
-    let pathString: String
     let points: [CGPoint]
     
     // Internal path
@@ -24,8 +23,6 @@ class Stroke {
     }
     
     init(pathString: String) {
-        self.pathString = pathString
-        
         var tokens = [String]()
         var token = ""
         let letters = NSCharacterSet.letterCharacterSet()
