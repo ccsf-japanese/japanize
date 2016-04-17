@@ -37,8 +37,7 @@ extension ChapterCell : UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LevelCell", forIndexPath: indexPath) as! LevelCell
-        let level = chapter?.levels[indexPath.row]
-        
+        cell.level = chapter?.levels[indexPath.row]
         if indexPath.row == 0 { //levelComplete == true {
             //set cell text colour green
             //cell.completedImage.hidden = false //rgb(230, 126, 34)rgb(243, 156, 18)
@@ -48,12 +47,13 @@ extension ChapterCell : UICollectionViewDataSource {
             cell.goal2Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
             cell.goal3Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
             
-        }else if indexPath.row == 1 { //levelComplete == false {
+        } else if indexPath.row == 1 {
+          
+            //levelComplete == false {
             // Levels that have been started, but not completed
-//            cell.backgroundColor = UIColor(red: 45/255, green: 141/255, blue: 141/255, alpha: 1)
+            // cell.backgroundColor = UIColor(red: 45/255, green: 141/255, blue: 141/255, alpha: 1)
 
-            
-        }else{
+        } else {
             // does level not touched fire this (as nil)
             //set cell inactive and grey
             // cell.lockedImage.hidden = false rgb(52, 73, 94)rgb(44, 62, 80)
@@ -64,7 +64,7 @@ extension ChapterCell : UICollectionViewDataSource {
             cell.goal3Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
         }
         
-        cell.levelLabel.text = level!.name
+        cell.levelLabel.text = "\(cell.level!.chapter!) \(cell.level!.name!)"
         return cell
     }
     

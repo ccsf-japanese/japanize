@@ -72,17 +72,10 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        let cell = sender as! UITableViewCell
-    //        let indexpath = tableView.indexPathForCell(cell)
-    //        let chapter = chapters[indexpath!.row]
-    //
-    //        tableView.deselectRowAtIndexPath(indexpath!, animated: true)
-    //
-    //        let detailViewController = segue. as! ChapterCell
-    //        detailViewController.chapter = chapter
-    //    
-    //        print("Segue")
-    //    }
-    
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let cell = sender as? LevelCell {
+      let vc = segue.destinationViewController as! LevelViewController
+      vc.level = cell.level
+    }
+  }
 }
