@@ -51,8 +51,11 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         
         view.addSubview(undoButton)
         view.addSubview(clearButton)
-        undoButton.setTitle("Undo", forState:.Normal)
-        clearButton.setTitle("Clear", forState:.Normal)
+        //undoButton.setTitle("Undo", forState:.Normal)
+        undoButton.setImage(UIImage.init(named: "undo"), forState: .Normal)
+        //clearButton.setTitle("Clear", forState:.Normal)
+        clearButton.setImage(UIImage.init(named: "cancel"), forState: .Normal)
+        
         undoButton.titleLabel?.font = UIFont.systemFontOfSize(25)
         clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
         
