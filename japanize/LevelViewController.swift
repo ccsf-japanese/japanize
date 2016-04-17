@@ -21,7 +21,7 @@ class LevelViewController: UIViewController {
         // Do any additional setup after loading the view.
       JapanizeClient.sharedInstance.characterWithID(level!.characters[0], completion: { (character, error) in
         print("received character")
-        JapanizeFileClient.sharedInstance.stringForFilePath(character!.svgURL!, completion: { (string, error) in
+        JapanizeFileClient.sharedInstance.dataForFilePath(character!.svgURL!, completion: { (data, error) in
           print("received svg")
         })
         JapanizeFileClient.sharedInstance.dataForFilePath("static/voice/bing/5b070f57a61762d2b344855987081939c7892ace.mp3", completion: { (data, error) in

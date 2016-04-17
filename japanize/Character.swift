@@ -26,7 +26,8 @@ class Character: NSObject {
     strokes = nil
   }
   
-  func setStrokesWithSVG(content: NSString) {
+  func setStrokesWithSVG(data: NSData) {
+    let content = NSString.init(data: data, encoding: NSUTF8StringEncoding)!
     let regex = try! NSRegularExpression(pattern: " d=\"(.*)\"", options: [])
     var pathStrings: [String] = []
     

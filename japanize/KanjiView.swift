@@ -18,7 +18,7 @@ class KanjiView: UIView {
         contentMode = .Redraw
         
         guard let dataSource = dataSource,
-            let strokes = dataSource.character!.strokes,
+            let strokes = dataSource.character?.strokes,
             let kanjiTransform = dataSource.kanjiTransform else {
                 return
         }

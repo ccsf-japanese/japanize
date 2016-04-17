@@ -30,20 +30,6 @@ class JapanizeFileClient : AFHTTPSessionManager {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func stringForFilePath(path: String, completion: (string: String?, error: NSError?) -> ()) {
-    GET(
-      path,
-      parameters: nil,
-      progress: nil,
-      success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-        completion(string: response as? String, error: nil)
-      },
-      failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-        print("error getting string")
-        completion(string: nil, error: error)
-    })
-  }
-  
   func dataForFilePath(path: String, completion: (data: NSData?, error: NSError?) -> ()) {
     GET(
       path,
