@@ -31,8 +31,9 @@ func showScore(controller: UIViewController) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let navigationController = storyboard.instantiateViewControllerWithIdentifier("congratulationsViewController")
     let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
-
-    formSheetController.presentationController?.contentViewSize = CGSizeMake(320, 480)
+    formSheetController.presentationController?.contentViewSize = CGSizeMake(300, 300)
+    formSheetController.presentationController?.shouldCenterVertically = true
+    formSheetController.presentationController?.shouldCenterHorizontally = true
     
     controller.presentViewController(formSheetController, animated: true, completion: nil)
 }
