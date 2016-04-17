@@ -487,32 +487,49 @@
                         <viewControllerLayoutGuide type="bottom" id="huw-VD-f7S"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jtN-2i-TRo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIl-RJ-oe6">
-                                <rect key="frame" x="99" y="202" width="122" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIl-RJ-oe6">
+                                <rect key="frame" x="79" y="15" width="142" height="23.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF7-M1-feb">
-                                <rect key="frame" x="106" y="328" width="115" height="30"/>
-                                <state key="normal" title="Continue playing"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NF7-M1-feb">
+                                <rect key="frame" x="92" y="255" width="115" height="30"/>
+                                <state key="normal" title="Continue playing">
+                                    <color key="titleColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onSkip:" destination="5RR-kO-wxC" eventType="touchUpInside" id="swj-Mc-GqD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glh-8T-16C">
-                                <rect key="frame" x="149" y="282" width="22" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glh-8T-16C">
+                                <rect key="frame" x="130" y="208" width="40.5" height="43"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trophy" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-PA-3gu">
+                                <rect key="frame" x="90" y="92" width="120" height="115"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="NF7-M1-feb" firstAttribute="centerX" secondItem="jtN-2i-TRo" secondAttribute="centerX" id="GO0-zS-zrT"/>
+                            <constraint firstItem="1Rd-PA-3gu" firstAttribute="centerY" secondItem="jtN-2i-TRo" secondAttribute="centerY" id="IDj-vt-DoL"/>
+                            <constraint firstItem="NF7-M1-feb" firstAttribute="top" secondItem="glh-8T-16C" secondAttribute="bottom" constant="4" id="X3t-gT-FKp"/>
+                            <constraint firstItem="glh-8T-16C" firstAttribute="centerX" secondItem="jtN-2i-TRo" secondAttribute="centerX" id="X3u-Gj-hOy"/>
+                            <constraint firstItem="KIl-RJ-oe6" firstAttribute="centerX" secondItem="jtN-2i-TRo" secondAttribute="centerX" id="cLh-zV-O9h"/>
+                            <constraint firstAttribute="bottom" secondItem="NF7-M1-feb" secondAttribute="bottom" constant="15" id="mxH-qN-3h8"/>
+                            <constraint firstItem="1Rd-PA-3gu" firstAttribute="centerX" secondItem="jtN-2i-TRo" secondAttribute="centerX" id="pzS-ca-dqn"/>
+                            <constraint firstItem="KIl-RJ-oe6" firstAttribute="top" secondItem="jtN-2i-TRo" secondAttribute="top" constant="15" id="reG-wr-fW6"/>
+                        </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
                     <connections>
                         <outlet property="score" destination="glh-8T-16C" id="tHS-2A-rC3"/>
                     </connections>
@@ -549,6 +566,7 @@
         <image name="mic" width="64" height="64"/>
         <image name="sound" width="32" height="32"/>
         <image name="speaker" width="44" height="42"/>
+        <image name="trophy" width="120" height="115"/>
     </resources>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
