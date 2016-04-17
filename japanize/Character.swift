@@ -15,6 +15,7 @@ class Character: NSObject {
   var kind: String?
   var chapter: String?
   var svgURL: String?
+  var strokes: [Stroke]?
   
   init(dictionary: NSDictionary) {
     id = dictionary["id"] as? String
@@ -22,6 +23,25 @@ class Character: NSObject {
     kind = dictionary["kind"] as? String
     chapter = dictionary["chapter"] as? String
     svgURL = dictionary["svg_url"] as? String
+    strokes = nil
+  }
+  
+  func setStrokesWithSVG(content: NSString) {
+    let regex = try! NSRegularExpression(pattern: " d=\"(.*)\"", options: [])
+    var pathStrings: [String] = []
+    
+    let matches = regex.matchesInString(content as String,
+                                        options: [],
+                                        range: NSRange(location: 0, length: content.length))
+    for match in matches {
+      let range = match.rangeAtIndex(1)
+      pathStrings.append(content.substringWithRange(range))
+    }
+    
+    self.strokes = []
+    for pathString in pathStrings {
+      self.strokes!.append(Stroke(pathString: pathString))
+    }
   }
   
 }

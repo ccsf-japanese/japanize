@@ -44,4 +44,18 @@ class JapanizeFileClient : AFHTTPSessionManager {
     })
   }
   
+  func dataForFilePath(path: String, completion: (data: NSData?, error: NSError?) -> ()) {
+    GET(
+      path,
+      parameters: nil,
+      progress: nil,
+      success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+        completion(data: response as? NSData, error: nil)
+      },
+      failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+        print("error getting data")
+        completion(data: nil, error: error)
+    })
+  }
+  
 }

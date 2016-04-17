@@ -10,13 +10,13 @@ import UIKit
 
 protocol KanjiDrawingDataSource: class {
     var nextStrokeIndex: Int { get }
-    var kanji: Kanji? { get }
+    var character: Character? { get }
     var kanjiTransform: CGAffineTransform? { get }
     
 }
 
 protocol KanjiViewControllerDelegate: class {
-    func kanjiViewController(kanjiViewController: KanjiViewController, didFinishDrawingKanji kanji: Kanji)
+    func kanjiViewController(kanjiViewController: KanjiViewController, didFinishDrawingKanji character: Character)
 }
 
 class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiViewDelegate {
@@ -34,7 +34,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
             kanjiView.setNeedsDisplay()
         }
     }
-    var kanji: Kanji? {
+    var character: Character? {
         didSet {
             kanjiView.setNeedsDisplay()
         }
@@ -72,7 +72,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: clearButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
       
         let kanjiSelector = KanjiSelector()
-        kanji = kanjiSelector.randomKanji()
+        character = kanjiSelector.randomKanji()
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
@@ -110,16 +110,16 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int) {
         nextStrokeIndex += 1
         // TODO: Change Kanji when out of strokes
-        if let kanji = kanji {
-            nextStrokeIndex %= kanji.strokes.count
+        if let strokes = character!.strokes {
+            nextStrokeIndex %= strokes.count
         }
     }
     
     func drawKanjiViewDidComplete(view: DrawKanjiView) {
-        if let kanji = kanji {
-            delegate?.kanjiViewController(self, didFinishDrawingKanji: kanji)
+        if let character = character {
+            delegate?.kanjiViewController(self, didFinishDrawingKanji: character)
         }
-        
+      
     }
 }
 

@@ -18,13 +18,13 @@ class KanjiView: UIView {
         contentMode = .Redraw
         
         guard let dataSource = dataSource,
-            let kanji = dataSource.kanji,
+            let strokes = dataSource.character!.strokes,
             let kanjiTransform = dataSource.kanjiTransform else {
                 return
         }
         let nextStrokeIndex = dataSource.nextStrokeIndex
         
-        for (i, stroke) in kanji.strokes.enumerate() {
+        for (i, stroke) in strokes.enumerate() {
             let color = i >= nextStrokeIndex ? UIColor.grayColor() : UIColor.blackColor()
             color.setStroke()
             let path = stroke.path

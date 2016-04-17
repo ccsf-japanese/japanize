@@ -27,10 +27,3 @@ class Level: NSObject {
   }
   
 }
-
-/* var number: Int?
- var level: Int!
- var kanjiCount: Int?
- var wordMatchCount: Int?
- var wordSayCount: Int?
- var phraseCount: Int? */

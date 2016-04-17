@@ -26,12 +26,15 @@ class KanjiSelector {
         }
     }
     
-    func randomKanji() -> Kanji? {
+    func randomKanji() -> Character? {
         if filteredItems.isEmpty {
-            return nil
+          return nil
         } else {
-            let fileName = filteredItems.sample()
-            return Kanji(fileName: fileName)
+          // TODO: Get random character from API
+          let path = NSBundle.mainBundle().pathForResource(filteredItems.sample(), ofType: "svg")!
+          let character = Character(dictionary: NSDictionary())
+          character.setStrokesWithSVG(try! String(contentsOfFile: path))
+          return character
         }
     }
     
