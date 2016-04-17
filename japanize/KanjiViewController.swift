@@ -12,12 +12,19 @@ protocol KanjiDrawingDataSource: class {
     var nextStrokeIndex: Int { get }
     var kanji: Kanji? { get }
     var kanjiTransform: CGAffineTransform? { get }
+    
+}
+
+protocol KanjiViewControllerDelegate: class {
+    func kanjiViewController(kanjiViewController: KanjiViewController, didFinishDrawingKanji kanji: Kanji)
 }
 
 class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiViewDelegate {
     
     @IBOutlet weak var kanjiView: KanjiView!
     @IBOutlet weak var drawKanjiView: DrawKanjiView!
+    
+    weak var delegate: KanjiViewControllerDelegate?
     
     let undoButton = UIButton(type: .System)
     let clearButton = UIButton(type: .System)
@@ -50,10 +57,10 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
         
         undoButton.translatesAutoresizingMaskIntoConstraints = false
-      undoButton.addTarget(self, action: #selector(undoButtonTapped), forControlEvents: .TouchUpInside)
+      undoButton.addTarget(self, action: "undoButtonTapped", forControlEvents: .TouchUpInside)
         
         clearButton.translatesAutoresizingMaskIntoConstraints = false
-      clearButton.addTarget(self, action: #selector(clearButtonTapped), forControlEvents: .TouchUpInside)
+      clearButton.addTarget(self, action: "clearButtonTapped", forControlEvents: .TouchUpInside)
         
         NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: undoButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
@@ -61,7 +68,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: clearButton, attribute: .Trailing, multiplier: 1.0, constant: 15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: clearButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
       
-        kanji = Kanji(fileName: "054a8")
+        let kanjiSelector = KanjiSelector()
+        kanji = kanjiSelector.randomKanji()
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
@@ -102,6 +110,13 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         if let kanji = kanji {
             nextStrokeIndex %= kanji.strokes.count
         }
+    }
+    
+    func drawKanjiViewDidComplete(view: DrawKanjiView) {
+        if let kanji = kanji {
+            delegate?.kanjiViewController(self, didFinishDrawingKanji: kanji)
+        }
+        
     }
 }
 
