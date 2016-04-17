@@ -14,6 +14,7 @@ class Word: NSObject {
   var kind: String?
   var chapter: String?
   var audioURL: String?
+  var audio: NSData?
   var spellings: [String] = []
   var meanings: [String] = []
   var notes: [String] = []
@@ -23,6 +24,7 @@ class Word: NSObject {
     kind = dictionary["kind"] as? String
     chapter = dictionary["chapter"] as? String
     audioURL = dictionary["audio_url"] as? String
+    audio = nil
     
     for spelling in (dictionary["spellings"] as? [String])! {
       spellings.append(spelling)
@@ -33,6 +35,10 @@ class Word: NSObject {
     for note in (dictionary["notes"] as? [String])! {
       notes.append(note)
     }
+  }
+  
+  func setAudioWithMP3(audioData: NSData) {
+    audio = audioData
   }
 
 }
