@@ -87,9 +87,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-japanize/AFNetworking.framework"
   install_framework "Pods-japanize/BWWalkthrough.framework"
   install_framework "Pods-japanize/ChameleonFramework.framework"
+  install_framework "Pods-japanize/MZAppearance.framework"
+  install_framework "Pods-japanize/MZFormSheetPresentationController.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-japanize/AFNetworking.framework"
   install_framework "Pods-japanize/BWWalkthrough.framework"
   install_framework "Pods-japanize/ChameleonFramework.framework"
+  install_framework "Pods-japanize/MZAppearance.framework"
+  install_framework "Pods-japanize/MZFormSheetPresentationController.framework"
 fi
