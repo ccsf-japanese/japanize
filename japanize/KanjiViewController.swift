@@ -65,9 +65,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
-        
     }
-    
+
     func undoButtonTapped() {
         if nextStrokeIndex > 0 {
             nextStrokeIndex -= 1
@@ -76,7 +75,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     func clearButtonTapped() {
         nextStrokeIndex = 0
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
