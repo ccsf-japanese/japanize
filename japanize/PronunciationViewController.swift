@@ -12,10 +12,10 @@ import AVFoundation
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
     @IBOutlet weak var wordLabel: UILabel! // make a button to grab new word
-    @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
     
+    @IBOutlet weak var hintTextButton: UIButton!
     @IBOutlet weak var recordButtonCenter: NSLayoutConstraint!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -37,7 +37,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hintLabel.hidden = true
+        hintTextButton.hidden = true
         setupRecorder()
         
         // Do any additional setup after loading the view.
@@ -201,34 +201,42 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     @IBAction func onHint(sender: AnyObject) {
         if hintTaps == 0 {
-            hintLabel.hidden = false
-            hintLabel.text = "Tap again For English"
+            hintTextButton.hidden = false
+            hintTextButton.setTitle("Tap again For English", forState: .Normal)
             hintTaps = 1
         } else if hintTaps == 1 {
-            hintLabel.text = englishHint
+            hintTextButton.setTitle(englishHint, forState: .Normal)
+            hintTextButton.hidden = false
             hintTaps = 2
         } else if hintTaps == 2 {
-            hintLabel.text = "Tap again For Romagi"
+            hintTextButton.setTitle("Tap again For Romagi", forState: .Normal)
+            hintTextButton.hidden = false
             hintTaps = 3
         } else if hintTaps == 3 {
-            hintLabel.text = romagiHint
+            hintTextButton.setTitle(romagiHint, forState: .Normal)
+            hintTextButton.hidden = false
             hintTaps = 4
         } else if hintTaps == 4 {
-            hintLabel.text = "Tap again to Hear word"
+            hintTextButton.setTitle("Tap again to Hear word", forState: .Normal)
+            hintTextButton.hidden = false
             hintTaps = 5
         } else if hintTaps == 5 {
-            hintLabel.hidden = true
+            hintTextButton.hidden = true
             if audioAsset != nil{
                 playAudioAsset(audioAsset!)
             }
-            hintTaps = 0
+            hintTaps = 1
         }
         
         
     }
     
+    @IBAction func onHintTextButton(sender: AnyObject) {
+        onHint(sender)
+    }
+    
     @IBAction func onWord(sender: AnyObject) {
-        hintLabel.hidden = true
+        hintTextButton.hidden = true
         hintTaps = 0
         loadWord()
         

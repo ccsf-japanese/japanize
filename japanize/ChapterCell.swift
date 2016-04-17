@@ -9,7 +9,10 @@
 import UIKit
 
 class ChapterCell: UITableViewCell {
+  
   var chapter: Chapter?
+  
+  @IBOutlet weak var collectionView: UICollectionView!
   
     override func awakeFromNib() {
         super.awakeFromNib()

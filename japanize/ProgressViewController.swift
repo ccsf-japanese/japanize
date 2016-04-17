@@ -71,6 +71,7 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCellWithIdentifier("ChapterCell") as! ChapterCell
         cell.chapter = book!.chapters[indexPath.section];
         cell.selectionStyle = .None
+        cell.collectionView.reloadData()
         return cell
     }
     
