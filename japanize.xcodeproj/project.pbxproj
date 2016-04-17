@@ -168,6 +168,7 @@
 		1DAFC23D1C927BA700F45F3A /* japanize */ = {
 			isa = PBXGroup;
 			children = (
+				61F7083C1CC163F9002873CC /* JapanizeClient.swift */,
 				61362E1D1CC1BAD100E1BE3E /* Models */,
 				1DAFC23E1C927BA700F45F3A /* AppDelegate.swift */,
 				68121CBD1CA0A008006CDB06 /* TabBarController.swift */,
@@ -180,7 +181,6 @@
 				1DAFC2451C927BA700F45F3A /* Assets.xcassets */,
 				1DAFC2471C927BA700F45F3A /* LaunchScreen.storyboard */,
 				1DAFC24A1C927BA700F45F3A /* Info.plist */,
-				61F7083C1CC163F9002873CC /* JapanizeClient.swift */,
 			);
 			path = japanize;
 			sourceTree = "<group>";

@@ -11,3 +11,12 @@ import UIKit
 class Word: NSObject {
 
 }
+
+/* var words: NSDictionary?
+  [audio: BOOL
+  audioURL: URL
+  kanji: String
+  hiragana: String
+  katakana: String
+  romaji: String?
+  english: String?]*/
