@@ -32,22 +32,33 @@ class KanjiView: UIView {
             path.lineWidth = 15.0
             path.stroke()
             
-            //test
+            
+            
             if i == nextStrokeIndex {
                 if let point = stroke.points.first {
-                    let radius: CGFloat = 5.0
-                    let origin = CGPoint(x: point.x - radius / 2.0, y: point.y - radius / 2.0)
-                    let outline = CGRect(origin: origin, size: CGSize(width: radius, height: radius))
-                    let circlePath = UIBezierPath(ovalInRect: outline)
-                    circlePath.applyTransform(kanjiTransform)
-                    UIColor.redColor().setStroke()
-                    circlePath.stroke()
+                    drawCircleAtPoint(point, color: UIColor.redColor(), transform: kanjiTransform)
                 }
+                if let point = stroke.points.last {
+                    drawCircleAtPoint(point, color: UIColor.blueColor(), transform: kanjiTransform)
+                }
+                
+                
             }
         }
     }
+    func drawCircleAtPoint(point: CGPoint, color: UIColor, transform: CGAffineTransform) {
+        let radius: CGFloat = 5.0
+        let origin = CGPoint(x: point.x - radius / 2.0, y: point.y - radius / 2.0)
+        let outline = CGRect(origin: origin, size: CGSize(width: radius, height: radius))
+        let circlePath = UIBezierPath(ovalInRect: outline)
+        circlePath.applyTransform(transform)
+        color.setStroke()
+        circlePath.stroke()
+    }
     
 }
+
+
 
 extension UIBezierPath {
     func addCurveToRelativePoint(endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint) {

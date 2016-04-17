@@ -7,5 +7,6 @@ target 'japanize' do
     pod 'AFNetworking'
     pod 'BWWalkthrough'
     pod 'ChameleonFramework/Swift'
+    pod 'MZFormSheetPresentationController'
 end
 

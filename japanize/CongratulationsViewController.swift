@@ -1,26 +1,29 @@
 //
-//  TabBarController.swift
+//  CongratulationsViewController.swift
 //  japanize
 //
-//  Created by Dylan Smith on 3/21/16.
+//  Created by eMobc SL on 16/04/16.
 //  Copyright © 2016 Codepath. All rights reserved.
 //
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class CongratulationsViewController: UIViewController {
 
+    @IBOutlet weak var score: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selectedIndex = 1
         
-        print(getScore())
-        print(incrementScore(5))
-        print(getScore())
-        
+        score.text = "\(getScore())"
+
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func onSkip(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

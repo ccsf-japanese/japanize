@@ -19,6 +19,9 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     @IBOutlet weak var kanjiView: KanjiView!
     @IBOutlet weak var drawKanjiView: DrawKanjiView!
     
+    let undoButton = UIButton(type: .System)
+    let clearButton = UIButton(type: .System)
+    
     var nextStrokeIndex = 0 {
         didSet {
             kanjiView.setNeedsDisplay()
@@ -38,13 +41,41 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        view.addSubview(undoButton)
+        view.addSubview(clearButton)
+        undoButton.setTitle("Undo", forState:.Normal)
+        clearButton.setTitle("Clear", forState:.Normal)
+        undoButton.titleLabel?.font = UIFont.systemFontOfSize(25)
+        clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
+        
+        undoButton.translatesAutoresizingMaskIntoConstraints = false
+        undoButton.addTarget(self, action: "undoButtonTapped", forControlEvents: .TouchUpInside)
+        
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
+        clearButton.addTarget(self, action: "clearButtonTapped", forControlEvents: .TouchUpInside)
+        
+        NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
+        NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: undoButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
+        
+        NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: clearButton, attribute: .Trailing, multiplier: 1.0, constant: 15.0).active = true
+        NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: clearButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
       
-        kanji = Kanji()
+        kanji = Kanji(fileName: "054a8")
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
     }
-    
+
+    func undoButtonTapped() {
+        if nextStrokeIndex > 0 {
+            nextStrokeIndex -= 1
+        }
+    }
+    func clearButtonTapped() {
+        nextStrokeIndex = 0
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

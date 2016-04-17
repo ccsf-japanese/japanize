@@ -16,6 +16,8 @@ class CustomPageViewController: UIViewController, BWWalkthroughPage {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        incrementScore(5);
     }
     
     func walkthroughDidScroll(position: CGFloat, offset: CGFloat) {
