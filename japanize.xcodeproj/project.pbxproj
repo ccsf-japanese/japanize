@@ -23,6 +23,7 @@
 		37540A711CA3B3B400A27833 /* DrawKanjiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37540A701CA3B3B400A27833 /* DrawKanjiView.swift */; };
 		376B5C261CB1CC88002B53F5 /* Kanji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5C251CB1CC88002B53F5 /* Kanji.swift */; };
 		376B5C281CB1CE5D002B53F5 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376B5C271CB1CE5D002B53F5 /* Stroke.swift */; };
+		37E117F41CC311E4005C8ED3 /* KanjiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E117F31CC311E4005C8ED3 /* KanjiSelector.swift */; };
 		37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73361C9A780F00079F14 /* KanjiView.swift */; };
 		37FD73391C9A788800079F14 /* KanjiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FD73381C9A788800079F14 /* KanjiViewController.swift */; };
 		37FD733B1C9A78EB00079F14 /* 054a8.svg in Resources */ = {isa = PBXBuildFile; fileRef = 37FD733A1C9A78EB00079F14 /* 054a8.svg */; };
@@ -84,6 +85,7 @@
 		37540A701CA3B3B400A27833 /* DrawKanjiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawKanjiView.swift; sourceTree = "<group>"; };
 		376B5C251CB1CC88002B53F5 /* Kanji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanji.swift; sourceTree = "<group>"; };
 		376B5C271CB1CE5D002B53F5 /* Stroke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		37E117F31CC311E4005C8ED3 /* KanjiSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiSelector.swift; sourceTree = "<group>"; };
 		37FD73361C9A780F00079F14 /* KanjiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiView.swift; sourceTree = "<group>"; };
 		37FD73381C9A788800079F14 /* KanjiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KanjiViewController.swift; sourceTree = "<group>"; };
 		37FD733A1C9A78EB00079F14 /* 054a8.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 054a8.svg; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				376B5C251CB1CC88002B53F5 /* Kanji.swift */,
 				37FD73361C9A780F00079F14 /* KanjiView.swift */,
 				37FD73381C9A788800079F14 /* KanjiViewController.swift */,
+				37E117F31CC311E4005C8ED3 /* KanjiSelector.swift */,
 			);
 			name = Kanji;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68FEA4701C9AB4C800E76D83 /* PronunciationViewController.swift in Sources */,
+				37E117F41CC311E4005C8ED3 /* KanjiSelector.swift in Sources */,
 				68FEA4771C9ACA0E00E76D83 /* Level.swift in Sources */,
 				37540A711CA3B3B400A27833 /* DrawKanjiView.swift in Sources */,
 				1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */,
