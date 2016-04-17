@@ -612,7 +612,7 @@
                                 <rect key="frame" x="55" y="410" width="120" height="115"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAN-Iw-fRC">
-                                <rect key="frame" x="196" y="425" width="72" height="68"/>
+                                <rect key="frame" x="183" y="425" width="122" height="68"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="57"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -699,7 +699,7 @@
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pfU-5z-Z7N"/>
+        <segue reference="Y4J-8V-qzm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>
