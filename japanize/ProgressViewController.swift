@@ -16,6 +16,8 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        showScore(self)
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
