@@ -60,9 +60,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         
         NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: clearButton, attribute: .Trailing, multiplier: 1.0, constant: 15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: clearButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
-        
       
-        kanji = Kanji()
+        kanji = Kanji(fileName: "054a8")
         kanjiView.dataSource = self
         drawKanjiView.dataSource = self
         drawKanjiView.delegate = self
@@ -74,13 +73,9 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
             nextStrokeIndex -= 1
         }
     }
-    
-    
     func clearButtonTapped() {
         nextStrokeIndex = 0
-
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
