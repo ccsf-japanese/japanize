@@ -95,12 +95,8 @@ class DrawKanjiView: UIView {
             
                 //if the distance between current point and point on stroke is greater than 10, not update last point
                 if checkDistance(currentPoint, sPoint: transformedPoint) {
-                    if i+1 != points.count {
-                        for j in i+1..<points.count {
-                            if touchedPoints.contains(NSStringFromCGPoint(points[j])) {
-                                return
-                            }
-                        }
+                    if i == 0 && !touchedPoints.isEmpty {
+                        return
                     }
                     touchedPoints.insert(NSStringFromCGPoint(point))
                 }
