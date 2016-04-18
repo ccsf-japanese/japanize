@@ -36,6 +36,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     }
     var character: Character? {
         didSet {
+            nextStrokeIndex = 0
             kanjiView.setNeedsDisplay()
         }
     }
@@ -112,7 +113,6 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         if let strokes = character!.strokes {
           if nextStrokeIndex == strokes.count {
             setNewRandomCharacter()
-            nextStrokeIndex = 0
           }
         }
     }
