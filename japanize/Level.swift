@@ -14,7 +14,7 @@ class Level: NSObject {
   var name: String?
   var chapter: Int?
   var characters: [String] = []
-  var words: [Word] = []
+  var words: [String] = []
   
   init(dictionary: NSDictionary) {
     id = dictionary["id"] as? String
@@ -23,6 +23,9 @@ class Level: NSObject {
     
     for character in (dictionary["characters"] as? [String])! {
       characters.append(character)
+    }
+    for word in (dictionary["words"] as? [String])! {
+      words.append(word)
     }
   }
   
