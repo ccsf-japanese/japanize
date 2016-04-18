@@ -30,6 +30,8 @@ class KanjiView: UIView {
             let path = stroke.path
             path.applyTransform(kanjiTransform)
             path.lineWidth = 15.0
+            path.lineCapStyle = .Round
+            path.lineJoinStyle = .Round
             path.stroke()
             
             
