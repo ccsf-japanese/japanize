@@ -123,9 +123,21 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
         recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        playRecButton.setTitle("聴く", forState: .Normal)
         playAssetButton.setTitle("聴く", forState: .Normal)
         playAssetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        print(playRecButton.currentTitleColor)
+        if playRecButton.currentTitleColor == UIColor.greenColor(){
+            
+            preparePlayer()
+            soundPlayer.play()
+        }
+//        TODO: Play both files which ever button is pushed (currently plays recorded audio after which ever)
+        if playAssetButton.currentTitleColor == UIColor.grayColor(){
+            assetAudioPlayer.play()
+        }
+        playRecButton.setTitle("聴く", forState: .Normal)
+        playRecButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
@@ -137,7 +149,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         self.recordButtonCenter.active = false
         self.playAssetButton.hidden = false
         self.playAssetButton.enabled = true
-        self.playAssetButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+//        self.playAssetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        self.playRecButton.enabled = true
+        self.playRecButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
         recordButton.setTitle("話す", forState: .Normal)
     }
     
@@ -166,7 +180,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             sender.setTitle("ストップ", forState: .Normal)
             sender.setTitleColor(UIColor.redColor(), forState: .Normal)
             self.playAssetButton.enabled = false
+            self.playRecButton.enabled = false
             self.playAssetButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+            self.playRecButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             }
         } else {
                 soundRecorder.stop()
@@ -206,7 +222,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 playAudioAsset(audioAsset!)
             }
         } else {
-            soundPlayer.stop()
+            assetAudioPlayer.stop()
             recordButton.enabled = true
             recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
             sender.setTitle("聴く", forState: .Normal)
@@ -214,24 +230,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     
-    @IBAction func onPlay(sender: AnyObject) {
-        if (sender.titleLabel!!.text == "聴く"){
-            recordButton.enabled = false
-            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-            sender.setTitle("ストップ", forState: .Normal)
-            if audioAsset != nil{
-             playAudioAsset(audioAsset!)
-            }
-            preparePlayer()
-            soundPlayer.play()
-        } else {
-            soundPlayer.stop()
-            recordButton.enabled = true
-            recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            sender.setTitle("聴く", forState: .Normal)
-            
-        }
-    }
     
     
     @IBAction func onHint(sender: AnyObject) {
