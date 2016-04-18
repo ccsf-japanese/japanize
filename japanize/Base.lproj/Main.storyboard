@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-0H-Djk" id="I8k-rr-e3C">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sce-Xw-9nz">
@@ -40,7 +40,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="zi8-fd-8IQ" customClass="LevelCell" customModule="japanize" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="10" width="120" height="150"/>
+                                                            <rect key="frame" x="5" y="9.5" width="120" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
@@ -617,13 +617,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4MG-xm-VIB">
-                                <rect key="frame" x="0.0" y="0.0" width="110" height="64"/>
-                                <state key="normal" title="Close" image="close"/>
-                                <connections>
-                                    <action selector="onClose:" destination="R8r-97-bWR" eventType="touchUpInside" id="Tjt-e0-5Vz"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dylan_profile" translatesAutoresizingMaskIntoConstraints="NO" id="7P5-in-6h3">
                                 <rect key="frame" x="121" y="84" width="78" height="78"/>
                                 <constraints>
@@ -777,7 +770,6 @@
     </scenes>
     <resources>
         <image name="brain" width="32" height="32"/>
-        <image name="close" width="64" height="64"/>
         <image name="dylan_profile" width="177" height="177"/>
         <image name="kanji64" width="32" height="32"/>
         <image name="medal" width="170" height="170"/>
