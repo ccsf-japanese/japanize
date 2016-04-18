@@ -33,18 +33,15 @@ class KanjiView: UIView {
             path.lineCapStyle = .Round
             path.lineJoinStyle = .Round
             path.stroke()
-            
-            
-            
-            if i == nextStrokeIndex {
-                if let point = stroke.points.first {
-                    drawCircleAtPoint(point, color: UIColor.greenColor(), transform: kanjiTransform)
-                }
-                if let point = stroke.points.last {
-                    drawCircleAtPoint(point, color: UIColor.redColor(), transform: kanjiTransform)
-                }
-                
-                
+        }
+        
+        if nextStrokeIndex < strokes.count {
+            let stroke = strokes[nextStrokeIndex]
+            if let point = stroke.points.first {
+                drawCircleAtPoint(point, color: UIColor.greenColor(), transform: kanjiTransform)
+            }
+            if let point = stroke.points.last {
+                drawCircleAtPoint(point, color: UIColor.redColor(), transform: kanjiTransform)
             }
         }
     }
