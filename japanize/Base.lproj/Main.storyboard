@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Japanize-->
@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-0H-Djk" id="I8k-rr-e3C">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sce-Xw-9nz">
@@ -39,7 +39,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="zi8-fd-8IQ" customClass="LevelCell" customModule="japanize" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="9.5" width="120" height="150"/>
+                                                            <rect key="frame" x="5" y="10" width="120" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
@@ -282,7 +282,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="220"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lL-Fe-hx2" userLabel="hintButton">
-                                        <rect key="frame" x="290" y="12" width="22" height="22"/>
+                                        <rect key="frame" x="149" y="190" width="22" height="22"/>
                                         <connections>
                                             <action selector="onHint:" destination="VMh-EN-7kr" eventType="touchUpInside" id="wgu-bS-nYh"/>
                                         </connections>
@@ -309,15 +309,26 @@
                                             <action selector="onHintTextButton:" destination="VMh-EN-7kr" eventType="touchUpInside" id="g3A-Vg-m2p"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
+                                        <rect key="frame" x="222" y="99" width="16" height="22"/>
+                                        <state key="normal" image="speaker">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onAssetPlay:" destination="VMh-EN-7kr" eventType="touchUpInside" id="Clx-fy-782"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="1lL-Fe-hx2" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="2I5-i5-btU"/>
                                     <constraint firstItem="t9r-O9-aU8" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="3sH-A9-aNs"/>
                                     <constraint firstItem="1lL-Fe-hx2" firstAttribute="top" secondItem="tgY-eT-H2I" secondAttribute="top" constant="12" id="8YQ-Xh-CMA"/>
                                     <constraint firstItem="t9r-O9-aU8" firstAttribute="height" secondItem="E1D-6W-8ad" secondAttribute="height" id="Aho-b2-KKA"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="DnX-rY-2VG"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="bottom" secondItem="t9r-O9-aU8" secondAttribute="bottom" id="Dyn-Bq-yES"/>
                                     <constraint firstItem="t9r-O9-aU8" firstAttribute="width" secondItem="E1D-6W-8ad" secondAttribute="width" id="EYZ-Ji-ugL"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="centerY" secondItem="t9r-O9-aU8" secondAttribute="centerY" id="IAe-l3-GvD"/>
                                     <constraint firstAttribute="trailing" secondItem="VqU-8K-Jgz" secondAttribute="trailing" constant="4" id="Kfg-BJ-6qp"/>
                                     <constraint firstItem="VqU-8K-Jgz" firstAttribute="leading" secondItem="tgY-eT-H2I" secondAttribute="leading" constant="4" id="MDV-CA-vJe"/>
                                     <constraint firstItem="VqU-8K-Jgz" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="PMC-Ji-5h6"/>
@@ -325,6 +336,8 @@
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="centerY" secondItem="tgY-eT-H2I" secondAttribute="centerY" id="eCe-Ne-Bws"/>
                                     <constraint firstItem="VqU-8K-Jgz" firstAttribute="top" secondItem="t9r-O9-aU8" secondAttribute="bottom" constant="20" id="eVy-gg-AQ4"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="leading" secondItem="t9r-O9-aU8" secondAttribute="leading" id="fPg-80-RvY"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="t9r-O9-aU8" secondAttribute="trailing" constant="8" id="jGK-qa-qrH"/>
+                                    <constraint firstAttribute="bottom" secondItem="1lL-Fe-hx2" secondAttribute="bottom" constant="8" id="mb0-jb-Ccg"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="trailing" secondItem="t9r-O9-aU8" secondAttribute="trailing" id="pWO-BY-8Id"/>
                                     <constraint firstAttribute="trailing" secondItem="1lL-Fe-hx2" secondAttribute="trailing" constant="8" id="zJQ-8h-FW2"/>
                                 </constraints>
@@ -332,6 +345,8 @@
                                     <mask key="constraints">
                                         <exclude reference="Aho-b2-KKA"/>
                                         <exclude reference="EYZ-Ji-ugL"/>
+                                        <exclude reference="8YQ-Xh-CMA"/>
+                                        <exclude reference="zJQ-8h-FW2"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -353,17 +368,8 @@
                                             <action selector="onRecord:" destination="VMh-EN-7kr" eventType="touchUpInside" id="F0n-S0-k0Q"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
-                                        <rect key="frame" x="0.0" y="117" width="160" height="118"/>
-                                        <state key="normal" title="聴く" image="speaker">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onAssetPlay:" destination="VMh-EN-7kr" eventType="touchUpInside" id="Clx-fy-782"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-9e-MGa">
-                                        <rect key="frame" x="160" y="117" width="160" height="118"/>
+                                        <rect key="frame" x="0.0" y="117" width="320" height="118"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="bSb-c5-XbO"/>
                                             <constraint firstAttribute="height" constant="118" id="j9T-dm-UPl"/>
@@ -385,32 +391,24 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="3wl-yh-vIg"/>
-                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="leading" secondItem="bbE-dK-wYc" secondAttribute="trailing" id="4z2-Kd-Jbu"/>
-                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="leading" secondItem="bbE-dK-wYc" secondAttribute="trailing" id="7vq-Vr-qyk"/>
-                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="87S-2V-YR7"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="8oV-8b-Ird"/>
+                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="9WK-WF-QnX"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" priority="750" id="9dv-8F-bH9"/>
-                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="EfQ-z0-cPI"/>
-                                    <constraint firstAttribute="bottom" secondItem="bbE-dK-wYc" secondAttribute="bottom" id="IwZ-im-NfT"/>
+                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="F7Z-Np-MEJ"/>
                                     <constraint firstAttribute="trailing" secondItem="8HP-9e-MGa" secondAttribute="trailing" id="KCt-ce-45c"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="Lew-Vg-RDm"/>
                                     <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="NOZ-Ac-XpK"/>
-                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="width" secondItem="bbE-dK-wYc" secondAttribute="width" id="TFP-Vi-dPk"/>
-                                    <constraint firstAttribute="trailing" secondItem="bbE-dK-wYc" secondAttribute="trailing" constant="160" id="Tnx-2d-80P"/>
+                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="UPx-Z8-RbG"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="Z5G-Vk-TiJ"/>
                                     <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="ha1-tB-dYL"/>
-                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="lW8-md-F1X"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="mti-QB-sjC"/>
                                     <constraint firstAttribute="bottom" secondItem="8HP-9e-MGa" secondAttribute="bottom" id="sOU-iL-hGG"/>
-                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="height" secondItem="bbE-dK-wYc" secondAttribute="height" id="weS-PY-OOk"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerX" secondItem="nbj-gN-MXo" secondAttribute="centerX" id="xTg-XJ-F6G"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Lew-Vg-RDm"/>
-                                        <exclude reference="EfQ-z0-cPI"/>
-                                        <exclude reference="Tnx-2d-80P"/>
-                                        <exclude reference="7vq-Vr-qyk"/>
+                                        <exclude reference="F7Z-Np-MEJ"/>
                                         <exclude reference="NOZ-Ac-XpK"/>
                                         <exclude reference="ha1-tB-dYL"/>
                                     </mask>
@@ -690,14 +688,14 @@
     </scenes>
     <resources>
         <image name="brain" width="32" height="32"/>
-        <image name="close" width="80" height="80"/>
+        <image name="close" width="64" height="64"/>
         <image name="kanji64" width="32" height="32"/>
         <image name="mic" width="64" height="64"/>
-        <image name="playArrow" width="32" height="32"/>
+        <image name="playArrow" width="42" height="42"/>
         <image name="profile" width="160" height="148"/>
         <image name="profile_small" width="16" height="15"/>
         <image name="sound" width="32" height="32"/>
-        <image name="speaker" width="44" height="42"/>
+        <image name="speaker" width="16" height="16"/>
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
