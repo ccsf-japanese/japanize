@@ -12,21 +12,22 @@ import ChameleonFramework
 
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     
-    @IBOutlet weak var wordLabel: UILabel! // make a button to grab new word
+    @IBOutlet weak var wordTextButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var playAssetButton: UIButton!
     @IBOutlet weak var playRecButton: UIButton!
     
     @IBOutlet weak var hintTextButton: UIButton!
-    @IBOutlet weak var recordButtonCenter: NSLayoutConstraint!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
-    
-    var soundRecorder: AVAudioRecorder!
-    var soundPlayer: AVAudioPlayer!
-    var assetAudioPlayer: AVAudioPlayer!
+    @IBOutlet weak var hintRomajiButton: UIButton!
+    @IBOutlet weak var hintMeaningButton: UIButton!
+    @IBOutlet weak var playWordButton: UIButton!
 
-    var hintTaps: Int! = 0
+    @IBOutlet weak var recordButtonCenter: NSLayoutConstraint!
+    
+    var voiceRecorder: AVAudioRecorder!
+    var voicePlayer: AVAudioPlayer!
+    var audioPlayer: AVAudioPlayer!
+
+    var newVoiceRecording: Bool = false
     let tempAudioFile = "japanize.caf"
     
     var word: Word?
@@ -34,9 +35,20 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hintTextButton.hidden = true
-        setupRecorder()
         
+        hintTextButton.hidden = true
+//        hintMeaningButton.hidden = true
+        hintRomajiButton.hidden = true
+        playWordButton.hidden = true
+        hintMeaningButton.setTitle(String(""), forState: .Normal)
+
+        
+        recordButtonCenter.active = true
+        wordTextButton.setTitle("日本語", forState: .Disabled)
+
+        setupRecorder()
+//                recordButton.setTitleColor(UIColor.grayColor(), forState: .Disabled)
+
         // Do any additional setup after loading the view.
         setNewRandomWord()
     }
@@ -69,13 +81,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try soundRecorder = AVAudioRecorder(URL: self.getFileURL(), settings: recordSettings)
-            soundRecorder.delegate = self
-            soundRecorder.prepareToRecord()
+            try voiceRecorder = AVAudioRecorder(URL: self.getFileURL(), settings: recordSettings)
+            voiceRecorder.delegate = self
+            voiceRecorder.prepareToRecord()
         } catch let error1 as NSError {
             error = error1
             print("ERROR: setupRecorder")
-            soundRecorder = nil
+            voiceRecorder = nil
         }
         if let err = error {
             print("ERROR: setupRecorder AVAudioRecorder: \(err.localizedDescription)")
@@ -98,32 +110,32 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         do {
             try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try! AVAudioSession.sharedInstance().setActive(true)
-            soundPlayer = try AVAudioPlayer(contentsOfURL: soundRecorder.url, fileTypeHint: AVFileTypeCoreAudioFormat)
+            voicePlayer = try AVAudioPlayer(contentsOfURL: voiceRecorder.url, fileTypeHint: AVFileTypeCoreAudioFormat)
         } catch let error1 as NSError {
             error = error1
             print("ERROR: preparePlayer")
-            soundPlayer = nil
+            voicePlayer = nil
         }
         if let err = error {
             print("ERROR: preparePlayer AVAudioPlayer: \(err.localizedDescription)")
         } else {
-            soundPlayer.delegate = self
-            soundPlayer.prepareToPlay()
-            soundPlayer.volume = 1.0
+            voicePlayer.delegate = self
+            voicePlayer.prepareToPlay()
+            voicePlayer.volume = 1.0
         }
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
-        recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        playAssetButton.setTitle(".", forState: .Normal)
-        playAssetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        print(playRecButton.currentTitleColor)
-        if playRecButton.currentTitleColor == UIColor.greenColor(){
-            assetAudioPlayer.play()
+        playWordButton.setTitle(".", forState: .Normal)
+        if newVoiceRecording {
+            if let word = word {
+                wordPlayer(word)
+            }
+            newVoiceRecording = false
         }
         playRecButton.setTitle("聴く", forState: .Normal)
-        playRecButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        playRecButton.enabled = true
 
     }
     
@@ -134,10 +146,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         self.recordButtonCenter.active = false
-        self.playAssetButton.hidden = false
-        self.playAssetButton.enabled = true
         self.playRecButton.enabled = true
-        self.playRecButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
+        newVoiceRecording = true
         recordButton.setTitle("話す", forState: .Normal)
     }
     
@@ -154,24 +164,22 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 try audioSession.setActive(true)
                 setupRecorder()
                 print(">>> Start recording")
-                soundRecorder.record()
+                voiceRecorder.record()
             } catch let error1 as NSError {
                 error = error1
                 print("ERROR: onRecord")
-                soundRecorder = nil
+                voiceRecorder = nil
             }
             if let err = error {
                 print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
             } else {
             sender.setTitle("ストップ", forState: .Normal)
-            sender.setTitleColor(UIColor.redColor(), forState: .Normal)
-            self.playAssetButton.enabled = false
-            self.playRecButton.enabled = false
-            self.playAssetButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-            self.playRecButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+//            sender.setTitleColor(UIColor.redColor(), forState: .Normal)
+//            self.playRecButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+                playRecButton.enabled = false
             }
         } else {
-                soundRecorder.stop()
+                voiceRecorder.stop()
             do{
                 try audioSession.setActive(false)
                 print(">>> audioSession.setActivity(false)")
@@ -179,7 +187,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 print("ERROR: onRecord setActive(false)")
             }
             sender.setTitle("話す", forState: .Normal)
-            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            playRecButton.enabled = true
+//            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
             
         }
     }
@@ -187,31 +196,32 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBAction func onRecPlay(sender: AnyObject) {
         if (sender.titleLabel!!.text == "聴く"){
             recordButton.enabled = false
-            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+//            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+            recordButton.enabled = false
             sender.setTitle("ストップ", forState: .Normal)
             preparePlayer()
-            soundPlayer.play()
+            voicePlayer.play()
         } else {
-            soundPlayer.stop()
+            voicePlayer.stop()
             recordButton.enabled = true
-            recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+//            recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+            recordButton.enabled = true
             sender.setTitle("聴く", forState: .Normal)
             
         }
     }
-    @IBAction func onAssetPlay(sender: AnyObject) {
+    @IBAction func onWordPlay(sender: AnyObject) {
         if (sender.titleLabel!!.text == "."){
-            recordButton.enabled = false
-            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-            sender.setTitle("", forState: .Normal)
+            hintTextButton.setTitle(word?.romaji, forState: .Normal)
+            sender.setTitle(",", forState: .Normal)
             if let word = word {
-                playWord(word)
+                wordPlayer(word)
             }
         } else {
-            assetAudioPlayer.stop()
-            recordButton.enabled = true
-            recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            sender.setTitle("聴く", forState: .Normal)
+            if audioPlayer.playing {
+                audioPlayer.stop()
+            }
+            sender.setTitle(".", forState: .Normal)
             
         }
     }
@@ -219,50 +229,50 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     
     @IBAction func onHint(sender: AnyObject) {
-        if hintTaps == 0 {
-            hintTextButton.hidden = false
-            hintTextButton.setTitle("Tap again For English", forState: .Normal)
-            hintTaps = 1
-        } else if hintTaps == 1 {
+        if hintTextButton.hidden {
             hintTextButton.setTitle(word?.meanings[0], forState: .Normal)
             hintTextButton.hidden = false
-            hintTaps = 2
-        } else if hintTaps == 2 {
-            hintTextButton.setTitle("Tap again For Romaji", forState: .Normal)
-            hintTextButton.hidden = false
-            hintTaps = 3
-        } else if hintTaps == 3 {
-            hintTextButton.setTitle(word?.romaji, forState: .Normal)
-            hintTextButton.hidden = false
-            hintTaps = 4
-        } else if hintTaps == 4 {
-            hintTextButton.setTitle("Tap again to Hear word", forState: .Normal)
-            hintTextButton.hidden = false
-            hintTaps = 5
-        } else if hintTaps == 5 {
+            hintMeaningButton.hidden = false
+            hintRomajiButton.hidden = false
+            playWordButton.hidden = false
+        }else{
             hintTextButton.hidden = true
-            if let word = word {
-              playWord(word)
-            }
-            hintTaps = 1
+            hintMeaningButton.hidden = true
+            hintRomajiButton.hidden = true
+            playWordButton.hidden = true
+
         }
         
         
     }
     
     @IBAction func onHintTextButton(sender: AnyObject) {
-        onHint(sender)
+//        onHint(sender)
     }
     
-    @IBAction func onWord(sender: AnyObject) {
-        hintTextButton.hidden = true
-        hintTaps = 0
+    @IBAction func onWordTextButton(sender: AnyObject) {
         setNewRandomWord()
     }
+    @IBAction func onRomaji(sender: AnyObject) {
+        print("onRomaji")
+        hintTextButton.setTitle(word?.romaji, forState: .Normal)
+    }
+    @IBAction func onTranslate(sender: AnyObject) {
+        if let meanings = word?.meanings{
+            if meanings.count > 1 {
+                hintMeaningButton.setTitle(String(meanings.count), forState: .Normal)
+            }else{
+            hintMeaningButton.setTitle(String(""), forState: .Normal)
+            hintTextButton.setTitle(meanings[0], forState: .Normal)
+            }
+        }
+    }
+   
   
   func setNewRandomWord() {
     word = nil
-    wordLabel.text = ""
+    wordTextButton.enabled = false
+    print("fetching Word")
     // TODO: Consider refactoring nested code, adding error handling
     JapanizeClient.sharedInstance.book( { (book, error) -> () in
       if let book = book {
@@ -285,7 +295,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                   word.setAudioWithMP3(audioData)
                   print("Random word ready!")
                   self.word = word
-                  self.wordLabel.text = word.spellings.last
+                  self.wordTextButton.setTitle(word.spellings.last, forState: .Normal)
+                  self.wordTextButton.enabled = true
                 } else {
                   self.setNewRandomWord()
                 }
@@ -298,24 +309,24 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
       }
     })
   }
-     func playWord(word: Word) {
+     func wordPlayer(word: Word) {
         var error: NSError?
         if let audioData = word.audio {
             do {
                 try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
                 try! AVAudioSession.sharedInstance().setActive(true)
-                try assetAudioPlayer = AVAudioPlayer(data: audioData, fileTypeHint: AVFileTypeMPEGLayer3)
+                try audioPlayer = AVAudioPlayer(data: audioData, fileTypeHint: AVFileTypeMPEGLayer3)
             } catch let error1 as NSError {
                 error = error1
-                soundPlayer = nil
+                audioPlayer = nil
             }
             if let err = error {
                 print("ERROR: playWord AVAudioPlayer: \(err.localizedDescription)")
             } else {
-                assetAudioPlayer.delegate = self
-                assetAudioPlayer.prepareToPlay()
-                assetAudioPlayer.volume = 1.0
-                assetAudioPlayer.play()
+                audioPlayer.delegate = self
+                audioPlayer.prepareToPlay()
+                audioPlayer.volume = 1.0
+                audioPlayer.play()
                 
             }
         }
