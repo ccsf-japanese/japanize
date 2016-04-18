@@ -8,11 +8,18 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var score: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         score.text = "\(getScore())"
     }
 
@@ -25,6 +32,17 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    return tableView.dequeueReusableCellWithIdentifier("MedalCell", forIndexPath: indexPath)
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Achievement"
+    }
 
     /*
     // MARK: - Navigation
@@ -35,5 +53,12 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillLayoutSubviews() {
+        let radius = profileImageView.frame.width / 2
+        profileImageView.layer.cornerRadius = radius
+        profileImageView.clipsToBounds = true
+    }
 
+    
 }
