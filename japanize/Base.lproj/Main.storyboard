@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -281,8 +282,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-eT-H2I" userLabel="Top View">
                                 <rect key="frame" x="0.0" y="64" width="320" height="220"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lL-Fe-hx2" userLabel="hintButton">
-                                        <rect key="frame" x="149" y="190" width="22" height="22"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1lL-Fe-hx2" userLabel="hintButton">
+                                        <rect key="frame" x="285" y="188" width="32" height="32"/>
+                                        <state key="normal" image="search"/>
                                         <connections>
                                             <action selector="onHint:" destination="VMh-EN-7kr" eventType="touchUpInside" id="wgu-bS-nYh"/>
                                         </connections>
@@ -309,42 +311,58 @@
                                             <action selector="onHintTextButton:" destination="VMh-EN-7kr" eventType="touchUpInside" id="g3A-Vg-m2p"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
-                                        <rect key="frame" x="222" y="99" width="16" height="22"/>
-                                        <state key="normal" image="speaker">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
+                                        <rect key="frame" x="201" y="187" width="21" height="18"/>
+                                        <state key="normal" title="." image="speaker">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="onAssetPlay:" destination="VMh-EN-7kr" eventType="touchUpInside" id="Clx-fy-782"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSK-eY-0Dn">
+                                        <rect key="frame" x="135" y="176" width="50" height="40"/>
+                                        <state key="normal" title="English"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk3-48-ocR">
+                                        <rect key="frame" x="85" y="181" width="42" height="30"/>
+                                        <state key="normal" title="romaji"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="1lL-Fe-hx2" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="2I5-i5-btU"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="centerY" secondItem="pk3-48-ocR" secondAttribute="centerY" id="1dA-ir-XZX"/>
+                                    <constraint firstItem="1lL-Fe-hx2" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" constant="141" id="2I5-i5-btU"/>
                                     <constraint firstItem="t9r-O9-aU8" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="3sH-A9-aNs"/>
+                                    <constraint firstAttribute="bottom" secondItem="eSK-eY-0Dn" secondAttribute="bottom" constant="4" id="6Ab-sp-DO8"/>
                                     <constraint firstItem="1lL-Fe-hx2" firstAttribute="top" secondItem="tgY-eT-H2I" secondAttribute="top" constant="12" id="8YQ-Xh-CMA"/>
+                                    <constraint firstItem="eSK-eY-0Dn" firstAttribute="leading" secondItem="pk3-48-ocR" secondAttribute="trailing" constant="8" id="9Hr-8p-aDO"/>
                                     <constraint firstItem="t9r-O9-aU8" firstAttribute="height" secondItem="E1D-6W-8ad" secondAttribute="height" id="Aho-b2-KKA"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="DnX-rY-2VG"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="bottom" secondItem="t9r-O9-aU8" secondAttribute="bottom" id="Dyn-Bq-yES"/>
                                     <constraint firstItem="t9r-O9-aU8" firstAttribute="width" secondItem="E1D-6W-8ad" secondAttribute="width" id="EYZ-Ji-ugL"/>
-                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="centerY" secondItem="t9r-O9-aU8" secondAttribute="centerY" id="IAe-l3-GvD"/>
+                                    <constraint firstItem="eSK-eY-0Dn" firstAttribute="centerY" secondItem="pk3-48-ocR" secondAttribute="centerY" id="Iwv-dR-jAz"/>
                                     <constraint firstAttribute="trailing" secondItem="VqU-8K-Jgz" secondAttribute="trailing" constant="4" id="Kfg-BJ-6qp"/>
                                     <constraint firstItem="VqU-8K-Jgz" firstAttribute="leading" secondItem="tgY-eT-H2I" secondAttribute="leading" constant="4" id="MDV-CA-vJe"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="centerY" secondItem="1lL-Fe-hx2" secondAttribute="centerY" constant="-8" id="NPd-MO-Sm6"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="1lL-Fe-hx2" secondAttribute="trailing" constant="-116" id="P44-Bd-rlv"/>
                                     <constraint firstItem="VqU-8K-Jgz" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="PMC-Ji-5h6"/>
+                                    <constraint firstItem="t9r-O9-aU8" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="UkF-DZ-vTa"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="top" secondItem="t9r-O9-aU8" secondAttribute="top" id="eBk-2o-cwZ"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="centerY" secondItem="tgY-eT-H2I" secondAttribute="centerY" id="eCe-Ne-Bws"/>
                                     <constraint firstItem="VqU-8K-Jgz" firstAttribute="top" secondItem="t9r-O9-aU8" secondAttribute="bottom" constant="20" id="eVy-gg-AQ4"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="leading" secondItem="t9r-O9-aU8" secondAttribute="leading" id="fPg-80-RvY"/>
-                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="t9r-O9-aU8" secondAttribute="trailing" constant="8" id="jGK-qa-qrH"/>
-                                    <constraint firstAttribute="bottom" secondItem="1lL-Fe-hx2" secondAttribute="bottom" constant="8" id="mb0-jb-Ccg"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="t9r-O9-aU8" secondAttribute="trailing" constant="-16" id="jGK-qa-qrH"/>
+                                    <constraint firstAttribute="bottom" secondItem="1lL-Fe-hx2" secondAttribute="bottom" id="mb0-jb-Ccg"/>
                                     <constraint firstItem="E1D-6W-8ad" firstAttribute="trailing" secondItem="t9r-O9-aU8" secondAttribute="trailing" id="pWO-BY-8Id"/>
+                                    <constraint firstItem="eSK-eY-0Dn" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="pdJ-1f-wmS"/>
                                     <constraint firstAttribute="trailing" secondItem="1lL-Fe-hx2" secondAttribute="trailing" constant="8" id="zJQ-8h-FW2"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Aho-b2-KKA"/>
                                         <exclude reference="EYZ-Ji-ugL"/>
+                                        <exclude reference="jGK-qa-qrH"/>
                                         <exclude reference="8YQ-Xh-CMA"/>
                                         <exclude reference="zJQ-8h-FW2"/>
                                     </mask>
@@ -653,10 +671,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedalCell" id="MMs-D6-Nfc">
-                                        <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MMs-D6-Nfc" id="9yg-G2-TDi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="medal" translatesAutoresizingMaskIntoConstraints="NO" id="Hft-56-6KG">
@@ -667,7 +685,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanji Star: 10 Kanjis Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jea-bJ-kGt">
-                                                    <rect key="frame" x="59" y="11.5" width="246" height="21"/>
+                                                    <rect key="frame" x="59" y="12" width="246" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -766,6 +784,8 @@
         <image name="mic" width="64" height="64"/>
         <image name="playArrow" width="42" height="42"/>
         <image name="profile_small" width="16" height="15"/>
+        <image name="search" width="32" height="32"/>
+        <image name="sound" width="32" height="32"/>
         <image name="speaker" width="16" height="16"/>
         <image name="trophy" width="120" height="115"/>
     </resources>

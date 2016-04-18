@@ -116,16 +116,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
         recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        playAssetButton.setTitle("聴く", forState: .Normal)
+        playAssetButton.setTitle(".", forState: .Normal)
         playAssetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         print(playRecButton.currentTitleColor)
         if playRecButton.currentTitleColor == UIColor.greenColor(){
-            
-            preparePlayer()
-            soundPlayer.play()
-        }
-//        TODO: Play both files which ever button is pushed (currently plays recorded audio after which ever)
-        if playAssetButton.currentTitleColor == UIColor.grayColor(){
             assetAudioPlayer.play()
         }
         playRecButton.setTitle("聴く", forState: .Normal)
@@ -142,7 +136,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         self.recordButtonCenter.active = false
         self.playAssetButton.hidden = false
         self.playAssetButton.enabled = true
-//        self.playAssetButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         self.playRecButton.enabled = true
         self.playRecButton.setTitleColor(UIColor.greenColor(), forState: .Normal)
         recordButton.setTitle("話す", forState: .Normal)
@@ -207,10 +200,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     @IBAction func onAssetPlay(sender: AnyObject) {
-        if (sender.titleLabel!!.text == "聴く"){
+        if (sender.titleLabel!!.text == "."){
             recordButton.enabled = false
             recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-            sender.setTitle("ストップ", forState: .Normal)
+            sender.setTitle("", forState: .Normal)
             if let word = word {
                 playWord(word)
             }
