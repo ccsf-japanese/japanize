@@ -268,6 +268,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
   
   func setNewRandomWord() {
+    self.wordLabel.text = ""
     // TODO: Consider refactoring nested code, adding error handling
     JapanizeClient.sharedInstance.book( { (book, error) -> () in
       if let book = book {
