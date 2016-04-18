@@ -11,7 +11,8 @@ import UIKit
 class Word: NSObject {
   
   var id: String?
-  var kind: String?
+  var category: String?
+  var subcategory: String?
   var chapter: String?
   var audioURL: String?
   var audio: NSData?
@@ -21,7 +22,8 @@ class Word: NSObject {
   
   init(dictionary: NSDictionary) {
     id = dictionary["id"] as? String
-    kind = dictionary["kind"] as? String
+    category = dictionary["category"] as? String
+    subcategory = dictionary["subcategory"] as? String
     chapter = dictionary["chapter"] as? String
     audioURL = dictionary["audio_url"] as? String
     audio = nil
