@@ -17,7 +17,7 @@ The following **optional** features are implemented:
 - [ ] Ranking and leaderboards
 - [X] On first load a tutorial to show off features and how to use the app
 - [ ] Voice recognition to check pronunciation
-- [ ] Word practice with random generated romanji 
+- [ ] Word practice with random generated romaji
 
 ## Mockups
 
@@ -85,7 +85,7 @@ The data schema is documented in the API in every end-point. Basically we have:
     "description": "Practice Kanji first character",
     "meaning_english": "Hello",
     "meaning_hiragana": "仮",
-    "meaning_romanji": "仮",
+    "meaning_romaji": "仮",
     "score": 5
   }
 ]

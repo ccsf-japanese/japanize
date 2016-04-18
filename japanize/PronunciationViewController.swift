@@ -29,12 +29,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     var hintTaps: Int! = 0
     let tempAudioFile = "japanize.caf"
     
-    
-    // TODO: Get model from Tom and Alex
-    var word: String?
-    var englishHint: String?
-    var romagiHint: String?
-    var audioAsset: String?
+    var word: Word?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +38,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         setupRecorder()
         
         // Do any additional setup after loading the view.
+        setNewRandomWord()
     }
-    
+  
     override func viewWillAppear(animated: Bool) {
         
         //Theme Block rgb(231, 76, 60)
@@ -54,9 +50,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         nav?.tintColor = UIColor.whiteColor()
         nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.tabBarController?.tabBar.tintColor = themeColor
-        
-        loadWord()
-        wordLabel.text = word
     }
     
     override func didReceiveMemoryWarning() {
@@ -218,8 +211,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             recordButton.enabled = false
             recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
             sender.setTitle("ストップ", forState: .Normal)
-            if audioAsset != nil{
-                playAudioAsset(audioAsset!)
+            if let word = word {
+                playWord(word)
             }
         } else {
             assetAudioPlayer.stop()
@@ -238,15 +231,15 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             hintTextButton.setTitle("Tap again For English", forState: .Normal)
             hintTaps = 1
         } else if hintTaps == 1 {
-            hintTextButton.setTitle(englishHint, forState: .Normal)
+            hintTextButton.setTitle(word?.meanings[0], forState: .Normal)
             hintTextButton.hidden = false
             hintTaps = 2
         } else if hintTaps == 2 {
-            hintTextButton.setTitle("Tap again For Romagi", forState: .Normal)
+            hintTextButton.setTitle("Tap again For Romaji", forState: .Normal)
             hintTextButton.hidden = false
             hintTaps = 3
         } else if hintTaps == 3 {
-            hintTextButton.setTitle(romagiHint, forState: .Normal)
+            hintTextButton.setTitle(word?.romaji, forState: .Normal)
             hintTextButton.hidden = false
             hintTaps = 4
         } else if hintTaps == 4 {
@@ -255,8 +248,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             hintTaps = 5
         } else if hintTaps == 5 {
             hintTextButton.hidden = true
-            if audioAsset != nil{
-                playAudioAsset(audioAsset!)
+            if let word = word {
+              playWord(word)
             }
             hintTaps = 1
         }
@@ -271,41 +264,58 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBAction func onWord(sender: AnyObject) {
         hintTextButton.hidden = true
         hintTaps = 0
-        loadWord()
-        
+        setNewRandomWord()
     }
-    
-    func loadWord(){
-        var randomAudioAsset: String!
-        let audioAssetNames = ["Business-Bijinesu-ビジネス", "America(USA)-Amerika-アメリカ", "Japanese-Nihongo-日本語", "What-Nan-なん"]
-        randomAudioAsset = audioAssetNames.sample()
-        print(randomAudioAsset)
-        let splitAssetName = randomAudioAsset.characters.split("-").map(String.init)
-        word = splitAssetName[2]
-        englishHint = splitAssetName[0]
-        romagiHint = splitAssetName[1]
-        audioAsset = randomAudioAsset
-        wordLabel.text = word
+  
+  func setNewRandomWord() {
+    // TODO: Consider refactoring nested code, adding error handling
+    JapanizeClient.sharedInstance.book( { (book, error) -> () in
+      if let book = book {
+        var words = Array<String>()
         
-        //        get level apropriate word from Data
-        //        set wordLable
-        //        set pronunciation
-    }
-    
-    func playAudioAsset(audioAsset: String) {
-        var error:NSError?
-        // TODO: Consider not using NSDataAsset to make project compile for iOS 8
-        if let sound = NSDataAsset(name: audioAsset) {
+        for chapter in book.chapters {
+          for level in chapter.levels {
+            for word in level.words {
+              words.append(word)
+            }
+          }
+        }
+        
+        let chosenWord = words.sample()
+        JapanizeClient.sharedInstance.wordWithID(chosenWord, completion: { (word, error) in
+          if let word = word {
+            if let audioURL = word.audioURL {
+              JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
+                if let audioData = data {
+                  word.setAudioWithMP3(audioData)
+                  print("Random word ready!")
+                  self.word = word
+                  self.wordLabel.text = word.spellings.last
+                } else {
+                  self.setNewRandomWord()
+                }
+              })
+            } else {
+              self.setNewRandomWord()
+            }
+          }
+        })
+      }
+    })
+  }
+     func playWord(word: Word) {
+        var error: NSError?
+        if let audioData = word.audio {
             do {
                 try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
                 try! AVAudioSession.sharedInstance().setActive(true)
-                try assetAudioPlayer = AVAudioPlayer(data: sound.data, fileTypeHint: AVFileTypeMPEGLayer3)
+                try assetAudioPlayer = AVAudioPlayer(data: audioData, fileTypeHint: AVFileTypeMPEGLayer3)
             } catch let error1 as NSError {
                 error = error1
                 soundPlayer = nil
             }
             if let err = error {
-                print("ERROR: playAudioAsset AVAudioPlayer: \(err.localizedDescription)")
+                print("ERROR: playWord AVAudioPlayer: \(err.localizedDescription)")
             } else {
                 assetAudioPlayer.delegate = self
                 assetAudioPlayer.prepareToPlay()
