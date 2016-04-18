@@ -50,6 +50,8 @@ class Stroke {
                 if !token.isEmpty {
                     tokens.append(token)
                     token = "-"
+                } else {
+                    token.append(uni)
                 }
             }
         }
