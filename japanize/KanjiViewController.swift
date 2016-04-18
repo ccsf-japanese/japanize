@@ -24,10 +24,12 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     @IBOutlet weak var kanjiView: KanjiView!
     @IBOutlet weak var drawKanjiView: DrawKanjiView!
     
+    
     weak var delegate: KanjiViewControllerDelegate?
     
     let undoButton = UIButton(type: .System)
     let clearButton = UIButton(type: .System)
+    let meaningLabel = UILabel()
     
     var nextStrokeIndex = 0 {
         didSet {
@@ -37,6 +39,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     var character: Character? {
         didSet {
             nextStrokeIndex = 0
+            meaningLabel.text = ""
             kanjiView.setNeedsDisplay()
         }
     }
@@ -52,6 +55,9 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         
         view.addSubview(undoButton)
         view.addSubview(clearButton)
+        view.addSubview(meaningLabel)
+        
+        
         //undoButton.setTitle("Undo", forState:.Normal)
         undoButton.setImage(UIImage.init(named: "undo"), forState: .Normal)
         //clearButton.setTitle("Clear", forState:.Normal)
@@ -61,17 +67,27 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
         
         undoButton.translatesAutoresizingMaskIntoConstraints = false
-      undoButton.addTarget(self, action: "undoButtonTapped", forControlEvents: .TouchUpInside)
+        undoButton.addTarget(self, action: "undoButtonTapped", forControlEvents: .TouchUpInside)
         
         clearButton.translatesAutoresizingMaskIntoConstraints = false
-      clearButton.addTarget(self, action: "clearButtonTapped", forControlEvents: .TouchUpInside)
+        clearButton.addTarget(self, action: "clearButtonTapped", forControlEvents: .TouchUpInside)
         
+        meaningLabel.translatesAutoresizingMaskIntoConstraints = false
+        meaningLabel.textAlignment = .Center
+        
+        //undoButton constraints
         NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: undoButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
         
+        //clearButton constraints
         NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: clearButton, attribute: .Trailing, multiplier: 1.0, constant: 15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: clearButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
-      
+        
+        //meaningLabel constraints
+        NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: meaningLabel, attribute: .Trailing, multiplier: 1.0, constant: -15.0).active = true
+        NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: meaningLabel, attribute: .Leading, multiplier: 1.0, constant: 15.0).active = true
+        NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: meaningLabel, attribute: .Bottom, multiplier: 1.0, constant: 80.0).active = true
+        
       self.drawKanjiView.delegate = self
       self.kanjiView.dataSource = self
       self.drawKanjiView.dataSource = self
@@ -109,21 +125,26 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     
     func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int) {
         nextStrokeIndex += 1
-        // TODO: Change Kanji when out of strokes
-        if let strokes = character!.strokes {
-          if nextStrokeIndex == strokes.count {
-            setNewRandomCharacter()
-          }
-        }
-    }
-    
-    func drawKanjiViewDidComplete(view: DrawKanjiView) {
         if let character = character {
+            if let strokes = character.strokes {
+                if nextStrokeIndex == strokes.count {
+                    meaningLabel.text = character.meaning
+                    let delaySeconds: UInt64
+                    if character.meaning != nil && !character.meaning!.isEmpty {
+                        delaySeconds = 2
+                    } else {
+                        delaySeconds = 0
+                    }
+                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * delaySeconds))
+                    dispatch_after(delayTime, dispatch_get_main_queue()){
+                        self.setNewRandomCharacter()
+                    }
+                }
+            }
             delegate?.kanjiViewController(self, didFinishDrawingKanji: character)
         }
-      
     }
-  
+
   func setNewRandomCharacter() {
     // TODO: Consider refactoring nested code, adding error handling
     JapanizeClient.sharedInstance.book( { (book, error) -> () in

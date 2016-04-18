@@ -9,7 +9,6 @@
 import UIKit
 protocol DrawKanjiViewDelegate: class {
     func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int)
-    func drawKanjiViewDidComplete(view: DrawKanjiView)
 }
 
 class DrawKanjiView: UIView {
@@ -89,16 +88,18 @@ class DrawKanjiView: UIView {
     
     private func checkCurrentPoint(currentPoint: CGPoint) {
         if let dataSource = dataSource, strokes = dataSource.character?.strokes, kanjiTransform = dataSource.kanjiTransform {
-            let points = strokes[dataSource.nextStrokeIndex].points
-            for (i, point) in points.enumerate() {
-                let transformedPoint = CGPointApplyAffineTransform(point, kanjiTransform)
-            
-                //if the distance between current point and point on stroke is greater than 10, not update last point
-                if checkDistance(currentPoint, sPoint: transformedPoint) {
-                    if i == 0 && !touchedPoints.isEmpty {
-                        return
+            if dataSource.nextStrokeIndex < strokes.count {
+                let points = strokes[dataSource.nextStrokeIndex].points
+                for (i, point) in points.enumerate() {
+                    let transformedPoint = CGPointApplyAffineTransform(point, kanjiTransform)
+                    
+                    //if the distance between current point and point on stroke is greater than 10, not update last point
+                    if checkDistance(currentPoint, sPoint: transformedPoint) {
+                        if i == 0 && !touchedPoints.isEmpty {
+                            return
+                        }
+                        touchedPoints.insert(NSStringFromCGPoint(point))
                     }
-                    touchedPoints.insert(NSStringFromCGPoint(point))
                 }
             }
         }
@@ -137,15 +138,17 @@ class DrawKanjiView: UIView {
         }
         
         if let dataSource = dataSource, strokes = dataSource.character?.strokes {
-            var complete = true
-            for point in strokes[dataSource.nextStrokeIndex].points {
-                if !touchedPoints.contains(NSStringFromCGPoint(point)) {
-                    complete = false
-                    break
+            if dataSource.nextStrokeIndex < strokes.count {
+                var complete = true
+                for point in strokes[dataSource.nextStrokeIndex].points {
+                    if !touchedPoints.contains(NSStringFromCGPoint(point)) {
+                        complete = false
+                        break
+                    }
                 }
-            }
-            if complete {
-                delegate?.drawKanjiView(self, didCompleteStroke: dataSource.nextStrokeIndex)
+                if complete {
+                    delegate?.drawKanjiView(self, didCompleteStroke: dataSource.nextStrokeIndex)
+                }
             }
         }
         
