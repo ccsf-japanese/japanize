@@ -50,6 +50,7 @@ class DrawKanjiView: UIView {
     }
   
     private func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
+      autoreleasepool {
         UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
         imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
@@ -71,7 +72,7 @@ class DrawKanjiView: UIView {
         imageView.image = UIGraphicsGetImageFromCurrentImageContext()
         imageView.alpha = opacity
         UIGraphicsEndImageContext()
-        
+      }
     }
     
     private func checkCurrentPoint(currentPoint: CGPoint) {
