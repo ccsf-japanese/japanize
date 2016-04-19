@@ -44,7 +44,6 @@ class DrawKanjiView: UIView {
             addSubview(v)
             //use anchor to prevent unsatisfiable constraints
             v.translatesAutoresizingMaskIntoConstraints = false
-            // TODO: replace with API calls that are compatible with iOS 8.(Done)
             
             NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: v, attribute: .Leading, multiplier: 1.0, constant: 0.0).active = true
             NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: v, attribute: .Trailing, multiplier: 1.0, constant: 0.0).active = true
