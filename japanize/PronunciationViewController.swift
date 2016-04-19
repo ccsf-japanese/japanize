@@ -17,7 +17,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBOutlet weak var playRecButton: UIButton!
     
     @IBOutlet weak var hintTextButton: UIButton!
-    @IBOutlet weak var hintRomajiButton: UIButton!
     @IBOutlet weak var hintMeaningButton: UIButton!
     @IBOutlet weak var playWordButton: UIButton!
 
@@ -37,9 +36,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         
         
         hintTextButton.hidden = true
-//        hintMeaningButton.hidden = true
-        hintRomajiButton.hidden = true
-        playWordButton.hidden = true
+        playWordButton.enabled = false
+//        playWordButton.hidden = true
         hintMeaningButton.setTitle(String(""), forState: .Normal)
 
         
@@ -47,7 +45,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         wordTextButton.setTitle("日本語", forState: .Disabled)
 
         setupRecorder()
-//                recordButton.setTitleColor(UIColor.grayColor(), forState: .Disabled)
 
         // Do any additional setup after loading the view.
         setNewRandomWord()
@@ -127,7 +124,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         recordButton.enabled = true
-        playWordButton.setTitle(".", forState: .Normal)
+        playWordButton.enabled = true
         if newVoiceRecording {
             if let word = word {
                 wordPlayer(word)
@@ -210,10 +207,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             
         }
     }
-    @IBAction func onWordPlay(sender: AnyObject) {
-        if (sender.titleLabel!!.text == "."){
+    @IBAction func onWordPlay(sender: UIButton) {
+        if (sender.enabled == true){
             hintTextButton.setTitle(word?.romaji, forState: .Normal)
-            sender.setTitle(",", forState: .Normal)
+            sender.enabled = false
             if let word = word {
                 wordPlayer(word)
             }
@@ -221,7 +218,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             if audioPlayer.playing {
                 audioPlayer.stop()
             }
-            sender.setTitle(".", forState: .Normal)
+            sender.enabled = true
             
         }
     }
@@ -232,14 +229,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         if hintTextButton.hidden {
             hintTextButton.setTitle(word?.meanings[0], forState: .Normal)
             hintTextButton.hidden = false
+            playWordButton.enabled = true
+
             hintMeaningButton.hidden = false
-            hintRomajiButton.hidden = false
-            playWordButton.hidden = false
         }else{
             hintTextButton.hidden = true
             hintMeaningButton.hidden = true
-            hintRomajiButton.hidden = true
-            playWordButton.hidden = true
+            playWordButton.enabled = false
 
         }
         
@@ -247,17 +243,30 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
     
     @IBAction func onHintTextButton(sender: AnyObject) {
-//        onHint(sender)
+        if let meanings = word?.meanings{
+            if meanings.count > 1 {
+                for meaning in meanings{
+//                    TODO: set english and hintMeaningsButton title to 1ofX [toggle when listening]
+                }
+                hintMeaningButton.setTitle(String(meanings.count), forState: .Normal)
+            }else{
+                print("There can be (is) only one.")
+            }
+        }
     }
     
     @IBAction func onWordTextButton(sender: AnyObject) {
         setNewRandomWord()
     }
-    @IBAction func onRomaji(sender: AnyObject) {
-        print("onRomaji")
-        hintTextButton.setTitle(word?.romaji, forState: .Normal)
-    }
+    
     @IBAction func onTranslate(sender: AnyObject) {
+        if hintTextButton.hidden {
+            hintTextButton.setTitle(word?.meanings[0], forState: .Normal)
+            hintTextButton.hidden = false
+            playWordButton.enabled = true
+        }else{
+            
+        }
         if let meanings = word?.meanings{
             if meanings.count > 1 {
                 hintMeaningButton.setTitle(String(meanings.count), forState: .Normal)
