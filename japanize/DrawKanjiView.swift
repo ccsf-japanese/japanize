@@ -8,7 +8,7 @@
 
 import UIKit
 protocol DrawKanjiViewDelegate: class {
-    func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int)
+    func didCompleteStroke()
 }
 
 class DrawKanjiView: UIView {
@@ -136,7 +136,7 @@ class DrawKanjiView: UIView {
                     }
                 }
                 if complete {
-                    delegate?.drawKanjiView(self, didCompleteStroke: dataSource.nextStrokeIndex)
+                    delegate?.didCompleteStroke()
                 }
             }
         }

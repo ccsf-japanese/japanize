@@ -123,7 +123,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         kanjiTransform = transform
     }
     
-    func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int) {
+    func didCompleteStroke() {
         nextStrokeIndex += 1
         if let character = character {
             if let strokes = character.strokes {
