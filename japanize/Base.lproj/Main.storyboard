@@ -307,7 +307,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
                                         <rect key="frame" x="190" y="188" width="122" height="24"/>
-                                        <state key="normal" title="日本語." image="ic_hearing"/>
+                                        <state key="normal" title="日本語" image="ic_hearing"/>
                                         <connections>
                                             <action selector="onWordPlay:" destination="VMh-EN-7kr" eventType="touchUpInside" id="t7T-cC-dhB"/>
                                         </connections>
@@ -337,14 +337,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+                                        <rect key="frame" x="0.0" y="118" width="320" height="117"/>
                                         <state key="normal" title="話す" image="mic"/>
                                         <connections>
                                             <action selector="onRecord:" destination="VMh-EN-7kr" eventType="touchUpInside" id="F0n-S0-k0Q"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-9e-MGa">
-                                        <rect key="frame" x="0.0" y="118" width="320" height="117"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="bSb-c5-XbO"/>
                                             <constraint firstAttribute="height" constant="118" id="j9T-dm-UPl"/>
@@ -365,25 +365,33 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="3wl-yh-vIg"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="8oV-8b-Ird"/>
-                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="9WK-WF-QnX"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" priority="750" id="9dv-8F-bH9"/>
+                                    <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="Cwn-hq-T1T"/>
                                     <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="F7Z-Np-MEJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="8HP-9e-MGa" secondAttribute="trailing" id="KCt-ce-45c"/>
+                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" id="L27-LB-Xtm"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="Lew-Vg-RDm"/>
                                     <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="NOZ-Ac-XpK"/>
-                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="UPx-Z8-RbG"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="Vzu-pl-TLh"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="Z5G-Vk-TiJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="dAZ-FV-1bc"/>
                                     <constraint firstItem="8HP-9e-MGa" firstAttribute="top" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="ha1-tB-dYL"/>
+                                    <constraint firstAttribute="trailing" secondItem="8HP-9e-MGa" secondAttribute="trailing" id="iqq-2b-TJt"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="mti-QB-sjC"/>
-                                    <constraint firstAttribute="bottom" secondItem="8HP-9e-MGa" secondAttribute="bottom" id="sOU-iL-hGG"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="nKC-5d-BR7"/>
+                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="ubw-bC-vV2"/>
+                                    <constraint firstItem="8HP-9e-MGa" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="xAo-g2-VgM"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerX" secondItem="nbj-gN-MXo" secondAttribute="centerX" id="xTg-XJ-F6G"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="Lew-Vg-RDm"/>
                                         <exclude reference="F7Z-Np-MEJ"/>
                                         <exclude reference="NOZ-Ac-XpK"/>
                                         <exclude reference="ha1-tB-dYL"/>
+                                        <exclude reference="9dv-8F-bH9"/>
+                                        <exclude reference="Cwn-hq-T1T"/>
+                                        <exclude reference="Lew-Vg-RDm"/>
+                                        <exclude reference="Z5G-Vk-TiJ"/>
+                                        <exclude reference="mti-QB-sjC"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -633,8 +641,8 @@
                                                         <constraint firstAttribute="height" constant="24" id="xZ7-Ka-MXl"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Kanji Star: 10 Kanjis Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jea-bJ-kGt">
-                                                    <rect key="frame" x="59" y="12" width="246" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kanji Star: 10 Kanjis Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jea-bJ-kGt">
+                                                    <rect key="frame" x="59" y="13" width="246" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>

@@ -25,7 +25,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     var voiceRecorder: AVAudioRecorder!
     var voicePlayer: AVAudioPlayer!
     var audioPlayer: AVAudioPlayer!
-
+    
+    var voiceRecording: Bool = false
     var newVoiceRecording: Bool = false
     let tempAudioFile = "japanize.caf"
     
@@ -37,12 +38,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         
         hintTextButton.hidden = true
         playWordButton.enabled = false
-//        playWordButton.hidden = true
+        playRecButton.enabled = false
         hintMeaningButton.setTitle(String(""), forState: .Normal)
 
         
         recordButtonCenter.active = true
         wordTextButton.setTitle("日本語", forState: .Disabled)
+        hintTextButton.setTitle("", forState: .Normal)
 
         setupRecorder()
 
@@ -131,9 +133,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             }
             newVoiceRecording = false
         }
-        playRecButton.setTitle("聴く", forState: .Normal)
-        playRecButton.enabled = true
-
+        if voiceRecording == true {
+            playRecButton.enabled = true
+        }
     }
     
     func audioPlayerDecodeErrorDidOccur(player: AVAudioPlayer, error: NSError?) {
@@ -145,6 +147,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         self.recordButtonCenter.active = false
         self.playRecButton.enabled = true
         newVoiceRecording = true
+        voiceRecording = true
         recordButton.setTitle("話す", forState: .Normal)
     }
     
@@ -155,7 +158,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBAction func onRecord(sender: AnyObject) {
         var error: NSError?
         let audioSession = AVAudioSession.sharedInstance()
-//        if !soundRecorder.recording{
+//      TODO: reset Record to work on enabled
         if (sender.titleLabel!!.text == "話す"){
             do{
                 try audioSession.setActive(true)
@@ -171,9 +174,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
             } else {
             sender.setTitle("ストップ", forState: .Normal)
-//            sender.setTitleColor(UIColor.redColor(), forState: .Normal)
-//            self.playRecButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-                playRecButton.enabled = false
+            playRecButton.enabled = false
             }
         } else {
                 voiceRecorder.stop()
@@ -190,20 +191,17 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     
-    @IBAction func onRecPlay(sender: AnyObject) {
-        if (sender.titleLabel!!.text == "聴く"){
-            recordButton.enabled = false
+    @IBAction func onRecPlay(sender: UIButton) {
+        if (sender.enabled == true){
 //            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-            recordButton.enabled = false
-            sender.setTitle("ストップ", forState: .Normal)
+//            recordButton.enabled = false
+            sender.enabled = false
             preparePlayer()
             voicePlayer.play()
         } else {
             voicePlayer.stop()
             recordButton.enabled = true
-//            recordButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            recordButton.enabled = true
-            sender.setTitle("聴く", forState: .Normal)
+            sender.enabled = true
             
         }
     }
@@ -256,6 +254,12 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
     
     @IBAction func onWordTextButton(sender: AnyObject) {
+        hintTextButton.hidden = true
+        voiceRecording = false
+        hintMeaningButton.setTitle("", forState: .Normal)
+        hintTextButton.setTitle("", forState: .Normal)
+        playWordButton.enabled = false
+        playRecButton.enabled = false
         setNewRandomWord()
     }
     
@@ -269,7 +273,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
         if let meanings = word?.meanings{
             if meanings.count > 1 {
+//                TODO: Tap to switch between multiple meanings
                 hintMeaningButton.setTitle(String(meanings.count), forState: .Normal)
+                hintTextButton.setTitle(meanings[0], forState: .Normal)
+
             }else{
             hintMeaningButton.setTitle(String(""), forState: .Normal)
             hintTextButton.setTitle(meanings[0], forState: .Normal)
