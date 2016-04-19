@@ -8,14 +8,13 @@
 
 import UIKit
 protocol DrawKanjiViewDelegate: class {
-    func drawKanjiView(view: DrawKanjiView, didCompleteStroke: Int)
+    func didCompleteStroke()
 }
 
 class DrawKanjiView: UIView {
     
-    let tempImageView = UIImageView()
-    let mainImageView = UIImageView()
-    
+    let imageView = UIImageView()
+  
     var lastPoint = CGPoint.zero
     var red: CGFloat = 100.0
     var green: CGFloat = 0.0
@@ -40,31 +39,21 @@ class DrawKanjiView: UIView {
     }
     
     private func setupConstraints() {
-        for v in [tempImageView, mainImageView] {
-            addSubview(v)
-            //use anchor to prevent unsatisfiable constraints
-            v.translatesAutoresizingMaskIntoConstraints = false
-            // TODO: replace with API calls that are compatible with iOS 8.(Done)
+      addSubview(imageView)
+      //use anchor to prevent unsatisfiable constraints
+      imageView.translatesAutoresizingMaskIntoConstraints = false
             
-            NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: v, attribute: .Leading, multiplier: 1.0, constant: 0.0).active = true
-            NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: v, attribute: .Trailing, multiplier: 1.0, constant: 0.0).active = true
-            NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: v, attribute: .Top, multiplier: 1.0, constant: 0.0).active = true
-            NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: v, attribute: .Bottom, multiplier: 1.0, constant: 0.0).active = true
-        }
+      NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: imageView, attribute: .Leading, multiplier: 1.0, constant: 0.0).active = true
+      NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: imageView, attribute: .Trailing, multiplier: 1.0, constant: 0.0).active = true
+      NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: imageView, attribute: .Top, multiplier: 1.0, constant: 0.0).active = true
+      NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: imageView, attribute: .Bottom, multiplier: 1.0, constant: 0.0).active = true
     }
-
-    
-    func reset() {
-        mainImageView.image = nil
-    }
-    
-    
+  
     private func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint) {
-        
-        // mainImageView holds the “drawing so far,and tempImageView holds the line currently drawing
+      autoreleasepool {
         UIGraphicsBeginImageContextWithOptions(frame.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
-        tempImageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+        imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
         
         // get the current touch point and then draw a line with CGContextAddLineToPoint from lastPoint to currentPoint
         CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
@@ -80,10 +69,10 @@ class DrawKanjiView: UIView {
         CGContextStrokePath(context)
         
         // wrap up the drawing context to render the new line into the temporary image view.
-        tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        tempImageView.alpha = opacity
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        imageView.alpha = opacity
         UIGraphicsEndImageContext()
-        
+      }
     }
     
     private func checkCurrentPoint(currentPoint: CGPoint) {
@@ -147,13 +136,13 @@ class DrawKanjiView: UIView {
                     }
                 }
                 if complete {
-                    delegate?.drawKanjiView(self, didCompleteStroke: dataSource.nextStrokeIndex)
+                    delegate?.didCompleteStroke()
                 }
             }
         }
         
         touchedPoints.removeAll()
-        tempImageView.image = nil
+        imageView.image = nil
     }
     
     
