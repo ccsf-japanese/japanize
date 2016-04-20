@@ -31,6 +31,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     let tempAudioFile = "japanize.caf"
     
     var word: Word?
+    var countMeanings: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         hintTextButton.hidden = true
         playWordButton.enabled = false
         playRecButton.enabled = false
-        hintMeaningButton.setTitle(String(""), forState: .Normal)
+//        hintMeaningButton.setTitle(String(""), forState: .Normal)
 
         
         recordButtonCenter.active = true
@@ -50,6 +51,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
 
         // Do any additional setup after loading the view.
         setNewRandomWord()
+        if countMeanings > 1 {
+            hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+        }else{
+            hintMeaningButton.setTitle("English", forState: .Normal)
+        }
     }
   
     override func viewWillAppear(animated: Bool) {
@@ -173,6 +179,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             if let err = error {
                 print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
             } else {
+            recordButton.tintColor = FlatRed()
             sender.setTitle("ストップ", forState: .Normal)
             playRecButton.enabled = false
             }
@@ -185,6 +192,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 print("ERROR: onRecord setActive(false)")
             }
             sender.setTitle("話す", forState: .Normal)
+            recordButton.tintColor = FlatBlack()
+
             playRecButton.enabled = true
 //            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
             
@@ -221,33 +230,23 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
     }
     
-    
-    
-    @IBAction func onHint(sender: AnyObject) {
-        if hintTextButton.hidden {
-            hintTextButton.setTitle(word?.meanings[0], forState: .Normal)
-            hintTextButton.hidden = false
-            playWordButton.enabled = true
-
-            hintMeaningButton.hidden = false
-        }else{
-            hintTextButton.hidden = true
-            hintMeaningButton.hidden = true
-            playWordButton.enabled = false
-
-        }
-        
-        
-    }
-    
     @IBAction func onHintTextButton(sender: AnyObject) {
         if let meanings = word?.meanings{
-            if meanings.count > 1 {
-                for meaning in meanings{
-//                    TODO: set english and hintMeaningsButton title to 1ofX [toggle when listening]
+            if countMeanings > 1 {
+                hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+                var i: Int = 0
+                while i < countMeanings {
+                    var currentIndex = i
+                    i += 1
+                    if i >= countMeanings {
+                        i = 0
+                    }
+                    hintTextButton.setTitle(meanings[currentIndex], forState: .Normal)
                 }
-                hintMeaningButton.setTitle(String(meanings.count), forState: .Normal)
+                hintTextButton.setTitle(meanings[0], forState: .Normal)
             }else{
+                hintMeaningButton.setTitle("English", forState: .Normal)
+                hintTextButton.setTitle(meanings[0], forState: .Normal)
                 print("There can be (is) only one.")
             }
         }
@@ -256,7 +255,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     @IBAction func onWordTextButton(sender: AnyObject) {
         hintTextButton.hidden = true
         voiceRecording = false
-        hintMeaningButton.setTitle("", forState: .Normal)
+        if countMeanings > 1 {
+            hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+        }else{
+            hintMeaningButton.setTitle("English", forState: .Normal)
+        }
         hintTextButton.setTitle("", forState: .Normal)
         playWordButton.enabled = false
         playRecButton.enabled = false
@@ -271,15 +274,24 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }else{
             
         }
-        if let meanings = word?.meanings{
-            if meanings.count > 1 {
-//                TODO: Tap to switch between multiple meanings
-                hintMeaningButton.setTitle(String(meanings.count), forState: .Normal)
-                hintTextButton.setTitle(meanings[0], forState: .Normal)
+        //                TODO: Tap to switch between multiple meanings
 
+        if let meanings = word?.meanings{
+            if countMeanings > 1 {
+                hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+                var i: Int = 0
+                while i < countMeanings {
+                    var currentIndex = i
+                    i += 1
+                    if i >= countMeanings {
+                        i = 0
+                    }
+                    hintTextButton.setTitle(meanings[currentIndex], forState: .Normal)
+                }
+                hintTextButton.setTitle(meanings[0], forState: .Normal)
             }else{
-            hintMeaningButton.setTitle(String(""), forState: .Normal)
-            hintTextButton.setTitle(meanings[0], forState: .Normal)
+                hintMeaningButton.setTitle("English", forState: .Normal)
+                hintTextButton.setTitle(meanings[0], forState: .Normal)
             }
         }
     }
@@ -324,6 +336,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         })
       }
     })
+    countMeanings = word?.meanings.count
   }
      func wordPlayer(word: Word) {
         var error: NSError?
