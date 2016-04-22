@@ -10,21 +10,21 @@ import UIKit
 
 class Character: NSObject {
   
-  var id: String?
+  var id: String
   var value: String?
-  var kind: String?
+  var kind: String
   var chapter: String?
   var meaning: String?
-  var svgURL: String?
+  var svgURL: String
   var strokes: [Stroke]?
   
   init(dictionary: NSDictionary) {
-    id = dictionary["id"] as? String
+    id = dictionary["id"] as! String
     value = dictionary["value"] as? String
-    kind = dictionary["kind"] as? String
+    kind = dictionary["kind"] as! String
     chapter = dictionary["chapter"] as? String
     meaning = dictionary["meaning"] as? String
-    svgURL = dictionary["svg_url"] as? String
+    svgURL = dictionary["svg_url"] as! String
     strokes = nil
   }
   

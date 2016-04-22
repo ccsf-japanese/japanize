@@ -10,22 +10,22 @@ import UIKit
 
 class Level: NSObject {
   
-  var id: String?
+  var id: String
   var name: String?
   var chapter: Int?
-  var characters: [String] = []
-  var words: [String] = []
+  var characters: [Character] = []
+  var words: [Word] = []
   
   init(dictionary: NSDictionary) {
-    id = dictionary["id"] as? String
+    id = dictionary["id"] as! String
     name = dictionary["name"] as? String
     chapter = dictionary["chapter"] as? Int
     
-    for character in (dictionary["characters"] as? [String])! {
-      characters.append(character)
+    for characterDict in (dictionary["characters"] as? [NSDictionary])! {
+      characters.append(Character(dictionary: characterDict))
     }
-    for word in (dictionary["words"] as? [String])! {
-      words.append(word)
+    for wordDict in (dictionary["words"] as? [NSDictionary])! {
+      words.append(Word(dictionary: wordDict))
     }
   }
   

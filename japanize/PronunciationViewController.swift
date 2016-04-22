@@ -306,36 +306,34 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     // TODO: Consider refactoring nested code, adding error handling
     JapanizeClient.sharedInstance.book( { (book, error) -> () in
       if let book = book {
-        var words = Array<String>()
+        var words = Array<Word>()
         
         for chapter in book.chapters {
           for level in chapter.levels {
             for word in level.words {
-              words.append(word)
+              if (word.audioURL) != nil {
+                words.append(word)
+              }
             }
           }
         }
         
         let chosenWord = words.sample()
-        JapanizeClient.sharedInstance.wordWithID(chosenWord, completion: { (word, error) in
-          if let word = word {
-            if let audioURL = word.audioURL {
-              JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
-                if let audioData = data {
-                  word.setAudioWithMP3(audioData)
-                  print("Random word ready!")
-                  self.word = word
-                  self.wordTextButton.setTitle(word.spellings.last, forState: .Normal)
-                  self.wordTextButton.enabled = true
-                } else {
-                  self.setNewRandomWord()
-                }
-              })
+        if let audioURL = chosenWord.audioURL {
+          JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
+            if let audioData = data {
+              chosenWord.setAudioWithMP3(audioData)
+              print("Random word ready!")
+              self.word = chosenWord
+              self.wordTextButton.setTitle(chosenWord.spellings.last, forState: .Normal)
+              self.wordTextButton.enabled = true
             } else {
-              self.setNewRandomWord()
+              assertionFailure("error downloading audioData")
             }
-          }
-        })
+          })
+        } else {
+          assertionFailure("chosenWord should always have audioURL")
+        }
       }
     })
     countMeanings = word?.meanings.count

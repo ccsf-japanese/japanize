@@ -151,7 +151,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     // TODO: Consider refactoring nested code, adding error handling
     JapanizeClient.sharedInstance.book( { (book, error) -> () in
       if let book = book {
-        var characters = Array<String>()
+        var characters = Array<Character>()
         
         for chapter in book.chapters {
           for level in chapter.levels {
@@ -162,17 +162,14 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         }
         
         let chosenCharacter = characters.sample()
-        JapanizeClient.sharedInstance.characterWithID(chosenCharacter, completion: { (character, error) in
-          if let character = character {
-            if let svgURL = character.svgURL {
-              JapanizeFileClient.sharedInstance.dataForFilePath(svgURL, completion: { (data, error) in
-                if let svgData = data {
-                  character.setStrokesWithSVG(svgData)
-                  print("Random character ready!")
-                  self.character = character
-                }
-              })
-            }
+        JapanizeFileClient.sharedInstance.dataForFilePath(chosenCharacter.svgURL,
+                                                          completion: { (data, error) in
+          if let svgData = data {
+            chosenCharacter.setStrokesWithSVG(svgData)
+            print("Random character ready!")
+            self.character = chosenCharacter
+          } else {
+            assertionFailure("error downloading SVG")
           }
         })
       }
