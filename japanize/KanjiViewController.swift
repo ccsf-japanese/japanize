@@ -20,7 +20,9 @@ protocol KanjiViewControllerDelegate: class {
 }
 
 class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiViewDelegate {
-    
+  
+    var level: Level?
+  
     @IBOutlet weak var kanjiView: KanjiView!
     @IBOutlet weak var drawKanjiView: DrawKanjiView!
     

@@ -11,7 +11,9 @@ import AVFoundation
 import ChameleonFramework
 
 class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
-    
+  
+    var level: Level?
+
     @IBOutlet weak var wordTextButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var playRecButton: UIButton!

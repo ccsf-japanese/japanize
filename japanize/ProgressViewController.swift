@@ -54,9 +54,8 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     }
   
     @IBAction func didTapOnLevel(sender: UITapGestureRecognizer) {
-      self.performSegueWithIdentifier("BookToSpeakingSegue", sender: sender.view)
-      // self.performSegueWithIdentifier("BookToCharacterSegue", sender: sender.view)
-
+      // self.performSegueWithIdentifier("BookToSpeakingSegue", sender: sender.view)
+      self.performSegueWithIdentifier("BookToCharacterSegue", sender: sender.view)
     }
   
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -83,5 +82,14 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if let cell = sender as? LevelCell {
+      if let vc = segue.destinationViewController as? PronunciationViewController {
+        vc.level = cell.level
+      } else if let vc = segue.destinationViewController as? KanjiViewController {
+        vc.level = cell.level
+      } else {
+        assertionFailure("Destination view controller unknown")
+      }
+    }
   }
 }
