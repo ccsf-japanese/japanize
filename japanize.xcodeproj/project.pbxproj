@@ -30,7 +30,6 @@
 		61362E211CC1C3A000E1BE3E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61362E201CC1C3A000E1BE3E /* Character.swift */; };
 		614F7CA61CC375CD00146FFD /* JapanizeFileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614F7CA51CC375CD00146FFD /* JapanizeFileClient.swift */; };
 		61567B861CC3056600CD58B7 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61567B851CC3056600CD58B7 /* Word.swift */; };
-		6198FA9F1C990391004CA9AB /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6198FA9E1C990391004CA9AB /* LevelViewController.swift */; };
 		61F7083D1CC163F9002873CC /* JapanizeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7083C1CC163F9002873CC /* JapanizeClient.swift */; };
 		68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */; };
 		68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB91C9EA1D0006CDB06 /* LevelCell.swift */; };
@@ -92,7 +91,6 @@
 		61362E201CC1C3A000E1BE3E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		614F7CA51CC375CD00146FFD /* JapanizeFileClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapanizeFileClient.swift; sourceTree = "<group>"; };
 		61567B851CC3056600CD58B7 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		6198FA9E1C990391004CA9AB /* LevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		61F7083C1CC163F9002873CC /* JapanizeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapanizeClient.swift; sourceTree = "<group>"; };
 		65C68BEDE944D35F3BE2462C /* Pods-japanize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-japanize.release.xcconfig"; path = "Pods/Target Support Files/Pods-japanize/Pods-japanize.release.xcconfig"; sourceTree = "<group>"; };
 		68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				68121CB91C9EA1D0006CDB06 /* LevelCell.swift */,
 				68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */,
 				68FEA4711C9ABF9C00E76D83 /* ProgressViewController.swift */,
-				6198FA9E1C990391004CA9AB /* LevelViewController.swift */,
 			);
 			name = "Levels and Progress";
 			sourceTree = "<group>";
@@ -445,7 +442,6 @@
 				37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */,
 				68121CBE1CA0A008006CDB06 /* TabBarController.swift in Sources */,
 				1DCC750D1C9B7B7A009839CD /* CustomPageViewController.swift in Sources */,
-				6198FA9F1C990391004CA9AB /* LevelViewController.swift in Sources */,
 				61F7083D1CC163F9002873CC /* JapanizeClient.swift in Sources */,
 				376B5C281CB1CE5D002B53F5 /* Stroke.swift in Sources */,
 			);

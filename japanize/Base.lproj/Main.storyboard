@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U0n-0H-Djk" id="I8k-rr-e3C">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="169.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sce-Xw-9nz">
@@ -41,7 +41,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LevelCell" id="zi8-fd-8IQ" customClass="LevelCell" customModule="japanize" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="10" width="120" height="150"/>
+                                                            <rect key="frame" x="5" y="9.5" width="120" height="150"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="150"/>
@@ -76,6 +76,7 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <color key="backgroundColor" red="0.086274509803921567" green="0.62745098039215685" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="dyU-37-uCk" secondAttribute="trailing" id="1o1-Te-QGM"/>
                                                                 <constraint firstItem="EE5-cw-0Yt" firstAttribute="leading" secondItem="zi8-fd-8IQ" secondAttribute="leading" id="2d4-ac-wpx"/>
@@ -95,7 +96,7 @@
                                                                 <outlet property="goal2Label" destination="EE5-cw-0Yt" id="82I-s1-Eei"/>
                                                                 <outlet property="goal3Label" destination="dyU-37-uCk" id="doC-QY-V0H"/>
                                                                 <outlet property="levelLabel" destination="for-6e-QuB" id="jww-ch-dRe"/>
-                                                                <segue destination="VxZ-6t-lkV" kind="show" id="mgs-ph-022"/>
+                                                                <outletCollection property="gestureRecognizers" destination="nka-ZS-rNv" appends="YES" id="RBA-Ed-knY"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -144,46 +145,18 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="bd4-3q-cTH" id="DeY-No-5Dp"/>
+                        <segue destination="VMh-EN-7kr" kind="show" identifier="BookToSpeakingSegue" id="C6I-bx-jGh"/>
+                        <segue destination="apX-eL-6OY" kind="show" identifier="BookToCharacterSegue" id="b5f-qa-aSG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nka-ZS-rNv">
+                    <connections>
+                        <action selector="didTapOnLevel:" destination="BYZ-38-t0r" id="dPY-bA-jhp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1222" y="2150"/>
-        </scene>
-        <!--Level View Controller-->
-        <scene sceneID="QBU-f4-vYT">
-            <objects>
-                <viewController modalTransitionStyle="flipHorizontal" hidesBottomBarWhenPushed="YES" id="VxZ-6t-lkV" customClass="LevelViewController" customModule="japanize" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KcP-oc-3BW"/>
-                        <viewControllerLayoutGuide type="bottom" id="DtJ-aU-JsT"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lBs-9m-iKd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm a level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERG-Sf-r8x">
-                                <rect key="frame" x="122" y="274" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.55686274509803924" green="0.26666666666666666" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="ERG-Sf-r8x" firstAttribute="centerX" secondItem="lBs-9m-iKd" secondAttribute="centerX" id="GYY-yi-Ntb"/>
-                            <constraint firstItem="ERG-Sf-r8x" firstAttribute="centerY" secondItem="lBs-9m-iKd" secondAttribute="centerY" id="g9X-CT-wZs"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="aLevelLabel" destination="ERG-Sf-r8x" id="Y0x-Dh-GNJ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q3N-ga-sXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1626" y="2150"/>
         </scene>
         <!--Train-->
         <scene sceneID="sTi-8R-DFR">
@@ -651,10 +624,10 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedalCell" id="MMs-D6-Nfc">
-                                        <rect key="frame" x="0.0" y="50" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MMs-D6-Nfc" id="9yg-G2-TDi">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="medal" translatesAutoresizingMaskIntoConstraints="NO" id="Hft-56-6KG">
@@ -769,7 +742,9 @@
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qZB-HR-r3t"/>
+        <segue reference="pfU-5z-Z7N"/>
+        <segue reference="C6I-bx-jGh"/>
+        <segue reference="b5f-qa-aSG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

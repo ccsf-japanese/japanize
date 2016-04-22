@@ -9,6 +9,7 @@
 import UIKit
 
 class ProgressViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     var book: Book?
     
     @IBOutlet weak var tableView: UITableView!
@@ -51,7 +52,13 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+    @IBAction func didTapOnLevel(sender: UITapGestureRecognizer) {
+      self.performSegueWithIdentifier("BookToSpeakingSegue", sender: sender.view)
+      // self.performSegueWithIdentifier("BookToCharacterSegue", sender: sender.view)
+
+    }
+  
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
       if let book = self.book {
         return book.chapters.count
@@ -76,9 +83,5 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if let cell = sender as? LevelCell {
-      let vc = segue.destinationViewController as! LevelViewController
-      vc.level = cell.level
-    }
   }
 }
