@@ -67,7 +67,7 @@ extension ChapterCell : UICollectionViewDataSource {
             cell.goal3Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
         }
         
-        cell.levelLabel.text = "\(cell.level!.chapter!) \(cell.level!.name!)"
+        cell.levelLabel.text = cell.level!.name!
         return cell
     }
     
