@@ -35,34 +35,4 @@ class JapanizeClient : AFHTTPSessionManager {
     })
   }
   
-  func characterWithID(id: String, completion: (character: Character?, error: NSError?) -> ()) {
-    GET(
-      "character/\(id)",
-      parameters: nil,
-      progress: nil,
-      success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-        let character = Character(dictionary: response as! NSDictionary)
-        completion(character: character, error: nil)
-      },
-      failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-        print("error getting character")
-        completion(character: nil, error: error)
-    })
-  }
-  
-  func wordWithID(id: String, completion: (word: Word?, error: NSError?) -> ()) {
-    GET(
-      "word/\(id)",
-      parameters: nil,
-      progress: nil,
-      success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
-        let word = Word(dictionary: response as! NSDictionary)
-        completion(word: word, error: nil)
-      },
-      failure: { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
-        print("error getting word")
-        completion(word: nil, error: error)
-    })
-  }
-
 }
