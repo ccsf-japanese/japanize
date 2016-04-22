@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import MZFormSheetPresentationController
 
+// TODO: Change the implementation into a singleton class.
 func getScore() -> Int {
     let userDefaults = NSUserDefaults.standardUserDefaults()
     if let score = userDefaults.valueForKey("score") {
