@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     tableView.dataSource = self
     tableView.delegate = self
     
-    score.text = "\(getScore())"
+    score.text = "\(User.currentUser!.score)"
   }
   
   @IBAction func onClose(sender: AnyObject) {

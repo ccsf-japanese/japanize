@@ -1,4 +1,5 @@
 import UIKit
+import MZFormSheetPresentationController
 
 class ProgressViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
@@ -9,7 +10,14 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    showScore(self)
+    // Show Score
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let navigationController = storyboard.instantiateViewControllerWithIdentifier("congratulationsViewController")
+    let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+    formSheetController.presentationController?.contentViewSize = CGSizeMake(300, 300)
+    formSheetController.presentationController?.shouldCenterVertically = true
+    formSheetController.presentationController?.shouldCenterHorizontally = true
+    self.presentViewController(formSheetController, animated: true, completion: nil)
     
     tableView.delegate = self
     tableView.dataSource = self

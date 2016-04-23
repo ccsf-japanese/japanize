@@ -6,9 +6,9 @@ class TabBarController: UITabBarController {
     super.viewDidLoad()
     self.selectedIndex = 1
     
-    print(getScore())
-    print(incrementScore(5))
-    print(getScore())
+    User.currentUser!.score += 5
+    // TODO: Investigate how to save updated value automatically so we don't have to do this.
+    User.currentUser! = User.currentUser!
     
     // Do any additional setup after loading the view.
   }

@@ -37,6 +37,7 @@ class KanjiView: UIView {
       }
     }
   }
+  
   func drawCircleAtPoint(point: CGPoint, color: UIColor, transform: CGAffineTransform) {
     let radius: CGFloat = 5.0
     let origin = CGPoint(x: point.x - radius / 2.0, y: point.y - radius / 2.0)

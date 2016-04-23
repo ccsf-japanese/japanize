@@ -15,7 +15,6 @@
 		1DAFC2441C927BA700F45F3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DAFC2421C927BA700F45F3A /* Main.storyboard */; };
 		1DAFC2461C927BA700F45F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DAFC2451C927BA700F45F3A /* Assets.xcassets */; };
 		1DAFC2491C927BA700F45F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DAFC2471C927BA700F45F3A /* LaunchScreen.storyboard */; };
-		1DBC1C4D1CC3110D000FF6CC /* Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C4C1CC3110D000FF6CC /* Scores.swift */; };
 		1DBC1C511CC31887000FF6CC /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */; };
 		1DBC1C531CC33DDC000FF6CC /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */; };
 		1DCC750A1C9B7A99009839CD /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DCC75091C9B7A99009839CD /* WalkthroughViewController.swift */; };
@@ -30,6 +29,7 @@
 		61362E211CC1C3A000E1BE3E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61362E201CC1C3A000E1BE3E /* Character.swift */; };
 		614F7CA61CC375CD00146FFD /* JapanizeFileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614F7CA51CC375CD00146FFD /* JapanizeFileClient.swift */; };
 		61567B861CC3056600CD58B7 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61567B851CC3056600CD58B7 /* Word.swift */; };
+		61C175F01CCBECAF00C4524F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C175EF1CCBECAF00C4524F /* User.swift */; };
 		61F7083D1CC163F9002873CC /* JapanizeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F7083C1CC163F9002873CC /* JapanizeClient.swift */; };
 		68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */; };
 		68121CBA1C9EA1D0006CDB06 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68121CB91C9EA1D0006CDB06 /* LevelCell.swift */; };
@@ -77,7 +77,6 @@
 		1DAFC2451C927BA700F45F3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1DAFC2481C927BA700F45F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1DAFC24A1C927BA700F45F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1DBC1C4C1CC3110D000FF6CC /* Scores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scores.swift; path = ../Scores.swift; sourceTree = "<group>"; };
 		1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
 		1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1DCC75091C9B7A99009839CD /* WalkthroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		61362E201CC1C3A000E1BE3E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		614F7CA51CC375CD00146FFD /* JapanizeFileClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapanizeFileClient.swift; sourceTree = "<group>"; };
 		61567B851CC3056600CD58B7 /* Word.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		61C175EF1CCBECAF00C4524F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		61F7083C1CC163F9002873CC /* JapanizeClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JapanizeClient.swift; sourceTree = "<group>"; };
 		65C68BEDE944D35F3BE2462C /* Pods-japanize.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-japanize.release.xcconfig"; path = "Pods/Target Support Files/Pods-japanize/Pods-japanize.release.xcconfig"; sourceTree = "<group>"; };
 		68121CB71C9E9EFD006CDB06 /* ChapterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChapterCell.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 			children = (
 				1DBC1C521CC33DDC000FF6CC /* ProfileViewController.swift */,
 				1DBC1C501CC31887000FF6CC /* CongratulationsViewController.swift */,
-				1DBC1C4C1CC3110D000FF6CC /* Scores.swift */,
+				61C175EF1CCBECAF00C4524F /* User.swift */,
 				614F7CA51CC375CD00146FFD /* JapanizeFileClient.swift */,
 				61F7083C1CC163F9002873CC /* JapanizeClient.swift */,
 				61362E1D1CC1BAD100E1BE3E /* Models */,
@@ -437,10 +437,10 @@
 				68121CB81C9E9EFD006CDB06 /* ChapterCell.swift in Sources */,
 				68CDFE761CA31B5E003AD265 /* Chapter.swift in Sources */,
 				61362E1F1CC1BAE200E1BE3E /* Book.swift in Sources */,
-				1DBC1C4D1CC3110D000FF6CC /* Scores.swift in Sources */,
 				1DAFC23F1C927BA700F45F3A /* AppDelegate.swift in Sources */,
 				37FD73371C9A780F00079F14 /* KanjiView.swift in Sources */,
 				68121CBE1CA0A008006CDB06 /* TabBarController.swift in Sources */,
+				61C175F01CCBECAF00C4524F /* User.swift in Sources */,
 				1DCC750D1C9B7B7A009839CD /* CustomPageViewController.swift in Sources */,
 				61F7083D1CC163F9002873CC /* JapanizeClient.swift in Sources */,
 				376B5C281CB1CE5D002B53F5 /* Stroke.swift in Sources */,

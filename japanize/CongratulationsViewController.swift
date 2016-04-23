@@ -7,7 +7,7 @@ class CongratulationsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    score.text = "\(getScore())"
+    score.text = "\(User.currentUser!.score)"
     
     // Do any additional setup after loading the view.
   }

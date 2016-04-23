@@ -10,7 +10,9 @@ class CustomPageViewController: UIViewController, BWWalkthroughPage {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    incrementScore(5);
+    User.currentUser!.score += 5;
+    // TODO: Investigate how to save updated value automatically so we don't have to do this.
+    User.currentUser! = User.currentUser!
   }
   
   func walkthroughDidScroll(position: CGFloat, offset: CGFloat) {
