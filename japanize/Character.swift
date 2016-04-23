@@ -15,6 +15,7 @@ class Character: NSObject {
   var kind: String
   var chapter: String?
   var meaning: String?
+  var romaji: String?
   var svgURL: String
   var strokes: [Stroke]?
   
@@ -24,6 +25,7 @@ class Character: NSObject {
     kind = dictionary["kind"] as! String
     chapter = dictionary["chapter"] as? String
     meaning = dictionary["meaning"] as? String
+    romaji = dictionary["romaji"] as? String
     svgURL = dictionary["svg_url"] as! String
     strokes = nil
   }

@@ -76,7 +76,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         
         meaningLabel.translatesAutoresizingMaskIntoConstraints = false
         meaningLabel.textAlignment = .Center
-        
+        meaningLabel.numberOfLines = 2
+      
         //undoButton constraints
         NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
         NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: undoButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
@@ -130,14 +131,16 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
         if let character = character {
             if let strokes = character.strokes {
                 if nextStrokeIndex == strokes.count {
-                    meaningLabel.text = character.meaning
-                    let delaySeconds: UInt64
-                    if character.meaning != nil && !character.meaning!.isEmpty {
-                        delaySeconds = 2
+                    if character.kind == "kanji" {
+                      meaningLabel.text = "\(character.meaning!)\n(Kanji)"
+                    } else if character.kind == "hiragana" {
+                      meaningLabel.text = "\(character.romaji!)\n(Hiragana)"
+                    } else if character.kind == "katakana" {
+                      meaningLabel.text = "\(character.romaji!)\n(Katakana)"
                     } else {
-                        delaySeconds = 0
+                      assertionFailure("unknown character kind")
                     }
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * delaySeconds))
+                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 2))
                     dispatch_after(delayTime, dispatch_get_main_queue()){
                         self.setNewRandomCharacter()
                     }
