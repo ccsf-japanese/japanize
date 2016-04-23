@@ -10,8 +10,8 @@ class User: NSObject {
   
   init(dictionary: NSDictionary) {
     score = dictionary["score"] as! Int
-    if let levelsComplete = dictionary["levels_complete"] as? NSMutableDictionary {
-      self.levelsComplete = levelsComplete
+    if let levelsComplete = dictionary["levels_complete"] as? NSDictionary {
+      self.levelsComplete = levelsComplete.mutableCopy() as! NSMutableDictionary
     }
   }
   
