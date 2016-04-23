@@ -6,11 +6,11 @@ let currentUserKey = "kCurrentUserKey"
 class User: NSObject {
   
   var score: Int = 0
-  var levelsComplete: NSDictionary = [:]
+  var levelsComplete: NSMutableDictionary = [:]
   
   init(dictionary: NSDictionary) {
     score = dictionary["score"] as! Int
-    if let levelsComplete = dictionary["levels_complete"] as? NSDictionary {
+    if let levelsComplete = dictionary["levels_complete"] as? NSMutableDictionary {
       self.levelsComplete = levelsComplete
     }
   }
