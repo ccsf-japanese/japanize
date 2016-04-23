@@ -6,9 +6,13 @@ let currentUserKey = "kCurrentUserKey"
 class User: NSObject {
   
   var score: Int = 0
+  var levelsComplete: NSDictionary = [:]
   
   init(dictionary: NSDictionary) {
     score = dictionary["score"] as! Int
+    if let levelsComplete = dictionary["levels_complete"] as? NSDictionary {
+      self.levelsComplete = levelsComplete
+    }
   }
   
   class var currentUser: User? {
@@ -26,7 +30,7 @@ class User: NSObject {
             print("Error parsing JSON")
           }
         } else {
-          _currentUser = User(dictionary: ["score" : 0])
+          _currentUser = User(dictionary: ["score" : 0, "levels_complete" : [:]])
         }
       }
       return _currentUser
@@ -37,7 +41,7 @@ class User: NSObject {
       
       if _currentUser != nil {
         do {
-          let dict = ["score" : _currentUser!.score]
+          let dict = ["score" : _currentUser!.score, "levels_complete" : [:]]
           let data =
             try NSJSONSerialization.dataWithJSONObject(dict,
                                                        options: NSJSONWritingOptions(rawValue:0))
