@@ -47,7 +47,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     setNewRandomWord()
     if countMeanings > 1 {
       hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
-    }else{
+    } else {
       hintMeaningButton.setTitle("English", forState: .Normal)
     }
   }
@@ -237,7 +237,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
           }
         }
         hintTextButton.setTitle(meanings[0], forState: .Normal)
-      }else{
+      } else {
         hintMeaningButton.setTitle("English", forState: .Normal)
         hintTextButton.setTitle(meanings[0], forState: .Normal)
         print("There can be (is) only one.")
@@ -250,7 +250,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     voiceRecording = false
     if countMeanings > 1 {
       hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
-    }else{
+    } else {
       hintMeaningButton.setTitle("English", forState: .Normal)
     }
     hintTextButton.setTitle("", forState: .Normal)
@@ -281,7 +281,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
           }
         }
         hintTextButton.setTitle(meanings[0], forState: .Normal)
-      }else{
+      } else {
         hintMeaningButton.setTitle("English", forState: .Normal)
         hintTextButton.setTitle(meanings[0], forState: .Normal)
       }
