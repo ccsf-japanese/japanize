@@ -68,6 +68,13 @@ extension ChapterCell : UICollectionViewDataSource {
     } else {
       assertionFailure("character should be defined")
     }
+    
+    cell.goal3Label.text = ""
+    if let words = cell.level?.words {
+      if words.count > 0 {
+        cell.goal3Label.text = "Speak \(words.count) words"
+      }
+    }
    
     cell.levelLabel.text = cell.level!.name!
     return cell
