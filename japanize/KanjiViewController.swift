@@ -146,28 +146,28 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
           } else {
             assertionFailure("unknown character kind")
           }
-        }
-      }
-      
-      if let level = level {
-        User.currentUser?.levelsComplete[level.id] = 1
-        User.currentUser! = User.currentUser!
-
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 2))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-          // TODO: Investigate how to save updated value automatically so we don't have to do this.
-          User.currentUser?.score += 10
-          User.currentUser! = User.currentUser!
           
-          self.dismissViewControllerAnimated(false, completion: {
-            print("Successfully completed level")
-          })
-        }
-        
-      } else {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 2))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-          self.setNewRandomCharacter()
+          if let level = level {
+            User.currentUser?.levelsComplete[level.id] = 1
+            // TODO: Investigate how to save updated value automatically so we don't have to do this.
+            User.currentUser! = User.currentUser!
+            
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 2))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+              // TODO: Investigate how to save updated value automatically so we don't have to do this.
+              User.currentUser?.score += 10
+              User.currentUser! = User.currentUser!
+              
+              self.dismissViewControllerAnimated(false, completion: {
+                print("Successfully completed level")
+              })
+            }
+          } else {
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 2))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+              self.setNewRandomCharacter()
+            }
+          }
         }
       }
       

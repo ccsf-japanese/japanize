@@ -23,7 +23,9 @@ class ChapterCell: UITableViewCell {
 extension ChapterCell: UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let levelCell = collectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
-    viewController?.performSegueWithIdentifier("ProgressToDrawingSegue", sender: levelCell)
+    if !levelCell.disabled {
+      viewController?.performSegueWithIdentifier("ProgressToDrawingSegue", sender: levelCell)
+    }
   }
 }
 
@@ -40,8 +42,11 @@ extension ChapterCell : UICollectionViewDataSource {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("LevelCell", forIndexPath: indexPath) as! LevelCell
-    cell.level = chapter?.levels[indexPath.row]
-    if indexPath.row == 0 { //levelComplete == true {
+    
+    let currentLevel = chapter!.levels[indexPath.row]
+    let previousLevel = indexPath.row > 0 ? chapter?.levels[indexPath.row - 1] : nil
+    
+    if User.currentUser?.levelsComplete[currentLevel.id] != nil {
       //set cell text colour green
       //cell.completedImage.hidden = false //rgb(230, 126, 34)rgb(243, 156, 18)
       cell.backgroundColor = UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)
@@ -49,13 +54,11 @@ extension ChapterCell : UICollectionViewDataSource {
       cell.goal1Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
       cell.goal2Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
       cell.goal3Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
-      
-    } else if indexPath.row == 1 {
-      
+    } else if indexPath.row == 0 || previousLevel != nil && User.currentUser?.levelsComplete[previousLevel!.id] != nil {
+      cell.disabled = false
       //levelComplete == false {
       // Levels that have been started, but not completed
-      // cell.backgroundColor = UIColor(red: 45/255, green: 141/255, blue: 141/255, alpha: 1)
-      
+      cell.backgroundColor = UIColor(red: 45/255, green: 141/255, blue: 141/255, alpha: 1)
     } else {
       // does level not touched fire this (as nil)
       //set cell inactive and grey
@@ -66,6 +69,9 @@ extension ChapterCell : UICollectionViewDataSource {
       cell.goal2Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
       cell.goal3Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
     }
+    
+    cell.level = currentLevel
+
     if let character = cell.level?.characters[0] {
       cell.goal1Label.text = character.value
       if character.kind == "kanji" {

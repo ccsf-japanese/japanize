@@ -3,6 +3,7 @@ import UIKit
 class LevelCell: UICollectionViewCell {
   
   var level: Level?
+  var disabled: Bool = true
   
   @IBOutlet weak var levelLabel: UILabel!
   @IBOutlet weak var goal1Label: UILabel!
