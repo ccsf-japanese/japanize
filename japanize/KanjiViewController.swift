@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  drawKanji
-//
-//  Created by Xinxin Xie on 3/16/16.
-//  Copyright © 2016 Xinxin Xie. All rights reserved.
-//
-
 import UIKit
 
 protocol KanjiDrawingDataSource: class {

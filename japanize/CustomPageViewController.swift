@@ -1,10 +1,3 @@
-//
-//  CustomPageViewController.swift
-//  Japanize
-//
-//  Created by Alejandro Sanchez Acosta on 03/17/16.
-//
-
 import UIKit
 import BWWalkthrough
 

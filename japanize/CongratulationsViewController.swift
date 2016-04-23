@@ -1,11 +1,3 @@
-//
-//  CongratulationsViewController.swift
-//  japanize
-//
-//  Created by eMobc SL on 16/04/16.
-//  Copyright © 2016 Codepath. All rights reserved.
-//
-
 import UIKit
 
 class CongratulationsViewController: UIViewController {

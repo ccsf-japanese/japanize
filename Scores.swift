@@ -1,11 +1,3 @@
-//
-//  score.swift
-//  japanize
-//
-//  Created by Alejandro Sanchez on 16/04/16.
-//  Copyright © 2016 Codepath. All rights reserved.
-//
-
 import UIKit
 import Foundation
 import MZFormSheetPresentationController

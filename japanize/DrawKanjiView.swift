@@ -1,11 +1,3 @@
-//
-//  DrawKanjiView.swift
-//  FingerPrinting
-//
-//  Created by Xinxin Xie on 3/23/16.
-//  Copyright © 2016 Xinxin Xie. All rights reserved.
-//
-
 import UIKit
 protocol DrawKanjiViewDelegate: class {
     func didCompleteStroke()

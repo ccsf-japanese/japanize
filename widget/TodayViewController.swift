@@ -1,11 +1,3 @@
-//
-//  TodayViewController.swift
-//  widget
-//
-//  Created by eMobc SL on 05/04/16.
-//  Copyright © 2016 Codepath. All rights reserved.
-//
-
 import UIKit
 import NotificationCenter
 

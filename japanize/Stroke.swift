@@ -1,11 +1,3 @@
-//
-//  Stroke.swift
-//  japanize
-//
-//  Created by Xinxin Xie on 4/3/16.
-//  Copyright © 2016 Codepath. All rights reserved.
-//
-
 import UIKit
 
 class Stroke {

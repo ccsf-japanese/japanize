@@ -1,11 +1,3 @@
-//
-//  TabBarController.swift
-//  japanize
-//
-//  Created by Dylan Smith on 3/21/16.
-//  Copyright © 2016 Codepath. All rights reserved.
-//
-
 import UIKit
 
 class TabBarController: UITabBarController {

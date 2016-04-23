@@ -1,11 +1,3 @@
-//
-//  WalkthroughViewController.swift
-//  japanize
-//
-//  Created by Alejandro Sanchez Acosta on 17/03/16.
-//  Copyright © 2016 Codepath. All rights reserved.
-//
-
 import UIKit
 import BWWalkthrough
 
