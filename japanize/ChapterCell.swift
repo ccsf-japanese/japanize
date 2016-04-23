@@ -3,6 +3,7 @@ import UIKit
 class ChapterCell: UITableViewCell {
   
   var chapter: Chapter?
+  var viewController: UIViewController?
   
   @IBOutlet weak var collectionView: UICollectionView!
   
@@ -17,6 +18,13 @@ class ChapterCell: UITableViewCell {
     // Configure the view for the selected state
   }
   
+}
+
+extension ChapterCell: UICollectionViewDelegate {
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let levelCell = collectionView.cellForItemAtIndexPath(indexPath) as! LevelCell
+    viewController?.performSegueWithIdentifier("ProgressToDrawingSegue", sender: levelCell)
+  }
 }
 
 extension ChapterCell : UICollectionViewDataSource {

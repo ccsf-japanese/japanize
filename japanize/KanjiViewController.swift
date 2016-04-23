@@ -18,7 +18,6 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
   @IBOutlet weak var kanjiView: KanjiView!
   @IBOutlet weak var drawKanjiView: DrawKanjiView!
   
-  
   weak var delegate: KanjiViewControllerDelegate?
   
   let undoButton = UIButton(type: .System)
@@ -50,7 +49,6 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     view.addSubview(undoButton)
     view.addSubview(clearButton)
     view.addSubview(meaningLabel)
-    
     
     //undoButton.setTitle("Undo", forState:.Normal)
     undoButton.setImage(UIImage.init(named: "undo"), forState: .Normal)
@@ -86,7 +84,22 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     self.drawKanjiView.delegate = self
     self.kanjiView.dataSource = self
     self.drawKanjiView.dataSource = self
-    setNewRandomCharacter()
+    
+    if let level = self.level {
+      let chosenCharacter = level.characters[0]
+      JapanizeFileClient.sharedInstance.dataForFilePath(chosenCharacter.svgURL,
+                                                        completion: { (data, error) in
+        if let svgData = data {
+          chosenCharacter.setStrokesWithSVG(svgData)
+          print("Level character ready!")
+          self.character = chosenCharacter
+        } else {
+          assertionFailure("error downloading SVG")
+        }
+      })
+    } else {
+      setNewRandomCharacter()
+    }
   }
   
   func undoButtonTapped() {
@@ -102,7 +115,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  //    TODO: copy to KanjiViewController and uncomment to set theme rgb(142, 68, 173)
+  
+  // TODO: copy to KanjiViewController and uncomment to set theme rgb(142, 68, 173)
   override func viewWillAppear(animated: Bool) {
     let themeColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1)
     let nav = self.navigationController?.navigationBar
