@@ -8,5 +8,5 @@ class LevelCell: UICollectionViewCell {
   @IBOutlet weak var goal1Label: UILabel!
   @IBOutlet weak var goal2Label: UILabel!
   @IBOutlet weak var goal3Label: UILabel!
-
+  
 }

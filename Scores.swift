@@ -4,29 +4,29 @@ import MZFormSheetPresentationController
 
 // TODO: Change the implementation into a singleton class.
 func getScore() -> Int {
-    let userDefaults = NSUserDefaults.standardUserDefaults()
-    if let score = userDefaults.valueForKey("score") {
-        return score as! Int
-    } else {
-        return 0
-    }
+  let userDefaults = NSUserDefaults.standardUserDefaults()
+  if let score = userDefaults.valueForKey("score") {
+    return score as! Int
+  } else {
+    return 0
+  }
 }
 
 func incrementScore(increment: Int) {
-    let userDefaults = NSUserDefaults.standardUserDefaults()
-    let score = getScore();
-    let inc = score + increment
-    userDefaults.setValue(inc, forKey: "score")
-    userDefaults.synchronize()
+  let userDefaults = NSUserDefaults.standardUserDefaults()
+  let score = getScore();
+  let inc = score + increment
+  userDefaults.setValue(inc, forKey: "score")
+  userDefaults.synchronize()
 }
 
 func showScore(controller: UIViewController) {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-    let navigationController = storyboard.instantiateViewControllerWithIdentifier("congratulationsViewController")
-    let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
-    formSheetController.presentationController?.contentViewSize = CGSizeMake(300, 300)
-    formSheetController.presentationController?.shouldCenterVertically = true
-    formSheetController.presentationController?.shouldCenterHorizontally = true
-    
-    controller.presentViewController(formSheetController, animated: true, completion: nil)
+  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+  let navigationController = storyboard.instantiateViewControllerWithIdentifier("congratulationsViewController")
+  let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+  formSheetController.presentationController?.contentViewSize = CGSizeMake(300, 300)
+  formSheetController.presentationController?.shouldCenterVertically = true
+  formSheetController.presentationController?.shouldCenterHorizontally = true
+  
+  controller.presentViewController(formSheetController, animated: true, completion: nil)
 }
