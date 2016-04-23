@@ -66,7 +66,6 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     
     meaningLabel.translatesAutoresizingMaskIntoConstraints = false
     meaningLabel.textAlignment = .Center
-    meaningLabel.numberOfLines = 2
     
     //undoButton constraints
     NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
@@ -140,9 +139,9 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
           if character.kind == "kanji" {
             meaningLabel.text = "\(character.meaning!)\n(Kanji)"
           } else if character.kind == "hiragana" {
-            meaningLabel.text = "\(character.romaji!)\n(Hiragana)"
+            meaningLabel.text = "Hiragana '\(character.romaji!)'"
           } else if character.kind == "katakana" {
-            meaningLabel.text = "\(character.romaji!)\n(Katakana)"
+            meaningLabel.text = "Katakana '\(character.romaji!)'"
           } else {
             assertionFailure("unknown character kind")
           }
