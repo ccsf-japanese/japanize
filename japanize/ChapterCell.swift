@@ -58,8 +58,17 @@ extension ChapterCell : UICollectionViewDataSource {
       cell.goal2Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
       cell.goal3Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
     }
-    cell.goal1Label.text = cell.level?.characters[0].value
-    cell.goal2Label.text = cell.level?.characters[0].kind.capitalizedString
+    if let character = cell.level?.characters[0] {
+      cell.goal1Label.text = character.value
+      if character.kind == "kanji" {
+        cell.goal2Label.text = "\(character.meaning!)"
+      } else {
+        cell.goal2Label.text = "\(character.kind.capitalizedString) '\(character.romaji!)'"
+      }
+    } else {
+      assertionFailure("character should be defined")
+    }
+   
     cell.levelLabel.text = cell.level!.name!
     return cell
   }
