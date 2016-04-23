@@ -155,7 +155,7 @@
         <!--Train-->
         <scene sceneID="sTi-8R-DFR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnTap="YES" id="Rau-af-Uki" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rau-af-Uki" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Train" image="brain" id="6nY-UW-mNq"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -736,8 +736,8 @@
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C6I-bx-jGh"/>
-        <segue reference="b5f-qa-aSG"/>
+        <segue reference="hQu-vs-FdA"/>
+        <segue reference="GmY-mQ-d3Q"/>
         <segue reference="pfU-5z-Z7N"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
