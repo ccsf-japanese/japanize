@@ -144,8 +144,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="bd4-3q-cTH" id="DeY-No-5Dp"/>
-                        <segue destination="VMh-EN-7kr" kind="show" identifier="BookToSpeakingSegue" id="C6I-bx-jGh"/>
-                        <segue destination="apX-eL-6OY" kind="show" identifier="BookToCharacterSegue" id="b5f-qa-aSG"/>
+                        <segue destination="VMh-EN-7kr" kind="show" identifier="ProgressToSpeakingSegue" id="C6I-bx-jGh"/>
+                        <segue destination="apX-eL-6OY" kind="show" identifier="ProgressToDrawingSegue" id="b5f-qa-aSG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
