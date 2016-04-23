@@ -41,7 +41,7 @@ class User: NSObject {
       
       if _currentUser != nil {
         do {
-          let dict = ["score" : _currentUser!.score, "levels_complete" : [:]]
+          let dict = ["score" : _currentUser!.score, "levels_complete" : _currentUser!.levelsComplete]
           let data =
             try NSJSONSerialization.dataWithJSONObject(dict,
                                                        options: NSJSONWritingOptions(rawValue:0))
