@@ -96,7 +96,6 @@
                                                                 <outlet property="goal2Label" destination="EE5-cw-0Yt" id="82I-s1-Eei"/>
                                                                 <outlet property="goal3Label" destination="dyU-37-uCk" id="doC-QY-V0H"/>
                                                                 <outlet property="levelLabel" destination="for-6e-QuB" id="jww-ch-dRe"/>
-                                                                <outletCollection property="gestureRecognizers" destination="nka-ZS-rNv" appends="YES" id="RBA-Ed-knY"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -150,11 +149,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="nka-ZS-rNv">
-                    <connections>
-                        <action selector="didTapOnLevel:" destination="BYZ-38-t0r" id="dPY-bA-jhp"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1222" y="2150"/>
         </scene>

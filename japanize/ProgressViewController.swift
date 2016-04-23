@@ -53,11 +53,6 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     // Dispose of any resources that can be recreated.
   }
   
-  @IBAction func didTapOnLevel(sender: UITapGestureRecognizer) {
-    // self.performSegueWithIdentifier("BookToSpeakingSegue", sender: sender.view)
-    self.performSegueWithIdentifier("BookToCharacterSegue", sender: sender.view)
-  }
-  
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     if let book = self.book {
       return book.chapters.count
