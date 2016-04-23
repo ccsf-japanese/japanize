@@ -230,12 +230,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
         var i: Int = 0
         while i < countMeanings {
-          var currentIndex = i
+          hintTextButton.setTitle(meanings[i], forState: .Normal)
           i += 1
           if i >= countMeanings {
             i = 0
           }
-          hintTextButton.setTitle(meanings[currentIndex], forState: .Normal)
         }
         hintTextButton.setTitle(meanings[0], forState: .Normal)
       }else{
@@ -275,12 +274,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
         var i: Int = 0
         while i < countMeanings {
-          var currentIndex = i
+          hintTextButton.setTitle(meanings[i], forState: .Normal)
           i += 1
           if i >= countMeanings {
             i = 0
           }
-          hintTextButton.setTitle(meanings[currentIndex], forState: .Normal)
         }
         hintTextButton.setTitle(meanings[0], forState: .Normal)
       }else{
