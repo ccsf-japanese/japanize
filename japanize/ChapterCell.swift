@@ -75,6 +75,8 @@ extension ChapterCell : UICollectionViewDataSource {
     }
     
     cell.level = currentLevel
+    cell.levelLabel.text = cell.level!.name!
+    cell.layer.cornerRadius = 4.0
 
     if let character = cell.level?.characters[0] {
       cell.goal1Label.text = character.value
@@ -94,7 +96,6 @@ extension ChapterCell : UICollectionViewDataSource {
       }
     }
    
-    cell.levelLabel.text = cell.level!.name!
     return cell
   }
   
