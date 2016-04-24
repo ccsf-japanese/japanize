@@ -16,7 +16,7 @@ class KanjiView: UIView {
     }
     let nextStrokeIndex = dataSource.nextStrokeIndex
     
-    for (i, stroke) in strokes.enumerate() {
+    for (i, stroke) in strokes.enumerate().reverse() {
       let color = i >= nextStrokeIndex ? UIColor.grayColor() : UIColor.blackColor()
       color.setStroke()
       let path = stroke.path
