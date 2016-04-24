@@ -203,18 +203,18 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     })
   }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.becomeFirstResponder()
-    }
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    self.becomeFirstResponder()
+  }
     
-    override func canBecomeFirstResponder() -> Bool {
-        return true
-    }
+  override func canBecomeFirstResponder() -> Bool {
+    return true
+  }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent!) {
-        if(event.subtype == UIEventSubtype.MotionShake) {
-            self.setNewRandomCharacter()
-        }
+  override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent!) {
+    if (event.subtype == UIEventSubtype.MotionShake && level == nil) {
+      self.setNewRandomCharacter()
     }
+  }
 }
