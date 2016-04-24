@@ -47,6 +47,7 @@ extension ChapterCell : UICollectionViewDataSource {
     let previousLevel = indexPath.row > 0 ? chapter?.levels[indexPath.row - 1] : nil
     
     if User.currentUser?.levelsComplete[currentLevel.id] != nil {
+      cell.disabled = true
       //set cell text colour green
       //cell.completedImage.hidden = false //rgb(230, 126, 34)rgb(243, 156, 18)
       cell.backgroundColor = UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)
@@ -64,6 +65,7 @@ extension ChapterCell : UICollectionViewDataSource {
       cell.goal2Label.textColor = UIColor.whiteColor()
       cell.goal3Label.textColor = UIColor.whiteColor()
     } else {
+      cell.disabled = true
       // does level not touched fire this (as nil)
       //set cell inactive and grey
       // cell.lockedImage.hidden = false rgb(52, 73, 94)rgb(44, 62, 80)
