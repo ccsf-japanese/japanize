@@ -1,7 +1,7 @@
 import UIKit
 import MZFormSheetPresentationController
 
-class ProgressViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProgressViewController: UIViewController {
   
   var book: Book?
   
@@ -53,31 +53,7 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
-  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    if let book = self.book {
-      return book.chapters.count
-    } else {
-      return 0
-    }
-  }
-  
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return book!.chapters[section].name
-  }
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
-  }
-  
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("ChapterCell") as! ChapterCell
-    cell.viewController = self
-    cell.chapter = book!.chapters[indexPath.section];
-    cell.selectionStyle = .None
-    cell.collectionView.reloadData()
-    return cell
-  }
-  
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let cell = sender as? LevelCell {
       if let vc = segue.destinationViewController as? PronunciationViewController {
@@ -90,4 +66,36 @@ class ProgressViewController: UIViewController, UITableViewDataSource, UITableVi
     }
   }
   
+}
+
+extension ProgressViewController : UITableViewDataSource {
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("ChapterCell") as! ChapterCell
+    cell.viewController = self
+    cell.chapter = book!.chapters[indexPath.section];
+    cell.selectionStyle = .None
+    cell.collectionView.reloadData()
+    return cell
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1
+  }
+ 
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    if let book = self.book {
+      return book.chapters.count
+     } else {
+      return 0
+    }
+   }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return book!.chapters[section].name
+  }
+  
+}
+
+extension ProgressViewController : UITableViewDelegate {
 }
