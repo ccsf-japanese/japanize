@@ -58,7 +58,7 @@ extension ChapterCell : UICollectionViewDataSource {
       cell.disabled = false
       //levelComplete == false {
       // Levels that have been started, but not completed
-      cell.backgroundColor = UIColor(red: 45/255, green: 141/255, blue: 141/255, alpha: 1)
+      cell.backgroundColor = UIColor.flatMintColorDark()
       cell.levelLabel.textColor = UIColor.whiteColor()
       cell.goal1Label.textColor = UIColor.whiteColor()
       cell.goal2Label.textColor = UIColor.whiteColor()
