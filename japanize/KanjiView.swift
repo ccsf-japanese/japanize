@@ -17,7 +17,7 @@ class KanjiView: UIView {
     let nextStrokeIndex = dataSource.nextStrokeIndex
     
     for (i, stroke) in strokes.enumerate().reverse() {
-      let color = i >= nextStrokeIndex ? UIColor.grayColor() : UIColor.blackColor()
+      let color = i >= nextStrokeIndex ? UIColor.lightGrayColor() : UIColor.blackColor()
       color.setStroke()
       let path = stroke.path
       path.applyTransform(kanjiTransform)
