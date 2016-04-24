@@ -429,11 +429,11 @@
             </objects>
             <point key="canvasLocation" x="468" y="2493"/>
         </scene>
-        <!--Kanji-->
+        <!--Draw-->
         <scene sceneID="tZU-lG-zzK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PUO-VF-2qD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kanji" image="kanji64" id="j6e-JU-ZAE"/>
+                    <tabBarItem key="tabBarItem" title="Draw" image="kanji64" id="j6e-JU-ZAE"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -682,11 +682,11 @@
             </objects>
             <point key="canvasLocation" x="1000" y="1191"/>
         </scene>
-        <!--Practice-->
+        <!--Speak-->
         <scene sceneID="9r2-6j-CSJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DQ8-V8-VrP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Practice" image="sound" id="3Tn-wG-Gru"/>
+                    <tabBarItem key="tabBarItem" title="Speak" image="sound" id="3Tn-wG-Gru"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
