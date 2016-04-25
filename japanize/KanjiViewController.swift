@@ -156,10 +156,12 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
               // TODO: Investigate how to save updated value automatically so we don't have to do this.
               User.currentUser?.score += 10
               User.currentUser! = User.currentUser!
+            
+              self.performSegueWithIdentifier("showPronuntiation", sender: level)
               
-              self.dismissViewControllerAnimated(false, completion: {
-                print("Successfully completed level")
-              })
+              //self.dismissViewControllerAnimated(false, completion: {
+              //  print("Successfully completed level")
+              //})
             }
           } else {
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 2))
@@ -217,4 +219,17 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
       self.setNewRandomCharacter()
     }
   }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let level = sender as? Level {
+            if let vc = segue.destinationViewController as? PronunciationViewController {
+                vc.level = level
+            } else if let vc = segue.destinationViewController as? KanjiViewController {
+                vc.level = level
+            } else {
+                assertionFailure("Destination view controller unknown")
+            }
+        }
+    }
+
 }

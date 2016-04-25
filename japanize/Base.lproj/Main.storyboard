@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Mgr-G9-aWM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -223,11 +223,12 @@
                     <connections>
                         <outlet property="drawKanjiView" destination="zNN-Gg-A4H" id="oBc-sV-0IH"/>
                         <outlet property="kanjiView" destination="qcy-zY-sf0" id="XcK-nY-FA5"/>
+                        <segue destination="VMh-EN-7kr" kind="show" identifier="showPronuntiation" id="YNK-IE-2L7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYq-dQ-JUw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="468" y="1843"/>
+            <point key="canvasLocation" x="468" y="1815"/>
         </scene>
         <!--Japanize-->
         <scene sceneID="AQm-xW-hIy">
@@ -323,6 +324,13 @@
                                         <state key="normal" title="話す" image="mic"/>
                                         <connections>
                                             <action selector="onRecord:" destination="VMh-EN-7kr" eventType="touchUpInside" id="F0n-S0-k0Q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yol-0A-53K">
+                                        <rect key="frame" x="252" y="162" width="32" height="30"/>
+                                        <state key="normal" title="Next"/>
+                                        <connections>
+                                            <action selector="nextWord:" destination="VMh-EN-7kr" eventType="touchUpInside" id="Y4m-fK-qAo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HP-9e-MGa">
@@ -583,7 +591,7 @@
                                 <string key="text">Dylan James Smith
 </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLQ-Ov-yG8">
@@ -615,7 +623,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Z0W-LW-1D2">
                                 <rect key="frame" x="0.0" y="266" width="320" height="302"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MedalCell" id="MMs-D6-Nfc">
                                         <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
@@ -634,7 +642,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kanji Star: 10 Kanjis Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jea-bJ-kGt">
                                                     <rect key="frame" x="59" y="13" width="246" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -736,9 +744,9 @@
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hQu-vs-FdA"/>
         <segue reference="GmY-mQ-d3Q"/>
-        <segue reference="pfU-5z-Z7N"/>
+        <segue reference="qZB-HR-r3t"/>
+        <segue reference="b5f-qa-aSG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

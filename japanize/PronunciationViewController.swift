@@ -26,11 +26,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   
   var word: Word?
   var countMeanings: Int?
-  
+  var i: Int = 0
+    
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    
+
     hintTextButton.hidden = true
     playWordButton.enabled = false
     playRecButton.enabled = false
@@ -43,15 +43,53 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     setupRecorder()
     
-    // Do any additional setup after loading the view.
-    setNewRandomWord()
-    if countMeanings > 1 {
-      hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+    if let level = level {
+        self.level = level
+        updateWord()
     } else {
-      hintMeaningButton.setTitle("English", forState: .Normal)
+        // Do any additional setup after loading the view.
+        setNewRandomWord()
+        if countMeanings > 1 {
+          hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+        } else {
+          hintMeaningButton.setTitle("English", forState: .Normal)
+        }
     }
   }
   
+    @IBAction func nextWord(sender: AnyObject) {
+        self.i = self.i + 1
+        
+        if self.i == self.level!.words.count {
+            self.dismissViewControllerAnimated(false, completion: {
+                print("Successfully completed level")
+            })
+        } else {
+            updateWord()
+        }
+    }
+
+    func updateWord() {
+        if let audioURL = self.level!.words[self.i].audioURL {
+            JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
+                if let audioData = data {
+                    self.level!.words[self.i].setAudioWithMP3(audioData)
+                    print("Random word ready!")
+                    self.word = self.level!.words[self.i]
+                    self.wordTextButton.setTitle(self.level!.words[0].spellings.last, forState: .Normal)
+                    self.wordTextButton.enabled = true
+                } else {
+                    assertionFailure("error downloading audioData")
+                }
+            })
+        }
+        
+        if countMeanings > 1 {
+            hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+        } else {
+            hintMeaningButton.setTitle("English", forState: .Normal)
+        }
+    }
   override func viewWillAppear(animated: Bool) {
     
     //Theme Block rgb(231, 76, 60)
