@@ -426,6 +426,7 @@
                     <connections>
                         <outlet property="hintMeaningButton" destination="eSK-eY-0Dn" id="SLv-lM-h4z"/>
                         <outlet property="hintTextButton" destination="VqU-8K-Jgz" id="QT9-mB-Oko"/>
+                        <outlet property="nextButton" destination="yol-0A-53K" id="JBq-ZF-Laz"/>
                         <outlet property="playRecButton" destination="8HP-9e-MGa" id="lHx-vO-dOu"/>
                         <outlet property="playWordButton" destination="bbE-dK-wYc" id="r2F-V3-3gj"/>
                         <outlet property="recordButton" destination="IzQ-im-BV8" id="i0f-T3-DbI"/>

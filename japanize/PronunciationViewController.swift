@@ -16,6 +16,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   
   @IBOutlet weak var recordButtonCenter: NSLayoutConstraint!
   
+    @IBOutlet weak var nextButton: UIButton!
+    
   var voiceRecorder: AVAudioRecorder!
   var voicePlayer: AVAudioPlayer!
   var audioPlayer: AVAudioPlayer!
@@ -47,6 +49,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         self.level = level
         updateWord()
     } else {
+        self.nextButton.hidden = true
         // Do any additional setup after loading the view.
         setNewRandomWord()
         if countMeanings > 1 {
