@@ -79,7 +79,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                     self.level!.words[self.i].setAudioWithMP3(audioData)
                     print("Random word ready!")
                     self.word = self.level!.words[self.i]
-                    self.wordTextButton.setTitle(self.level!.words[0].spellings.last, forState: .Normal)
+                    self.wordTextButton.setTitle(self.level!.words[self.i].spellings.last, forState: .Normal)
                     self.wordTextButton.enabled = true
                 } else {
                     assertionFailure("error downloading audioData")
