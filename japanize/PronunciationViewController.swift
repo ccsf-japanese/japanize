@@ -20,6 +20,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   var voicePlayer: AVAudioPlayer!
   var audioPlayer: AVAudioPlayer!
   
+  var recNow: Bool = true
   var voiceRecording: Bool = false
   var newVoiceRecording: Bool = false
   var isLevel: Bool = false
@@ -36,6 +37,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     super.viewDidLoad()
 
     nextButton.layer.cornerRadius = 7
+    recordButton.setTitle("", forState: .Normal)
+
     
     if let level = level {
         isLevel = true
@@ -200,7 +203,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     self.playRecButton.enabled = true
     newVoiceRecording = true
     voiceRecording = true
-    recordButton.setTitle("話す", forState: .Normal)
+    recNow = true
+//    recordButton.setTitle("話す", forState: .Normal)
   }
   
   func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder, error: NSError?) {
@@ -211,7 +215,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     var error: NSError?
     let audioSession = AVAudioSession.sharedInstance()
     //      TODO: reset Record to work on enabled
-    if (sender.titleLabel!!.text == "話す"){
+//    if (sender.titleLabel!!.text == "話す"){
+    if recNow {
       do{
         try audioSession.setActive(true)
         setupRecorder()
@@ -226,7 +231,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
       } else {
         recordButton.tintColor = FlatRed()
-        sender.setTitle("ストップ", forState: .Normal)
+        recNow = false
+//        sender.setTitle("ストップ", forState: .Normal)
         playRecButton.enabled = false
       }
     } else {
@@ -237,7 +243,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
       }catch{
         print("ERROR: onRecord setActive(false)")
       }
-      sender.setTitle("話す", forState: .Normal)
+      recNow = true
+//      sender.setTitle("話す", forState: .Normal)
       recordButton.tintColor = FlatBlack()
       
       playRecButton.enabled = true
