@@ -8,11 +8,12 @@ class DrawKanjiView: UIView {
   
   let imageView = UIImageView()
   
+
   var lastPoint = CGPoint.zero
-  var red: CGFloat = 100.0
-  var green: CGFloat = 0.0
-  var blue: CGFloat = 0.0
-  var brushWidth: CGFloat = 8.0
+  var red: CGFloat = 142/255
+  var green: CGFloat = 68/255
+  var blue: CGFloat = 173/255
+  var brushWidth: CGFloat = 12.0
   var opacity: CGFloat = 1.0
   var swiped = false
   
@@ -57,6 +58,7 @@ class DrawKanjiView: UIView {
       CGContextSetLineCap(context, CGLineCap.Round)
       CGContextSetLineWidth(context, brushWidth)
       CGContextSetRGBStrokeColor(context, red, green, blue, 1.0)
+//        CGContextSetStrokeColorWithColor(context, UIColor.flatPurpleColor().CGColor)
       CGContextSetBlendMode(context, CGBlendMode.Normal)
       
       

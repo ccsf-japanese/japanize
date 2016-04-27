@@ -87,9 +87,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   override func viewWillAppear(animated: Bool) {
     
     //Theme Block rgb(231, 76, 60) //UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
-    let themeColor = FlatRed()
+    let themeColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1).flatten()
     let themeContrast = ContrastColorOf(themeColor, returnFlat: true)
     let nav = self.navigationController?.navigationBar
+    self.navigationController?.hidesNavigationBarHairline = true
     nav?.barTintColor = themeColor
     nav?.tintColor =  themeContrast
     nav?.titleTextAttributes = [NSForegroundColorAttributeName: themeContrast]
@@ -243,7 +244,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
       }
       recNowRec = true
 //      sender.setTitle("話す", forState: .Normal)
-      recordButton.tintColor = FlatBlack()
+      recordButton.tintColor = nil
         recNowPlay = true
 
       //            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
@@ -317,7 +318,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   
 
     @IBAction func onTranslateJapanese(sender: AnyObject) {
+        
         if hintTextButton.titleForState(.Normal) != word?.romaji {
+            hintTextButton.titleLabel?.text = ""
             hintTextButton.setTitle(word?.romaji, forState: .Normal)
             hintTextButton.hidden = false
         } else {
@@ -327,6 +330,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     @IBAction func onTranslate(sender: AnyObject) {
         if hintTextButton.titleForState(.Normal) != word?.meanings[0]{
+            hintTextButton.titleLabel?.text = ""
             hintTextButton.setTitle(word?.meanings[0], forState: .Normal)
             hintTextButton.hidden = false
         } else {

@@ -1,4 +1,5 @@
 import UIKit
+import ChameleonFramework
 
 class KanjiView: UIView {
   
@@ -17,7 +18,7 @@ class KanjiView: UIView {
     let nextStrokeIndex = dataSource.nextStrokeIndex
     
     for (i, stroke) in strokes.enumerate().reverse() {
-      let color = i >= nextStrokeIndex ? UIColor.lightGrayColor() : UIColor.blackColor()
+      let color = i >= nextStrokeIndex ? FlatWhite() : FlatPlumDark()
       color.setStroke()
       let path = stroke.path
       path.applyTransform(kanjiTransform)
@@ -30,10 +31,10 @@ class KanjiView: UIView {
     if nextStrokeIndex < strokes.count {
       let stroke = strokes[nextStrokeIndex]
       if let point = stroke.points.first {
-        drawCircleAtPoint(point, color: UIColor.greenColor(), transform: kanjiTransform)
+        drawCircleAtPoint(point, color: FlatGreenDark(), transform: kanjiTransform)
       }
       if let point = stroke.points.last {
-        drawCircleAtPoint(point, color: UIColor.redColor(), transform: kanjiTransform)
+        drawCircleAtPoint(point, color: FlatRed(), transform: kanjiTransform)
       }
     }
   }

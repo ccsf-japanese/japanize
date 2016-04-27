@@ -1,4 +1,5 @@
 import UIKit
+import ChameleonFramework
 
 protocol KanjiDrawingDataSource: class {
   var nextStrokeIndex: Int { get }
@@ -41,7 +42,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
       kanjiView.setNeedsDisplay()
     }
   }
-  
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -51,14 +52,17 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     view.addSubview(meaningLabel)
     
     //undoButton.setTitle("Undo", forState:.Normal)
-    undoButton.setImage(UIImage.init(named: "undo"), forState: .Normal)
+    undoButton.setImage(UIImage.init(named: "ic_undo"), forState: .Normal)
     //clearButton.setTitle("Clear", forState:.Normal)
-    clearButton.setImage(UIImage.init(named: "cancel"), forState: .Normal)
+    clearButton.setImage(UIImage.init(named: "ic_clear"), forState: .Normal)
     
     undoButton.titleLabel?.font = UIFont.systemFontOfSize(25)
     clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
+    meaningLabel.font = UIFont.systemFontOfSize(28)
+  meaningLabel.numberOfLines = 3
     
     undoButton.translatesAutoresizingMaskIntoConstraints = false
+    
     undoButton.addTarget(self, action: "undoButtonTapped", forControlEvents: .TouchUpInside)
     
     clearButton.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +82,7 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     //meaningLabel constraints
     NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: meaningLabel, attribute: .Trailing, multiplier: 1.0, constant: -15.0).active = true
     NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: meaningLabel, attribute: .Leading, multiplier: 1.0, constant: 15.0).active = true
-    NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: meaningLabel, attribute: .Bottom, multiplier: 1.0, constant: 80.0).active = true
+    NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: meaningLabel, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
     
     self.drawKanjiView.delegate = self
     self.kanjiView.dataSource = self
@@ -115,14 +119,18 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     // Dispose of any resources that can be recreated.
   }
   
-  // TODO: copy to KanjiViewController and uncomment to set theme rgb(142, 68, 173)
+
   override func viewWillAppear(animated: Bool) {
-    let themeColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1)
+    //Theme Block
+    let themeColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1).flatten()
+    let themeContrast = ContrastColorOf(themeColor, returnFlat: true)
     let nav = self.navigationController?.navigationBar
+    self.navigationController?.hidesNavigationBarHairline = true
     nav?.barTintColor = themeColor
-    nav?.tintColor = UIColor.whiteColor()
-    nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-    tabBarController?.tabBar.tintColor = themeColor
+    nav?.tintColor =  themeContrast
+    nav?.titleTextAttributes = [NSForegroundColorAttributeName: themeContrast]
+    self.tabBarController?.tabBar.tintColor = themeColor
+    //
   }
   
   override func viewDidLayoutSubviews() {
@@ -137,11 +145,11 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
       if let strokes = character.strokes {
         if nextStrokeIndex == strokes.count {
           if character.kind == "kanji" {
-            meaningLabel.text = "\(character.meaning!)\n(Kanji)"
+            meaningLabel.text = "\(character.meaning!) \n[Kanji]"
           } else if character.kind == "hiragana" {
-            meaningLabel.text = "Hiragana '\(character.romaji!)'"
+            meaningLabel.text = "'\(character.romaji!)' \n[Hiragana]"
           } else if character.kind == "katakana" {
-            meaningLabel.text = "Katakana '\(character.romaji!)'"
+            meaningLabel.text = "'\(character.romaji!)' \n[Katakana]"
           } else {
             assertionFailure("unknown character kind")
           }

@@ -1,4 +1,5 @@
 import UIKit
+import ChameleonFramework
 import MZFormSheetPresentationController
 
 class ProgressViewController: UIViewController {
@@ -31,23 +32,17 @@ class ProgressViewController: UIViewController {
   }
   
   override func viewWillAppear(animated: Bool) {
-    let themeColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1)
+    //Theme Block
+    let themeColor = UIColor(red: 22/255, green: 160/255, blue: 133/255, alpha: 1).flatten()
+    let themeContrast = ContrastColorOf(themeColor, returnFlat: true)
     let nav = self.navigationController?.navigationBar
+    self.navigationController?.hidesNavigationBarHairline = true
     nav?.barTintColor = themeColor
-    nav?.tintColor = UIColor.whiteColor()
-    nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-    tabBarController?.tabBar.tintColor = themeColor
+    nav?.tintColor =  themeContrast
+    nav?.titleTextAttributes = [NSForegroundColorAttributeName: themeContrast]
+    self.tabBarController?.tabBar.tintColor = themeColor
+    //
   }
-  
-  // TODO: copy to KanjiViewController and uncomment to set theme rgb(142, 68, 173)
-  // override func viewWillAppear(animated: Bool) {
-  //   let themeColor = UIColor(red: 142/255, green: 68/255, blue: 173/255, alpha: 1)
-  //   let nav = self.navigationController?.navigationBar
-  //   nav?.barTintColor = themeColor
-  //   nav?.tintColor = UIColor.whiteColor()
-  //   nav?.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-  //   tabBarController?.tabBar.tintColor = themeColor
-  // }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
