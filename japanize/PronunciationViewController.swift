@@ -31,7 +31,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   var countMeanings: Int?
     
     
-  var levelWordCount: Int = 0
+  var levelWordsCount: Int = 0
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -58,10 +58,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   }
   
     @IBAction func onNext(sender: AnyObject) {
-        levelWordCount += levelWordCount
+        self.levelWordsCount = self.levelWordsCount + 1
         
-        if levelWordCount == level!.words.count {
-            dismissViewControllerAnimated(false, completion: {
+        if self.levelWordsCount == self.level!.words.count {
+            self.dismissViewControllerAnimated(false, completion: {
                 print("Successfully completed level")
             })
         } else {
@@ -70,13 +70,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
 
     func getLevelWord() {
-        if let audioURL = self.level!.words[self.levelWordCount].audioURL {
+        if let audioURL = self.level!.words[self.levelWordsCount].audioURL {
             JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
                 if let audioData = data {
-                    self.level!.words[self.levelWordCount].setAudioWithMP3(audioData)
-                    print("Random word ready!")
-                    self.word = self.level!.words[self.levelWordCount]
-                    self.wordTextButton.setTitle(self.level!.words[self.levelWordCount].spellings.last, forState: .Normal)
+                    self.level!.words[self.levelWordsCount].setAudioWithMP3(audioData)
+                    print(self.levelWordsCount," of ", self.level!.words.count, "Random words ready!")
+                    self.word = self.level!.words[self.levelWordsCount]
+                    self.wordTextButton.setTitle(self.level!.words[self.levelWordsCount].spellings.last, forState: .Normal)
                     self.wordTextButton.enabled = true
                 } else {
                     assertionFailure("error downloading audioData")
