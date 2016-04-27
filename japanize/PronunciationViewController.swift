@@ -8,7 +8,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   
   @IBOutlet weak var wordTextButton: UIButton!
   @IBOutlet weak var recordButton: UIButton!
-  @IBOutlet weak var playRecButton: UIButton!
   
   @IBOutlet weak var hintTextButton: UIButton!
   @IBOutlet weak var hintMeaningButton: UIButton!
@@ -20,7 +19,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   var voicePlayer: AVAudioPlayer!
   var audioPlayer: AVAudioPlayer!
   
-  var recNow: Bool = true
+  var recNowRec: Bool = true
+    var recNowPlay: Bool = true
   var voiceRecording: Bool = false
   var newVoiceRecording: Bool = false
   var isLevel: Bool = false
@@ -31,7 +31,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   var countMeanings: Int?
     
     
-  var i: Int = 0
+  var levelWordCount: Int = 0
     
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -58,10 +58,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
   }
   
     @IBAction func onNext(sender: AnyObject) {
-        self.i = self.i + 1
+        levelWordCount += levelWordCount
         
-        if self.i == self.level!.words.count {
-            self.dismissViewControllerAnimated(false, completion: {
+        if levelWordCount == level!.words.count {
+            dismissViewControllerAnimated(false, completion: {
                 print("Successfully completed level")
             })
         } else {
@@ -70,24 +70,18 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     }
 
     func getLevelWord() {
-        if let audioURL = self.level!.words[self.i].audioURL {
+        if let audioURL = self.level!.words[self.levelWordCount].audioURL {
             JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
                 if let audioData = data {
-                    self.level!.words[self.i].setAudioWithMP3(audioData)
+                    self.level!.words[self.levelWordCount].setAudioWithMP3(audioData)
                     print("Random word ready!")
-                    self.word = self.level!.words[self.i]
-                    self.wordTextButton.setTitle(self.level!.words[self.i].spellings.last, forState: .Normal)
+                    self.word = self.level!.words[self.levelWordCount]
+                    self.wordTextButton.setTitle(self.level!.words[self.levelWordCount].spellings.last, forState: .Normal)
                     self.wordTextButton.enabled = true
                 } else {
                     assertionFailure("error downloading audioData")
                 }
             })
-        }
-        
-        if countMeanings > 1 {
-            hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
-        } else {
-            hintMeaningButton.setTitle("English", forState: .Normal)
         }
     }
   override func viewWillAppear(animated: Bool) {
@@ -106,8 +100,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     hintTextButton.hidden = true
 //    playWordButton.enabled = false
     playWordButton.hidden = true
-    playRecButton.enabled = false
-    
+    recNowPlay = false
+
     wordTextButton.setTitle("日本語", forState: .Disabled)
     hintTextButton.setTitle("", forState: .Normal)
     
@@ -187,7 +181,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
       newVoiceRecording = false
     }
     if voiceRecording == true {
-      playRecButton.enabled = true
+        recNowPlay = true
+
     }
   }
   
@@ -200,10 +195,12 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     if isLevel {
         nextButton.hidden = false
     }
-    self.playRecButton.enabled = true
+    recNowPlay = true
+
     newVoiceRecording = true
     voiceRecording = true
-    recNow = true
+    recNowRec = true
+    recPlay()
 //    recordButton.setTitle("話す", forState: .Normal)
   }
   
@@ -216,7 +213,7 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     let audioSession = AVAudioSession.sharedInstance()
     //      TODO: reset Record to work on enabled
 //    if (sender.titleLabel!!.text == "話す"){
-    if recNow {
+    if recNowRec {
       do{
         try audioSession.setActive(true)
         setupRecorder()
@@ -231,9 +228,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
       } else {
         recordButton.tintColor = FlatRed()
-        recNow = false
+        recNowRec = false
 //        sender.setTitle("ストップ", forState: .Normal)
-        playRecButton.enabled = false
+        recNowPlay = false
+
       }
     } else {
       voiceRecorder.stop()
@@ -243,33 +241,47 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
       }catch{
         print("ERROR: onRecord setActive(false)")
       }
-      recNow = true
+      recNowRec = true
 //      sender.setTitle("話す", forState: .Normal)
       recordButton.tintColor = FlatBlack()
-      
-      playRecButton.enabled = true
+        recNowPlay = true
+
       //            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
       
     }
   }
   
   @IBAction func onRecPlay(sender: UIButton) {
-    if (sender.enabled == true){
-      //            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-      //            recordButton.enabled = false
-      sender.enabled = false
-      preparePlayer()
-      voicePlayer.play()
-    } else {
-      voicePlayer.stop()
-      recordButton.enabled = true
-      sender.enabled = true
-      
-    }
+    recPlay()
+//    if (sender.enabled == true){
+//      //            recordButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+//      //            recordButton.enabled = false
+//      sender.enabled = false
+//      preparePlayer()
+//      voicePlayer.play()
+//    } else {
+//      voicePlayer.stop()
+//      recordButton.enabled = true
+//      sender.enabled = true
+//      
+//    }
   }
+    
+    func recPlay() {
+        if recNowPlay == true {
+            recNowPlay = false
+            preparePlayer()
+            voicePlayer.play()
+        } else {
+            voicePlayer.stop()
+            recordButton.enabled = true
+            recNowPlay = true
+        }
+    }
+
   @IBAction func onWordPlay(sender: UIButton) {
     if (sender.enabled == true){
-      hintTextButton.setTitle(word?.romaji, forState: .Normal)
+//      hintTextButton.setTitle(word?.romaji, forState: .Normal)
       sender.enabled = false
       if let word = word {
         wordPlayer(word)
@@ -298,7 +310,8 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     hintTextButton.setTitle("", forState: .Normal)
     playWordButton.hidden = true
 //    playWordButton.enabled = false
-    playRecButton.enabled = false
+    recNowPlay = false
+
     setNewRandomWord()
   }
   
@@ -321,23 +334,23 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
         
     // TODO: Tap to switch between multiple meanings
-    if let meanings = word?.meanings{
-      if countMeanings > 1 {
-        hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
-        var multiMeaningsCount: Int = 0
-        while multiMeaningsCount < countMeanings {
-          hintTextButton.setTitle(meanings[multiMeaningsCount], forState: .Normal)
-          multiMeaningsCount += 1
-          if multiMeaningsCount >= countMeanings {
-            multiMeaningsCount = 0
-          }
-        }
-        hintTextButton.setTitle(meanings[0], forState: .Normal)
-      } else {
-        hintMeaningButton.setTitle("English", forState: .Normal)
-        hintTextButton.setTitle(meanings[0], forState: .Normal)
-      }
-    }
+//    if let meanings = word?.meanings{
+//      if countMeanings > 1 {
+//        hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
+//        var multiMeaningsCount: Int = 0
+//        while multiMeaningsCount < countMeanings {
+//          hintTextButton.setTitle(meanings[multiMeaningsCount], forState: .Normal)
+//          multiMeaningsCount += 1
+//          if multiMeaningsCount >= countMeanings {
+//            multiMeaningsCount = 0
+//          }
+//        }
+//        hintTextButton.setTitle(meanings[0], forState: .Normal)
+//      } else {
+//        hintMeaningButton.setTitle("English", forState: .Normal)
+//        hintTextButton.setTitle(meanings[0], forState: .Normal)
+//      }
+//    }
   }
   
   func setNewRandomWord() {
