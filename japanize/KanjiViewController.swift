@@ -82,8 +82,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: clearButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
     
     //meaningLabel constraints
-    NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: meaningLabel, attribute: .Trailing, multiplier: 1.0, constant: -15.0).active = true
-    NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: meaningLabel, attribute: .Leading, multiplier: 1.0, constant: 15.0).active = true
+    NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: meaningLabel, attribute: .Trailing, multiplier: 1.0, constant: 40.0).active = true
+    NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: meaningLabel, attribute: .Leading, multiplier: 1.0, constant: -40.0).active = true
     NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: meaningLabel, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
     
     self.drawKanjiView.delegate = self
