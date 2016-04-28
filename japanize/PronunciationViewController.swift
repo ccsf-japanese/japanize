@@ -47,9 +47,12 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         }
         
         view.tintColor = FlatNavyBlue()
+        recordButton.tintColor = FlatNavyBlue()
+        recordButton.layer.cornerRadius = recordButton.frame.height / 2
+        recordButton.adjustsImageWhenHighlighted = false
+        
         nextButton.layer.cornerRadius = 7
         
-        recordButton.setTitleColor(FlatWatermelon(), forState: .Highlighted)
         hintTextButton.hidden = true
         playWordButton.hidden = true
         recNowPlay = false
@@ -176,13 +179,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         print("Error while recording audio \(error!.localizedDescription)")
     }
     
-    @IBAction func onRecHold(sender: AnyObject) {
-    }
-    
-    @IBAction func onRecRelease(sender: AnyObject) {
-    }
-    
-    @IBAction func onRecord(sender: AnyObject) {
+    @IBAction func onRecHold(sender: UIButton) {
+        sender.tintColor = FlatRed()
+        sender.backgroundColor = FlatRedDark()
+        
         var error: NSError?
         let audioSession = AVAudioSession.sharedInstance()
         if recNowRec {
@@ -219,6 +219,87 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             
             
         }
+    }
+    
+    @IBAction func onRecRelease(sender: UIButton) {
+        sender.backgroundColor = nil
+
+        var error: NSError?
+        let audioSession = AVAudioSession.sharedInstance()
+        if recNowRec {
+            do{
+                try audioSession.setActive(true)
+                setupRecorder()
+                print(">>> Start recording")
+                voiceRecorder.record()
+            } catch let error1 as NSError {
+                error = error1
+                print("ERROR: onRecord")
+                voiceRecorder = nil
+            }
+            if let err = error {
+                print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
+            } else {
+                recordButton.tintColor = FlatRed()
+                recNowRec = false
+                recNowPlay = false
+                //        startTimer()
+                
+            }
+        } else {
+            voiceRecorder.stop()
+            do{
+                try audioSession.setActive(false)
+                print(">>> audioSession.setActivity(false)")
+            }catch{
+                print("ERROR: onRecord setActive(false)")
+            }
+            recNowRec = true
+            recordButton.tintColor = nil
+            recNowPlay = true
+            
+            
+        }
+    }
+    
+    @IBAction func onRecord(sender: AnyObject) {
+        print("Thing1")
+//        var error: NSError?
+//        let audioSession = AVAudioSession.sharedInstance()
+//        if recNowRec {
+//            do{
+//                try audioSession.setActive(true)
+//                setupRecorder()
+//                print(">>> Start recording")
+//                voiceRecorder.record()
+//            } catch let error1 as NSError {
+//                error = error1
+//                print("ERROR: onRecord")
+//                voiceRecorder = nil
+//            }
+//            if let err = error {
+//                print("ERROR: onRecord AVAudioRecorder: \(err.localizedDescription)")
+//            } else {
+//                recordButton.tintColor = FlatRed()
+//                recNowRec = false
+//                recNowPlay = false
+//                //        startTimer()
+//                
+//            }
+//        } else {
+//            voiceRecorder.stop()
+//            do{
+//                try audioSession.setActive(false)
+//                print(">>> audioSession.setActivity(false)")
+//            }catch{
+//                print("ERROR: onRecord setActive(false)")
+//            }
+//            recNowRec = true
+//            recordButton.tintColor = nil
+//            recNowPlay = true
+//            
+//            
+//        }
     }
     
     func recPlay() {

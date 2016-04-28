@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -364,9 +365,20 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-im-BV8">
+                                        <rect key="frame" x="90" y="48" width="140" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="Dg5-tM-KZW"/>
+                                            <constraint firstAttribute="width" constant="150" id="LCY-TQ-xoz"/>
+                                            <constraint firstAttribute="width" secondItem="IzQ-im-BV8" secondAttribute="height" multiplier="1:1" id="XYI-uu-QcI"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
                                         <state key="normal" image="mic"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="LCY-TQ-xoz"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="onRecHold:" destination="VMh-EN-7kr" eventType="touchDown" id="yHJ-mG-k15"/>
                                             <action selector="onRecRelease:" destination="VMh-EN-7kr" eventType="touchUpInside" id="iLd-AG-lrM"/>
@@ -394,22 +406,20 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="yol-0A-53K" secondAttribute="trailing" constant="32" id="24d-MY-Sex"/>
-                                    <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="3wl-yh-vIg"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="centerX" secondItem="nbj-gN-MXo" secondAttribute="centerX" id="5ky-XE-Utd"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="8oV-8b-Ird"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" priority="750" id="9dv-8F-bH9"/>
                                     <constraint firstAttribute="trailing" secondItem="IzQ-im-BV8" secondAttribute="trailing" id="Cwn-hq-T1T"/>
-                                    <constraint firstAttribute="bottom" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="HMy-Eg-0Gu"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="Lew-Vg-RDm"/>
-                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="Vzu-pl-TLh"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="Wza-f1-hwT"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="bottom" secondItem="3Ng-fn-zng" secondAttribute="bottom" id="Z5G-Vk-TiJ"/>
                                     <constraint firstAttribute="bottom" secondItem="yol-0A-53K" secondAttribute="bottom" constant="8" id="aKL-Bv-1fU"/>
                                     <constraint firstAttribute="bottom" secondItem="IzQ-im-BV8" secondAttribute="bottom" id="dAZ-FV-1bc"/>
                                     <constraint firstItem="yol-0A-53K" firstAttribute="centerX" secondItem="nbj-gN-MXo" secondAttribute="centerX" id="dFd-Tf-VtP"/>
+                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="centerY" secondItem="nbj-gN-MXo" secondAttribute="centerY" id="hCi-Vy-c85"/>
                                     <constraint firstItem="yol-0A-53K" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" constant="32" id="hhY-Jc-W8N"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="leading" secondItem="nbj-gN-MXo" secondAttribute="leading" id="mti-QB-sjC"/>
                                     <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="3Ng-fn-zng" secondAttribute="top" id="nKC-5d-BR7"/>
-                                    <constraint firstItem="IzQ-im-BV8" firstAttribute="top" secondItem="nbj-gN-MXo" secondAttribute="top" id="w7W-aI-j8w"/>
                                     <constraint firstItem="3Ng-fn-zng" firstAttribute="centerX" secondItem="nbj-gN-MXo" secondAttribute="centerX" id="xTg-XJ-F6G"/>
                                 </constraints>
                                 <variation key="default">
@@ -790,7 +800,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="b5f-qa-aSG"/>
-        <segue reference="C6I-bx-jGh"/>
+        <segue reference="YNK-IE-2L7"/>
         <segue reference="qZB-HR-r3t"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
