@@ -36,8 +36,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nextButton.layer.cornerRadius = 7
-        
         if let level = level {
             isLevel = true
             self.level = level
@@ -45,62 +43,14 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             wordTextButton.enabled = false
         } else {
             self.nextButton.hidden = true
-            
             setNewRandomWord()
-            if countMeanings > 1 {
-                hintMeaningButton.setTitle(String(countMeanings)+" english meanings", forState: .Normal)
-            } else {
-                hintMeaningButton.setTitle("English", forState: .Normal)
-            }
         }
-    }
-    
-    @IBAction func onNext(sender: AnyObject) {
-        if isLevel {
-            self.levelWordsCount = self.levelWordsCount + 1
-            if self.levelWordsCount == self.level!.words.count {
-                self.dismissViewControllerAnimated(false, completion: {
-                    print("Successfully completed level")
-                })
-            } else {
-                getLevelWord()
-            }
-        } else {
-            onWordTextButton(sender)
-        }
-    }
-    
-    func getLevelWord() {
-        if let audioURL = self.level!.words[self.levelWordsCount].audioURL {
-            JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
-                if let audioData = data {
-                    self.level!.words[self.levelWordsCount].setAudioWithMP3(audioData)
-                    print(self.levelWordsCount," of ", self.level!.words.count, "Random words ready!")
-                    self.word = self.level!.words[self.levelWordsCount]
-                    self.wordTextButton.setTitle(self.level!.words[self.levelWordsCount].spellings.last, forState: .Normal)
-                    self.wordTextButton.enabled = true
-                } else {
-                    assertionFailure("error downloading audioData")
-                }
-            })
-        }
-    }
-    override func viewWillAppear(animated: Bool) {
         
-        //Theme Block rgb(231, 76, 60) //UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
-        let themeColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1).flatten()
-        let themeContrast = ContrastColorOf(themeColor, returnFlat: true)
-        let nav = self.navigationController?.navigationBar
-        self.navigationController?.hidesNavigationBarHairline = true
-        nav?.barTintColor = themeColor
-        nav?.tintColor =  themeContrast
-        nav?.titleTextAttributes = [NSForegroundColorAttributeName: themeContrast]
-        self.tabBarController?.tabBar.tintColor = themeColor
-        //
         view.tintColor = FlatNavyBlue()
-        //    move down from ViewDidLoad
+        nextButton.layer.cornerRadius = 7
+        
+        recordButton.setTitleColor(FlatWatermelon(), forState: .Highlighted)
         hintTextButton.hidden = true
-        //    playWordButton.enabled = false
         playWordButton.hidden = true
         recNowPlay = false
         
@@ -109,7 +59,21 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         hintTextButton.setTitle("", forState: .Normal)
         
         setupRecorder()
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
+        //Theme Block//  UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
+        let themeColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1).flatten()
+        let themeContrast = ContrastColorOf(themeColor, returnFlat: true)
+        let nav = self.navigationController?.navigationBar
+        self.navigationController?.hidesNavigationBarHairline = true
+        nav?.barTintColor = themeColor
+        nav?.tintColor =  themeContrast
+        nav?.titleTextAttributes = [NSForegroundColorAttributeName: themeContrast]
+        self.tabBarController?.tabBar.tintColor = themeColor
+        ////////////////////////////////////////////////////////////////////////////
     }
     
     override func didReceiveMemoryWarning() {
@@ -212,11 +176,15 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         print("Error while recording audio \(error!.localizedDescription)")
     }
     
+    @IBAction func onRecHold(sender: AnyObject) {
+    }
+    
+    @IBAction func onRecRelease(sender: AnyObject) {
+    }
+    
     @IBAction func onRecord(sender: AnyObject) {
         var error: NSError?
         let audioSession = AVAudioSession.sharedInstance()
-        //      TODO: reset Record to work on enabled
-        //    if (sender.titleLabel!!.text == "話す"){
         if recNowRec {
             do{
                 try audioSession.setActive(true)
@@ -246,17 +214,11 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 print("ERROR: onRecord setActive(false)")
             }
             recNowRec = true
-            //      sender.setTitle("話す", forState: .Normal)
             recordButton.tintColor = nil
             recNowPlay = true
             
-            //            sender.setTitleColor(UIColor.blackColor(), forState: .Normal)
             
         }
-    }
-    
-    @IBAction func onRecPlay(sender: UIButton) {
-        recPlay()
     }
     
     func recPlay() {
@@ -273,9 +235,6 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     
     @IBAction func onWordPlay(sender: UIButton) {
         if (sender.enabled == true){
-            if hintTextButton.hidden == false {
-                      hintTextButton.setTitle(word?.romaji, forState: .Normal)
-            }
             sender.enabled = false
             if let word = word {
                 wordPlayer(word)
@@ -354,6 +313,37 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
     //    }
     //  }
     
+    @IBAction func onNext(sender: AnyObject) {
+        if isLevel {
+            self.levelWordsCount = self.levelWordsCount + 1
+            if self.levelWordsCount == self.level!.words.count {
+                self.dismissViewControllerAnimated(false, completion: {
+                    print("Successfully completed level")
+                })
+            } else {
+                getLevelWord()
+            }
+        } else {
+            onWordTextButton(sender)
+        }
+    }
+    
+    func getLevelWord() {
+        if let audioURL = self.level!.words[self.levelWordsCount].audioURL {
+            JapanizeFileClient.sharedInstance.dataForFilePath(audioURL, completion: { (data, error) in
+                if let audioData = data {
+                    self.level!.words[self.levelWordsCount].setAudioWithMP3(audioData)
+                    print(self.levelWordsCount," of ", self.level!.words.count, "Random words ready!")
+                    self.word = self.level!.words[self.levelWordsCount]
+                    self.wordTextButton.setTitle(self.level!.words[self.levelWordsCount].spellings.last, forState: .Normal)
+                    self.wordTextButton.enabled = true
+                } else {
+                    assertionFailure("error downloading audioData")
+                }
+            })
+        }
+    }
+    
     func setNewRandomWord() {
         word = nil
         wordTextButton.enabled = false
@@ -412,6 +402,10 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
                 audioPlayer.prepareToPlay()
                 audioPlayer.volume = 1.5
                 audioPlayer.play()
+//                TODO: show ramaji while playing word (meaning when complete)
+                if hintTextButton.hidden == false {
+                    hintTextButton.setTitle(word.romaji, forState: .Normal)
+                }
             }
         }
     }

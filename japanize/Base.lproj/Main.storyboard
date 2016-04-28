@@ -368,6 +368,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="235"/>
                                         <state key="normal" image="mic"/>
                                         <connections>
+                                            <action selector="onRecHold:" destination="VMh-EN-7kr" eventType="touchDown" id="yHJ-mG-k15"/>
+                                            <action selector="onRecRelease:" destination="VMh-EN-7kr" eventType="touchUpInside" id="iLd-AG-lrM"/>
                                             <action selector="onRecord:" destination="VMh-EN-7kr" eventType="touchUpInside" id="F0n-S0-k0Q"/>
                                         </connections>
                                     </button>
