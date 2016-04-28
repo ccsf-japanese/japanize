@@ -245,9 +245,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Japanize" id="BcB-yb-eHL">
                         <button key="titleView" opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" id="mVg-TZ-ncM">
-                            <rect key="frame" x="13" y="6" width="250" height="33"/>
+                            <rect key="frame" x="58" y="6" width="204" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <state key="normal" title="Japanize">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -843,9 +843,9 @@
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C6I-bx-jGh"/>
         <segue reference="b5f-qa-aSG"/>
-        <segue reference="pfU-5z-Z7N"/>
+        <segue reference="YNK-IE-2L7"/>
+        <segue reference="Y4J-8V-qzm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.18198148906230927" green="0.69426733255386353" blue="0.53024792671203613" alpha="1" colorSpace="calibratedRGB"/>
 </document>
