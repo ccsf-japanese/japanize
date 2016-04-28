@@ -18,7 +18,7 @@ class ProgressViewController: UIViewController {
     formSheetController.presentationController?.contentViewSize = CGSizeMake(300, 300)
     formSheetController.presentationController?.shouldCenterVertically = true
     formSheetController.presentationController?.shouldCenterHorizontally = true
-    formSheetController.contentViewCornerRadius = 32.0
+    formSheetController.contentViewCornerRadius = 27.0
     self.presentViewController(formSheetController, animated: true, completion: nil)
     
     tableView.delegate = self

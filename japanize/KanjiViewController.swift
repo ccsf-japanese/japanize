@@ -56,10 +56,10 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     //clearButton.setTitle("Clear", forState:.Normal)
     clearButton.setImage(UIImage.init(named: "ic_clear"), forState: .Normal)
     
-    undoButton.titleLabel?.font = UIFont.systemFontOfSize(25)
-    clearButton.titleLabel?.font = UIFont.systemFontOfSize(25)
-    meaningLabel.font = UIFont.systemFontOfSize(28)
-  meaningLabel.numberOfLines = 3
+    undoButton.titleLabel?.font = UIFont.systemFontOfSize(26)
+    clearButton.titleLabel?.font = UIFont.systemFontOfSize(26)
+    meaningLabel.font = UIFont.systemFontOfSize(26)
+
     
     undoButton.translatesAutoresizingMaskIntoConstraints = false
     
@@ -69,8 +69,10 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     clearButton.addTarget(self, action: "clearButtonTapped", forControlEvents: .TouchUpInside)
     
     meaningLabel.translatesAutoresizingMaskIntoConstraints = false
+    meaningLabel.textColor = FlatPlumDark()
     meaningLabel.textAlignment = .Center
-    
+    meaningLabel.numberOfLines = 3
+
     //undoButton constraints
     NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: undoButton, attribute: .Leading, multiplier: 1.0, constant: -15.0).active = true
     NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: undoButton, attribute: .Bottom, multiplier: 1.0, constant: 15.0).active = true
@@ -147,9 +149,9 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
           if character.kind == "kanji" {
             meaningLabel.text = "\(character.meaning!) \n[Kanji]"
           } else if character.kind == "hiragana" {
-            meaningLabel.text = "'\(character.romaji!)' \n[Hiragana]"
+            meaningLabel.text = "'\(character.romaji!)' \n(Hiragana)"
           } else if character.kind == "katakana" {
-            meaningLabel.text = "'\(character.romaji!)' \n[Katakana]"
+            meaningLabel.text = "'\(character.romaji!)' \n(Katakana)"
           } else {
             assertionFailure("unknown character kind")
           }

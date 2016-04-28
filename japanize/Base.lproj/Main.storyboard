@@ -285,7 +285,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="center" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbE-dK-wYc">
-                                        <rect key="frame" x="219" y="166" width="35" height="35"/>
+                                        <rect key="frame" x="220" y="166" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="6ie-8f-D0f"/>
                                             <constraint firstAttribute="height" constant="35" id="icF-H2-zDU"/>
@@ -318,6 +318,7 @@
                                     <constraint firstItem="8ob-2U-8mT" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" id="ATL-X4-cts"/>
                                     <constraint firstItem="bbE-dK-wYc" firstAttribute="centerX" secondItem="tgY-eT-H2I" secondAttribute="centerX" multiplier="1.5" id="HaR-0x-N82"/>
                                     <constraint firstItem="bbE-dK-wYc" firstAttribute="centerY" secondItem="JvU-y2-qIC" secondAttribute="centerY" constant="-13" id="Kkn-on-Jmn"/>
+                                    <constraint firstItem="bbE-dK-wYc" firstAttribute="leading" secondItem="JvU-y2-qIC" secondAttribute="leading" constant="42" id="L7W-DW-lhz"/>
                                     <constraint firstItem="eSK-eY-0Dn" firstAttribute="top" secondItem="VqU-8K-Jgz" secondAttribute="bottom" constant="4" id="Nfo-sk-oGt"/>
                                     <constraint firstAttribute="bottom" secondItem="JvU-y2-qIC" secondAttribute="bottom" constant="8" id="O0A-AP-4ao"/>
                                     <constraint firstAttribute="bottom" secondItem="eSK-eY-0Dn" secondAttribute="bottom" constant="20" id="OTp-hm-XkT"/>
@@ -347,6 +348,7 @@
                                         <exclude reference="qie-hG-4JL"/>
                                         <exclude reference="rUF-k3-3i2"/>
                                         <exclude reference="30Y-w6-dWv"/>
+                                        <exclude reference="4Vu-td-M4S"/>
                                         <exclude reference="HaR-0x-N82"/>
                                         <exclude reference="jUs-UM-UjC"/>
                                         <exclude reference="oZR-fX-G3R"/>
@@ -371,12 +373,12 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yol-0A-53K">
                                         <rect key="frame" x="32" y="197" width="256" height="30"/>
-                                        <color key="backgroundColor" red="0.18198148906230927" green="0.69426733255386353" blue="0.53024792671203613" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.1819814891" green="0.69426733259999995" blue="0.53024792669999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="LDK-hN-USF"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Next"/>
+                                        <state key="normal" title="持続する"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="LDK-hN-USF"/>
@@ -785,8 +787,8 @@
         <image name="trophy" width="120" height="115"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C6I-bx-jGh"/>
         <segue reference="b5f-qa-aSG"/>
+        <segue reference="C6I-bx-jGh"/>
         <segue reference="qZB-HR-r3t"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
