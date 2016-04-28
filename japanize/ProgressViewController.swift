@@ -50,6 +50,10 @@ class ProgressViewController: UIViewController {
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let backItem = UIBarButtonItem()
+    backItem.title = ""
+    navigationItem.backBarButtonItem = backItem
+
     if let cell = sender as? LevelCell {
       if let vc = segue.destinationViewController as? PronunciationViewController {
         vc.level = cell.level

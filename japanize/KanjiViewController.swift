@@ -19,6 +19,8 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
   @IBOutlet weak var kanjiView: KanjiView!
   @IBOutlet weak var drawKanjiView: DrawKanjiView!
   
+  @IBOutlet weak var titleButton: UIButton!
+    
   weak var delegate: KanjiViewControllerDelegate?
   
   let undoButton = UIButton(type: .System)
@@ -140,6 +142,22 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
     let transform = CGAffineTransformMakeScale(scale, scale)
     kanjiTransform = transform
   }
+    
+    func setTitle2Meaning(){
+        print("setTitle to Meaning")
+        if let character = character {
+            if character.kind == "kanji" {
+                self.titleButton.setTitle("漢字: \(character.meaning!)", forState: .Normal)
+            } else if character.kind == "hiragana" {
+                self.titleButton.setTitle("ひらがな: \(character.romaji!)", forState: .Normal)
+            } else if character.kind == "katakana" {
+                self.titleButton.setTitle("カタカナ: \(character.romaji!)", forState: .Normal)
+            } else {
+                self.titleButton.setTitle("Japanize", forState: .Normal)
+                assertionFailure("unknown character kind")
+            }
+        }
+    }
   
   func didCompleteStroke() {
     nextStrokeIndex += 1
@@ -147,11 +165,11 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
       if let strokes = character.strokes {
         if nextStrokeIndex == strokes.count {
           if character.kind == "kanji" {
-            meaningLabel.text = "\(character.meaning!) \n[Kanji]"
+            meaningLabel.text = "\(character.meaning!) \n漢字"
           } else if character.kind == "hiragana" {
-            meaningLabel.text = "'\(character.romaji!)' \n(Hiragana)"
+            meaningLabel.text = "'\(character.romaji!)' \nひらがな"
           } else if character.kind == "katakana" {
-            meaningLabel.text = "'\(character.romaji!)' \n(Katakana)"
+            meaningLabel.text = "'\(character.romaji!)' \nカタカナ"
           } else {
             assertionFailure("unknown character kind")
           }
@@ -207,12 +225,21 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
               chosenCharacter.setStrokesWithSVG(svgData)
               print("Random character ready!")
               self.character = chosenCharacter
+              self.setTitle2Meaning()
             } else {
               assertionFailure("error downloading SVG")
             }
         })
       }
     })
+  }
+    
+  @IBAction func onNavigationBar(sender: AnyObject) {
+    if titleButton.titleLabel?.text == "Japanize" {
+        setTitle2Meaning()
+    } else {
+        titleButton.setTitle("Japanize", forState: .Normal)
+    }
   }
     
   override func viewDidAppear(animated: Bool) {
@@ -231,6 +258,10 @@ class KanjiViewController: UIViewController, KanjiDrawingDataSource, DrawKanjiVi
   }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+
         if let level = sender as? Level {
             if let vc = segue.destinationViewController as? PronunciationViewController {
                 vc.level = level

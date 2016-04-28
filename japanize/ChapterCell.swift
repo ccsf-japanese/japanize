@@ -1,4 +1,5 @@
 import UIKit
+import ChameleonFramework
 
 class ChapterCell: UITableViewCell {
   
@@ -47,33 +48,38 @@ extension ChapterCell : UICollectionViewDataSource {
     let previousLevel = indexPath.row > 0 ? chapter?.levels[indexPath.row - 1] : nil
     
     if User.currentUser?.levelsComplete[currentLevel.id] != nil {
-      cell.disabled = true
-      //set cell text colour green
-      //cell.completedImage.hidden = false //rgb(230, 126, 34)rgb(243, 156, 18)
-      cell.backgroundColor = UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)
-      cell.levelLabel.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
-      cell.goal1Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
-      cell.goal2Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
-      cell.goal3Label.textColor = UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
+      cell.disabled = false
+      // cell text colour UIColor(red: 234/255, green: 156/255, blue: 18/255, alpha: 1)
+      // cell background UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)
+      cell.backgroundColor = FlatYellowDark()
+      cell.levelLabel.textColor = FlatYellow()
+      cell.goal1Label.textColor = FlatYellow()
+      cell.goal2Label.textColor = FlatYellow()
+      cell.goal3Label.textColor = FlatYellow()
+      cell.starButton.tintColor = FlatYellow()
+      cell.lockButton.hidden = true
     } else if indexPath.row == 0 || previousLevel != nil && User.currentUser?.levelsComplete[previousLevel!.id] != nil {
       cell.disabled = false
-      //levelComplete == false {
       // Levels that have been started, but not completed
-      cell.backgroundColor = UIColor.flatMintColorDark()
-      cell.levelLabel.textColor = UIColor.whiteColor()
-      cell.goal1Label.textColor = UIColor.whiteColor()
-      cell.goal2Label.textColor = UIColor.whiteColor()
-      cell.goal3Label.textColor = UIColor.whiteColor()
+      cell.backgroundColor = FlatMintDark()
+      cell.levelLabel.textColor = FlatWhite() // UIColor.whiteColor()
+      cell.goal1Label.textColor = FlatWhite()
+      cell.goal2Label.textColor = FlatWhite()
+      cell.goal3Label.textColor = FlatWhite()
+      cell.starButton.hidden = true
+      cell.lockButton.hidden = true
     } else {
       cell.disabled = true
-      // does level not touched fire this (as nil)
-      //set cell inactive and grey
-      // cell.lockedImage.hidden = false rgb(52, 73, 94)rgb(44, 62, 80)
-      cell.backgroundColor = UIColor(red: 52/255, green: 73/255, blue: 94/255, alpha: 1)
-      cell.levelLabel.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
-      cell.goal1Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
-      cell.goal2Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
-      cell.goal3Label.textColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
+      // cell text colour UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1)
+      // cell background UIColor(red: 52/255, green: 73/255, blue: 94/255, alpha: 1)
+      cell.backgroundColor = FlatTealDark()
+      cell.levelLabel.textColor = FlatTeal()
+      cell.goal1Label.textColor = FlatTeal()
+      cell.goal2Label.textColor = FlatTeal()
+      cell.goal3Label.textColor = FlatTeal()
+      cell.starButton.hidden = true
+      cell.lockButton.hidden = false
+      cell.lockButton.tintColor = FlatTeal()
     }
     
     cell.level = currentLevel
