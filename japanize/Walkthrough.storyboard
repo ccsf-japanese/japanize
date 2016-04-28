@@ -32,7 +32,7 @@
                                     <action selector="close:" destination="txJ-gV-nlq" eventType="touchUpInside" id="PuU-rg-JeA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ad-hv-8C6" userLabel="Prev">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ad-hv-8C6" userLabel="Prev">
                                 <rect key="frame" x="4" y="530" width="50" height="50"/>
                                 <state key="normal" image="leftarrow">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,12 +234,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1g2-aZ-1sf">
-                                <rect key="frame" x="549" y="55" width="39" height="30"/>
-                                <state key="normal" title="Close">
-                                    <color key="titleColor" red="0.18198148906230927" green="0.69426733255386353" blue="0.53024792671203613" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reading and Pronunciation Practice" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGW-Jb-IhM">
                                 <rect key="frame" x="150" y="45" width="300" height="50"/>
                                 <constraints>
@@ -285,13 +279,11 @@
                             <constraint firstItem="KGW-Jb-IhM" firstAttribute="trailing" secondItem="dDt-ZO-IbC" secondAttribute="trailing" id="0d7-v9-Vg7"/>
                             <constraint firstItem="llZ-SV-b8A" firstAttribute="centerX" secondItem="9My-yD-6bv" secondAttribute="centerX" id="2Le-3n-q8l"/>
                             <constraint firstItem="bS2-IJ-fx7" firstAttribute="top" secondItem="llZ-SV-b8A" secondAttribute="bottom" constant="12" id="8VP-Is-jvc"/>
-                            <constraint firstAttribute="trailing" secondItem="1g2-aZ-1sf" secondAttribute="trailing" constant="12" id="BhJ-7d-TG2"/>
                             <constraint firstAttribute="centerX" secondItem="bS2-IJ-fx7" secondAttribute="centerX" id="EEB-T1-4Yx"/>
                             <constraint firstItem="dDt-ZO-IbC" firstAttribute="leading" secondItem="llZ-SV-b8A" secondAttribute="trailing" constant="97" id="GbW-gV-xAt"/>
                             <constraint firstItem="Deg-VZ-J6w" firstAttribute="top" secondItem="bS2-IJ-fx7" secondAttribute="bottom" id="GgT-23-Wr4"/>
                             <constraint firstItem="bS2-IJ-fx7" firstAttribute="top" secondItem="dDt-ZO-IbC" secondAttribute="bottom" constant="74" id="Qi0-OT-aO9"/>
                             <constraint firstItem="dDt-ZO-IbC" firstAttribute="top" secondItem="KGW-Jb-IhM" secondAttribute="bottom" constant="8" symbolic="YES" id="T79-oh-Pb2"/>
-                            <constraint firstItem="KGW-Jb-IhM" firstAttribute="centerY" secondItem="1g2-aZ-1sf" secondAttribute="centerY" id="Toe-JX-A8f"/>
                             <constraint firstItem="llZ-SV-b8A" firstAttribute="centerX" secondItem="9My-yD-6bv" secondAttribute="centerX" id="bKp-Py-jeX"/>
                             <constraint firstItem="llZ-SV-b8A" firstAttribute="top" secondItem="dDt-ZO-IbC" secondAttribute="bottom" constant="8" id="cBx-an-WQ1"/>
                             <constraint firstItem="KGW-Jb-IhM" firstAttribute="centerX" secondItem="bS2-IJ-fx7" secondAttribute="centerX" id="iEQ-d1-OuJ"/>
