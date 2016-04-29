@@ -52,6 +52,9 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         recordButton.adjustsImageWhenHighlighted = false
         
         nextButton.layer.cornerRadius = 7
+        hintMeaningButton.layer.cornerRadius = 7
+     //   onTranslateJapanese.layer.cornerRadius = 7
+
         
         hintTextButton.hidden = true
         playWordButton.hidden = true
@@ -398,9 +401,13 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
         if isLevel {
             self.levelWordsCount = self.levelWordsCount + 1
             if self.levelWordsCount == self.level!.words.count {
-                self.dismissViewControllerAnimated(false, completion: {
-                    print("Successfully completed level")
-                })
+                // TODO: Check another fix for walkthrough modal
+                //self.dismissViewControllerAnimated(false, completion: {
+                //    print("Successfully completed level")
+                //})
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+                self.presentViewController(vc, animated: true, completion: nil)
             } else {
                 getLevelWord()
             }
@@ -408,6 +415,19 @@ class PronunciationViewController: UIViewController, AVAudioRecorderDelegate, AV
             onWordTextButton(sender)
         }
     }
+//        if isLevel {
+//            self.levelWordsCount = self.levelWordsCount + 1
+//            if self.levelWordsCount == self.level!.words.count {
+//                self.dismissViewControllerAnimated(false, completion: {
+//                    print("Successfully completed level")
+//                })
+//            } else {
+//                getLevelWord()
+//            }
+//        } else {
+//            onWordTextButton(sender)
+//        }
+//    }
     
     func getLevelWord() {
         if let audioURL = self.level!.words[self.levelWordsCount].audioURL {
